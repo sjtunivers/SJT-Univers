@@ -1254,82 +1254,45 @@ footer a:hover{
 
             <!-- PAYMENT -->
 
-            <div class="payment-box">
+<div class="payment-box">
 
-                <strong>
-                    Payment Method
-                </strong>
+    <strong>
+        Payment Method
+    </strong>
 
+    <label class="payment-option">
+        <input
+            type="radio"
+            name="payment"
+            value="Cash on Delivery"
+            checked
+        >
+        <span>💵 Cash on Delivery</span>
+    </label>
 
-                <label class="payment-option''>
-                    <label class="payment-option">
-                      <label class="payment-option">
-    <input
-        type="radio"
-        name="payment"
-        value="Cash on Delivery"
-        checked
-    >
-    <span>💵 Cash on Delivery</span>
-</label>
+    <label class="payment-option">
+        <input
+            type="radio"
+            name="payment"
+            value="UPI"
+        >
+        <span>📱 UPI</span>
+    </label>
 
-<label class="payment-option">
-    <input
-        type="radio"
-        name="payment"
-        value="UPI"
-    >
-    <span>📱 UPI</span>
-</label>
-
-<label class="payment-option">
-    <input
-        type="radio"
-        name="payment"
-        value="Card"
-    >
-    <span>💳 Credit / Debit Card</span>
-</label>
-
-<label class="payment-option">
-    <input
-        type="radio"
-        name="payment"
-        value="Net Banking"
-    >
-    <span>🏦 Net Banking</span>
-</label>
+    <label class="payment-option">
+        <input
+            type="radio"
+            name="payment"
+            value="Card"
+        >
+        <span>💳 Credit / Debit Card</span>
+    </label>
 
 </div>
 
-<!-- ORDER SUMMARY -->
-<div class="order-summary">
 
-    <h3>Order Summary</h3>
+<!-- ORDER BUTTON -->
 
-    <div class="summary-row">
-        <span>Product Price</span>
-        <span>₹<span id="checkoutProductPrice">0</span></span>
-    </div>
-
-    <div class="summary-row">
-        <span>Quantity</span>
-        <span id="checkoutQuantity">1</span>
-    </div>
-
-    <div class="summary-row">
-        <span>Delivery</span>
-        <span class="free">FREE</span>
-    </div>
-
-    <div class="summary-total">
-        <span>Total Amount</span>
-        <span>₹<span id="checkoutTotal">0</span></span>
-    </div>
-
-</div>
-
-<!-- PLACE ORDER -->
 <button
     type="button"
     class="place-order"
@@ -1338,9 +1301,9 @@ footer a:hover{
     🛍️ Place Order
 </button>
 
-</div>
 
 </div>
+
 
 <script>
 
@@ -1358,6 +1321,9 @@ function placeOrder(){
     const city =
         document.getElementById("customerCity").value.trim();
 
+    const state =
+        document.getElementById("customerState").value.trim();
+
     const pincode =
         document.getElementById("customerPincode").value.trim();
 
@@ -1369,62 +1335,82 @@ function placeOrder(){
             'input[name="payment"]:checked'
         ).value;
 
-    if(!name){
-        alert("Please enter your name");
+
+    if(
+        !name ||
+        !phone ||
+        !address ||
+        !city ||
+        !state ||
+        !pincode
+    ){
+
+        alert(
+            "Please fill all required customer details."
+        );
+
         return;
     }
 
-    if(!phone){
-        alert("Please enter your mobile number");
-        return;
-    }
-
-    if(!address){
-        alert("Please enter your address");
-        return;
-    }
-
-    if(!city){
-        alert("Please enter your city");
-        return;
-    }
-
-    if(!pincode){
-        alert("Please enter your pincode");
-        return;
-    }
 
     const order = {
-        id: "ORD" + Date.now(),
-        customerName: name,
-        phone: phone,
-        address: address,
-        city: city,
-        pincode: pincode,
-        quantity: quantity,
-        payment: payment,
-        date: new Date().toLocaleString(),
-        status: "Pending"
+
+        orderId:
+            "SJT" +
+            Date.now(),
+
+        customerName:name,
+
+        phone:phone,
+
+        address:address,
+
+        city:city,
+
+        state:state,
+
+        pincode:pincode,
+
+        quantity:Number(quantity),
+
+        paymentMethod:payment,
+
+        date:
+            new Date().toLocaleString("en-IN"),
+
+        status:"Pending"
+
     };
+
 
     let orders =
         JSON.parse(
             localStorage.getItem("sjt_orders")
         ) || [];
 
+
     orders.push(order);
+
 
     localStorage.setItem(
         "sjt_orders",
         JSON.stringify(orders)
     );
 
+
     alert(
-        "Order placed successfully!\\n\\n" +
-        "Order ID: " + order.id
+        "Order placed successfully! 🎉\n\n" +
+        "Order ID: " +
+        order.orderId
     );
 
-    window.location.href = "index.html";
+
+    window.location.href =
+        "index.html";
+
 }
 
 </script>
+
+</body>
+</html>
