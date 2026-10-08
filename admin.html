@@ -3,242 +3,202 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SJT-Univers Admin</title>
+<title>SJT-Univers Admin Panel</title>
 
 <style>
-*{
-  box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
 body{
-  margin:0;
-  font-family:Arial,sans-serif;
-  background:#f5f5f5;
-  color:#222;
+ margin:0;
+ font-family:Arial,sans-serif;
+ background:#f4f4f4;
+ color:#222;
 }
 
 header{
-  background:#111;
-  color:white;
-  padding:18px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+ background:#111;
+ color:white;
+ padding:16px;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
 }
 
 header h2{
-  margin:0;
-  color:#ffc107;
+ margin:0;
+ color:#ffc107;
 }
 
 .container{
-  max-width:1000px;
-  margin:20px auto;
-  padding:15px;
+ max-width:1200px;
+ margin:auto;
+ padding:15px;
+}
+
+.dashboard{
+ display:grid;
+ grid-template-columns:repeat(5,1fr);
+ gap:12px;
+ margin-bottom:20px;
+}
+
+.stat{
+ background:white;
+ padding:18px;
+ border-radius:10px;
+ box-shadow:0 2px 8px #ddd;
+}
+
+.stat b{
+ display:block;
+ font-size:25px;
+ margin-top:8px;
 }
 
 .card{
-  background:white;
-  padding:20px;
-  border-radius:12px;
-  margin-bottom:20px;
-  box-shadow:0 2px 10px #ddd;
+ background:white;
+ padding:18px;
+ border-radius:12px;
+ margin-bottom:20px;
+ box-shadow:0 2px 8px #ddd;
 }
 
 input,select,textarea{
-  width:100%;
-  padding:12px;
-  margin:7px 0 14px;
-  border:1px solid #ccc;
-  border-radius:7px;
-  font-size:15px;
+ width:100%;
+ padding:12px;
+ margin:7px 0 14px;
+ border:1px solid #ccc;
+ border-radius:7px;
+ font-size:15px;
 }
 
 textarea{
-  min-height:130px;
-  resize:vertical;
+ min-height:100px;
 }
 
 button{
-  border:0;
-  padding:12px 18px;
-  border-radius:7px;
-  cursor:pointer;
-  font-weight:bold;
+ border:0;
+ padding:11px 16px;
+ border-radius:7px;
+ cursor:pointer;
+ font-weight:bold;
 }
 
 .add{
-  background:#111;
-  color:white;
-  width:100%;
-}
-
-.delete{
-  background:#e53935;
-  color:white;
-  margin-top:10px;
+ background:#111;
+ color:white;
+ width:100%;
 }
 
 .edit{
-  background:#ffc107;
-  color:#111;
-  margin-top:10px;
-  margin-right:5px;
+ background:#ffc107;
+ color:#111;
 }
 
-.product{
-  border:1px solid #ddd;
-  border-radius:10px;
-  padding:12px;
-  margin-bottom:15px;
-  display:flex;
-  gap:15px;
-  align-items:center;
+.delete{
+ background:#e53935;
+ color:white;
 }
 
-.product img{
-  width:90px;
-  height:90px;
-  object-fit:cover;
-  border-radius:8px;
+.status{
+ padding:7px;
+ border-radius:6px;
+ font-weight:bold;
 }
 
-.product-info{
-  flex:1;
+.pending{background:#fff3cd}
+.shipped{background:#cfe2ff}
+.delivered{background:#d1e7dd}
+.cancelled{background:#f8d7da}
+
+.item{
+ border:1px solid #ddd;
+ border-radius:10px;
+ padding:12px;
+ margin:10px 0;
 }
 
-.product-info h3{
-  margin:0 0 5px;
+.item img{
+ width:80px;
+ height:80px;
+ object-fit:cover;
+ border-radius:8px;
 }
 
-.price{
-  font-weight:bold;
+.row{
+ display:flex;
+ gap:12px;
+ align-items:center;
+ flex-wrap:wrap;
+}
+
+.row > *{
+ flex:1;
+}
+
+.search{
+ margin-bottom:15px;
+}
+
+@media(max-width:800px){
+ .dashboard{
+  grid-template-columns:repeat(2,1fr);
+ }
+}
+
+@media(max-width:500px){
+ .dashboard{
+  grid-template-columns:1fr 1fr;
+ }
+
+ header h2{
   font-size:18px;
+ }
 }
-
-.old{
-  text-decoration:line-through;
-  color:#888;
-  margin-left:8px;
-}
-
-.images-count{
-  color:#555;
-  font-size:13px;
-  margin-top:5px;
-}
-
-@media(max-width:600px){
-  .product{
-    align-items:flex-start;
-  }
-
-  .product img{
-    width:75px;
-    height:75px;
-  }
-}
-</* ADMIN DASHBOARD */
-.dashboard{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:15px;
-  margin:20px auto;
-  max-width:1000px;
-  padding:0 15px;
-}
-
-.dashboard-card{
-  background:white;
-  padding:18px;
-  border-radius:12px;
-  box-shadow:0 2px 10px #ddd;
-  text-align:center;
-}
-
-.dashboard-card .icon{
-  font-size:28px;
-}
-
-.dashboard-card h3{
-  margin:8px 0 5px;
-  font-size:15px;
-}
-
-.dashboard-card p{
-  margin:0;
-  font-size:24px;
-  font-weight:bold;
-}
-
-@media(max-width:600px){
-  .dashboard{
-    grid-template-columns:repeat(2,1fr);
-    gap:10px;
-  }
-}/style>
+</style>
 </head>
 
 <body>
 
 <header>
-  <h2>🛒 SJT-Univer Admin</h2>
-  <span>Admin Panel</span>
+<h2>🛒 SJT-Univers Admin</h2>
+<span>Admin Panel</span>
 </header>
-<!-- ADMIN DASHBOARD -->
+
+<div class="container">
+
+<!-- DASHBOARD -->
 
 <div class="dashboard">
 
-  <div class="dashboard-card">
-    <div class="icon">📦</div>
-    <h3>Total Products</h3>
-    <p id="totalProducts">0</p>
-  </div>
+<div class="stat">
+📦 Products
+<b id="totalProducts">0</b>
+</div>
 
-  <div class="dashboard-card">
-    <div class="icon">🛒</div>
-    <h3>Total Orders</h3>
-    <p id="totalOrders">0</p>
-  </div>
+<div class="stat">
+🛒 Orders
+<b id="totalOrders">0</b>
+</div>
 
-  <div class="dashboard-card">
-    <div class="icon">👥</div>
-    <h3>Total Customers</h3>
-    <p id="totalCustomers">0</p>
-  </div>
+<div class="stat">
+👤 Customers
+<b id="totalCustomers">0</b>
+</div>
 
-  <div class="dashboard-card">
-    <div class="icon">💰</div>
-    <h3>Total Sales</h3>
-    <p id="totalSales">₹0</p>
-  </div>
+<div class="stat">
+💰 Sales
+<b id="totalSales">₹0</b>
+</div>
 
-  <div class="dashboard-card">
-    <div class="icon">⏳</div>
-    <h3>Pending Orders</h3>
-    <p id="pendingOrders">0</p>
-  </div>
-
-  <div class="dashboard-card">
-    <div class="icon">🚚</div>
-    <h3>Shipped</h3>
-    <p id="shippedOrders">0</p>
-  </div>
-
-  <div class="dashboard-card">
-    <div class="icon">✅</div>
-    <h3>Delivered</h3>
-    <p id="deliveredOrders">0</p>
-  </div>
-
-  <div class="dashboard-card">
-    <div class="icon">❌</div>
-    <h3>Cancelled</h3>
-    <p id="cancelledOrders">0</p>
-  </div>
+<div class="stat">
+⏳ Pending
+<b id="pendingOrders">0</b>
+</div>
 
 </div>
-<div class="container">
+
+<!-- ADD PRODUCT -->
 
 <div class="card">
 
@@ -249,12 +209,12 @@ button{
 
 <label>Category</label>
 <select id="category">
-  <option value="men">Men</option>
-  <option value="women">Women</option>
-  <option value="shoes">Shoes</option>
-  <option value="electronics">Electronics</option>
-  <option value="beauty">Beauty</option>
-  <option value="other">Other</option>
+<option value="men">Men</option>
+<option value="women">Women</option>
+<option value="shoes">Shoes</option>
+<option value="electronics">Electronics</option>
+<option value="beauty">Beauty</option>
+<option value="other">Other</option>
 </select>
 
 <label>Price</label>
@@ -270,26 +230,51 @@ button{
 <input id="rating" type="number" step="0.1" placeholder="4.5">
 
 <label>🖼️ Image URLs</label>
-<textarea id="images"
-placeholder="Har image ka URL alag line me paste karo.
+<textarea id="images" placeholder="Har image ka URL alag line me paste karo."></textarea>
 
-Example:
-https://example.com/front.jpg
-https://example.com/back.jpg
-https://example.com/side.jpg
-https://example.com/close.jpg"></textarea>
-
-<button class="add" onclick="addProduct()">
-  ➕ Add Product
-</button>
+<button class="add" onclick="addProduct()">➕ Add Product</button>
 
 </div>
+
+<!-- PRODUCTS -->
 
 <div class="card">
 
 <h2>📦 Products</h2>
 
+<input class="search" id="productSearch"
+placeholder="🔎 Search product..."
+oninput="showProducts()">
+
 <div id="products"></div>
+
+</div>
+
+<!-- ORDERS -->
+
+<div class="card">
+
+<h2>🛒 Orders</h2>
+
+<input class="search" id="orderSearch"
+placeholder="🔎 Search customer / phone / order..."
+oninput="showOrders()">
+
+<div id="orders"></div>
+
+</div>
+
+<!-- CUSTOMERS -->
+
+<div class="card">
+
+<h2>👤 Customers</h2>
+
+<input class="search" id="customerSearch"
+placeholder="🔎 Search customer / mobile..."
+oninput="showCustomers()">
+
+<div id="customers"></div>
 
 </div>
 
@@ -297,53 +282,23 @@ https://example.com/close.jpg"></textarea>
 
 <script>
 
-let products = JSON.parse(localStorage.getItem("sjt_products")) || [];
-function updateDashboard(){
+let products =
+JSON.parse(localStorage.getItem("sjt_products")) || [];
 
-  document.getElementById("totalProducts").innerText =
-    products.length;
+let orders =
+JSON.parse(localStorage.getItem("sjt_orders")) || [];
 
-  let orders =
-    JSON.parse(localStorage.getItem("sjt_orders")) || [];
+let customers =
+JSON.parse(localStorage.getItem("sjt_customers")) || [];
 
-  let customers =
-    JSON.parse(localStorage.getItem("sjt_customers")) || [];
 
-  document.getElementById("totalOrders").innerText =
-    orders.length;
+/* SAVE PRODUCTS */
 
-  document.getElementById("totalCustomers").innerText =
-    customers.length;
-
-  let totalSales = orders.reduce((sum, order) => {
-    return sum + Number(order.total || 0);
-  }, 0);
-
-  document.getElementById("totalSales").innerText =
-    "₹" + totalSales;
-
-  document.getElementById("pendingOrders").innerText =
-    orders.filter(o => o.status === "Pending").length;
-
-  document.getElementById("shippedOrders").innerText =
-    orders.filter(o => o.status === "Shipped").length;
-
-  document.getElementById("deliveredOrders").innerText =
-    orders.filter(o => o.status === "Delivered").length;
-
-  document.getElementById("cancelledOrders").innerText =
-    orders.filter(o => o.status === "Cancelled").length;
-}
-
-updateDashboard();
-
-/* SAVE */
-
-function save(){
-  localStorage.setItem(
-    "sjt_products",
-    JSON.stringify(products)
-  );
+function saveProducts(){
+ localStorage.setItem(
+  "sjt_products",
+  JSON.stringify(products)
+ );
 }
 
 
@@ -351,254 +306,448 @@ function save(){
 
 function addProduct(){
 
-  const name =
-    document.getElementById("name").value.trim();
+ const name =
+ document.getElementById("name").value.trim();
 
-  const category =
-    document.getElementById("category").value;
+ const category =
+ document.getElementById("category").value;
 
-  const price =
-    document.getElementById("price").value;
+ const price =
+ document.getElementById("price").value;
 
-  const oldPrice =
-    document.getElementById("oldPrice").value;
+ const oldPrice =
+ document.getElementById("oldPrice").value;
 
-  const discount =
-    document.getElementById("discount").value;
+ const discount =
+ document.getElementById("discount").value;
 
-  const rating =
-    document.getElementById("rating").value;
+ const rating =
+ document.getElementById("rating").value;
 
-  const imageText =
-    document.getElementById("images").value.trim();
+ const imageText =
+ document.getElementById("images").value.trim();
 
+ if(!name || !price){
+  alert("Product name aur price bharo.");
+  return;
+ }
 
-  if(!name || !price || !imageText){
+ const images =
+ imageText
+ .split("\n")
+ .map(x=>x.trim())
+ .filter(Boolean);
 
-    alert("Product Name, Price aur Image URL zaroor bharo.");
+ products.push({
+  id:Date.now(),
+  name:name,
+  category:category,
+  price:Number(price),
+  oldPrice:Number(oldPrice || 0),
+  discount:Number(discount || 0),
+  rating:Number(rating || 0),
+  images:images
+ });
 
-    return;
-  }
+ saveProducts();
 
+ document.getElementById("name").value="";
+ document.getElementById("price").value="";
+ document.getElementById("oldPrice").value="";
+ document.getElementById("discount").value="";
+ document.getElementById("rating").value="";
+ document.getElementById("images").value="";
 
-  /* Multiple image URLs */
+ showProducts();
+ updateDashboard();
 
-  const imageList = imageText
-    .split("\n")
-    .map(url => url.trim())
-    .filter(url => url !== "");
-
-
-  if(imageList.length === 0){
-
-    alert("Kam se kam 1 image URL add karo.");
-
-    return;
-  }
-
-
-  const product = {
-
-    id: Date.now(),
-
-    name: name,
-
-    category: category,
-
-    price: Number(price),
-
-    oldPrice: Number(oldPrice || price),
-
-    /* old code compatibility */
-
-    old: Number(oldPrice || price),
-
-    discount: Number(discount || 0),
-
-    rating: Number(rating || 0),
-
-    /* First image */
-
-    image: imageList[0],
-
-    /* All images */
-
-    images: imageList
-
-  };
-
-
-  products.push(product);
-
-  save();
-
-  showProducts();
-
-  clearForm();
-
-  alert("Product Added ✅");
+ alert("Product added successfully!");
 }
 
 
-/* SHOW PRODUCTS */
+/* PRODUCTS */
 
 function showProducts(){
 
-  const box =
-    document.getElementById("products");
+ const box =
+ document.getElementById("products");
 
-  box.innerHTML = "";
+ const search =
+ (document.getElementById("productSearch").value || "")
+ .toLowerCase();
+
+ box.innerHTML="";
+
+ const filtered =
+ products.filter(p =>
+ String(p.name || "")
+ .toLowerCase()
+ .includes(search)
+ );
+
+ if(filtered.length===0){
+  box.innerHTML="<p>No products found.</p>";
+  return;
+ }
+
+ filtered.forEach((p,index)=>{
+
+  const image =
+  p.images && p.images.length
+  ? p.images[0]
+  : "";
+
+  box.innerHTML += `
+
+  <div class="item">
+
+   <div class="row">
+
+    ${
+     image
+     ? `<img src="${image}" onerror="this.style.display='none'">`
+     : ""
+    }
+
+    <div>
+     <b>${escapeHTML(p.name)}</b><br>
+     Category: ${escapeHTML(p.category || "")}<br>
+     Price: ₹${p.price || 0}<br>
+     Old Price: ₹${p.oldPrice || 0}<br>
+     Rating: ⭐${p.rating || 0}
+    </div>
+
+   </div>
+
+   <br>
+
+   <button class="edit"
+   onclick="editProduct(${p.id})">
+   ✏️ Edit
+   </button>
+
+   <button class="delete"
+   onclick="deleteProduct(${p.id})">
+   🗑️ Delete
+   </button>
+
+  </div>
+
+  `;
+ });
+}
 
 
-  if(products.length === 0){
+/* EDIT PRODUCT */
 
-    box.innerHTML =
-      "<p>No products added.</p>";
+function editProduct(id){
 
-    return;
+ const p =
+ products.find(x=>x.id===id);
+
+ if(!p)return;
+
+ const name =
+ prompt("Product name:",p.name);
+
+ if(name===null)return;
+
+ const price =
+ prompt("Price:",p.price);
+
+ if(price===null)return;
+
+ p.name=name;
+ p.price=Number(price);
+
+ saveProducts();
+ showProducts();
+ updateDashboard();
+}
+
+
+/* DELETE PRODUCT */
+
+function deleteProduct(id){
+
+ if(!confirm("Product delete karna hai?"))return;
+
+ products =
+ products.filter(p=>p.id!==id);
+
+ saveProducts();
+
+ showProducts();
+ updateDashboard();
+}
+
+
+/* ORDERS */
+
+function showOrders(){
+
+ const box =
+ document.getElementById("orders");
+
+ const search =
+ (document.getElementById("orderSearch").value || "")
+ .toLowerCase();
+
+ box.innerHTML="";
+
+ if(!orders.length){
+  box.innerHTML="<p>Abhi koi order nahi hai.</p>";
+  return;
+ }
+
+ const filtered =
+ orders.filter(o=>{
+
+  const text =
+  JSON.stringify(o).toLowerCase();
+
+  return text.includes(search);
+ });
+
+ filtered.forEach((o,index)=>{
+
+  const customer =
+  o.customer ||
+  o.name ||
+  o.customerName ||
+  "Customer";
+
+  const phone =
+  o.phone ||
+  o.mobile ||
+  o.customerPhone ||
+  "";
+
+  const address =
+  o.address ||
+  o.fullAddress ||
+  o.customerAddress ||
+  "Address available nahi hai";
+
+  const total =
+  o.total ||
+  o.amount ||
+  o.price ||
+  0;
+
+  const status =
+  o.status ||
+  "Pending";
+
+  box.innerHTML += `
+
+  <div class="item">
+
+   <h3>🛒 Order #${o.id || index+1}</h3>
+
+   <b>👤 Customer:</b>
+   ${escapeHTML(customer)}<br>
+
+   <b>📞 Mobile:</b>
+   ${escapeHTML(phone)}<br><br>
+
+   <b>📍 Address:</b><br>
+   ${escapeHTML(address)}<br><br>
+
+   <b>💰 Total:</b> ₹${total}<br><br>
+
+   <b>Status:</b>
+
+   <select onchange="changeOrderStatus(${index},this.value)">
+
+    <option ${status==="Pending"?"selected":""}>
+    Pending
+    </option>
+
+    <option ${status==="Shipped"?"selected":""}>
+    Shipped
+    </option>
+
+    <option ${status==="Delivered"?"selected":""}>
+    Delivered
+    </option>
+
+    <option ${status==="Cancelled"?"selected":""}>
+    Cancelled
+    </option>
+
+   </select>
+
+  </div>
+
+  `;
+ });
+}
+
+
+/* CHANGE ORDER STATUS */
+
+function changeOrderStatus(index,status){
+
+ if(!orders[index])return;
+
+ orders[index].status=status;
+
+ localStorage.setItem(
+  "sjt_orders",
+  JSON.stringify(orders)
+ );
+
+ showOrders();
+ updateDashboard();
+}
+
+
+/* CUSTOMERS */
+
+function showCustomers(){
+
+ const box =
+ document.getElementById("customers");
+
+ const search =
+ (document.getElementById("customerSearch").value || "")
+ .toLowerCase();
+
+ box.innerHTML="";
+
+ if(!customers.length){
+
+  box.innerHTML=`
+  <p>
+  Abhi customer data nahi mila.
+  Customer checkout/order karne ke baad yahan dikhenge.
+  </p>
+  `;
+
+  return;
+ }
+
+ const filtered =
+ customers.filter(c =>
+ JSON.stringify(c)
+ .toLowerCase()
+ .includes(search)
+ );
+
+ filtered.forEach((c,index)=>{
+
+  const name =
+  c.name ||
+  c.customerName ||
+  "Customer";
+
+  const phone =
+  c.phone ||
+  c.mobile ||
+  c.customerPhone ||
+  "";
+
+  const address =
+  c.address ||
+  c.fullAddress ||
+  c.customerAddress ||
+  "";
+
+  const city =
+  c.city || "";
+
+  const state =
+  c.state || "";
+
+  const pincode =
+  c.pincode ||
+  c.pin ||
+  "";
+
+  box.innerHTML += `
+
+  <div class="item">
+
+   <h3>👤 ${escapeHTML(name)}</h3>
+
+   <b>📞 Mobile:</b>
+   ${escapeHTML(phone)}<br><br>
+
+   <b>📍 Address:</b><br>
+   ${escapeHTML(address)}<br>
+
+   ${escapeHTML(city)}
+   ${city && state ? ", " : ""}
+   ${escapeHTML(state)}
+   ${pincode ? " - "+escapeHTML(pincode) : ""}
+
+  </div>
+
+  `;
+ });
+}
+
+
+/* DASHBOARD */
+
+function updateDashboard(){
+
+ document.getElementById("totalProducts")
+ .innerText=products.length;
+
+ document.getElementById("totalOrders")
+ .innerText=orders.length;
+
+ document.getElementById("totalCustomers")
+ .innerText=customers.length;
+
+ let sales=0;
+
+ orders.forEach(o=>{
+  if(String(o.status || "")
+  .toLowerCase()==="delivered"){
+
+   sales += Number(
+    o.total ||
+    o.amount ||
+    o.price ||
+    0
+   );
   }
+ });
 
+ document.getElementById("totalSales")
+ .innerText="₹"+sales;
 
-  products.forEach((product,index)=>{
-
-    box.innerHTML += `
-
-      <div class="product">
-
-        <img
-          src="${product.image}"
-          onerror="this.src='https://via.placeholder.com/90'"
-        >
-
-        <div class="product-info">
-
-          <h3>${product.name}</h3>
-
-          <div>
-            Category: ${product.category}
-          </div>
-
-          <div class="price">
-            ₹${product.price}
-
-            <span class="old">
-              ₹${product.oldPrice || product.old}
-            </span>
-          </div>
-
-          <div>
-            ⭐ ${product.rating}
-            &nbsp; | &nbsp;
-            ${product.discount}% OFF
-          </div>
-
-          <div class="images-count">
-            🖼️ ${product.images?.length || 1} Images
-          </div>
-
-          <button
-            class="edit"
-            onclick="editProduct(${index})">
-            ✏️ Edit
-          </button>
-
-          <button
-            class="delete"
-            onclick="deleteProduct(${index})">
-            🗑️ Delete
-          </button>
-
-        </div>
-
-      </div>
-
-    `;
-
-  });
+ document.getElementById("pendingOrders")
+ .innerText=
+ orders.filter(o=>
+ String(o.status || "Pending")
+ .toLowerCase()==="pending"
+ ).length;
 }
 
 
-/* DELETE */
+/* SECURITY */
 
-function deleteProduct(index){
+function escapeHTML(value){
 
-  if(confirm("Kya aap ye product delete karna chahte hain?")){
-
-    products.splice(index,1);
-
-    save();
-
-    showProducts();
-
-  }
-}
-
-
-/* EDIT */
-
-function editProduct(index){
-
-  const product = products[index];
-
-
-  document.getElementById("name").value =
-    product.name;
-
-  document.getElementById("category").value =
-    product.category;
-
-  document.getElementById("price").value =
-    product.price;
-
-  document.getElementById("oldPrice").value =
-    product.oldPrice || product.old;
-
-  document.getElementById("discount").value =
-    product.discount;
-
-  document.getElementById("rating").value =
-    product.rating;
-
-  document.getElementById("images").value =
-    (product.images || [product.image]).join("\n");
-
-
-  products.splice(index,1);
-
-  save();
-
-  showProducts();
-
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
-
-}
-
-
-/* CLEAR */
-
-function clearForm(){
-
-  document.getElementById("name").value = "";
-
-  document.getElementById("price").value = "";
-
-  document.getElementById("oldPrice").value = "";
-
-  document.getElementById("discount").value = "";
-
-  document.getElementById("rating").value = "";
-
-  document.getElementById("images").value = "";
-
+ return String(value || "")
+ .replace(/&/g,"&amp;")
+ .replace(/</g,"&lt;")
+ .replace(/>/g,"&gt;")
+ .replace(/"/g,"&quot;")
+ .replace(/'/g,"&#039;");
 }
 
 
 /* START */
 
 showProducts();
+showOrders();
+showCustomers();
+updateDashboard();
 
 </script>
 
