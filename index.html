@@ -1,69 +1,675 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>SJT Univers — Premium Shopping</title>
-<link rel="stylesheet" href="style.css">
+<title>SJT Univers - Online Shopping</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f1f3f6;
+  color:#212121;
+}
+button,input{font-family:inherit}
+.top{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:#2874f0;
+  color:white;
+  padding:10px 5%;
+  display:flex;
+  align-items:center;
+  gap:20px;
+}
+.logo{
+  font-size:24px;
+  font-weight:bold;
+  min-width:120px;
+}
+.logo span{color:#ffe500}
+.search{
+  flex:1;
+  background:white;
+  display:flex;
+  border-radius:3px;
+  max-width:650px;
+}
+.search input{
+  width:100%;
+  border:0;
+  outline:0;
+  padding:13px;
+  font-size:15px;
+}
+.search button{
+  border:0;
+  background:white;
+  color:#2874f0;
+  font-size:20px;
+  padding:0 15px;
+}
+.topBtn{
+  background:white;
+  color:#2874f0;
+  border:0;
+  padding:10px 18px;
+  font-weight:bold;
+  border-radius:2px;
+  cursor:pointer;
+}
+.cartBtn{
+  background:transparent;
+  color:white;
+  border:0;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+}
+.banner{
+  margin:12px auto;
+  width:94%;
+  max-width:1400px;
+  background:linear-gradient(120deg,#2874f0,#174ea6);
+  color:white;
+  border-radius:4px;
+  padding:45px 6%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  overflow:hidden;
+}
+.banner h1{
+  font-size:38px;
+  margin:8px 0;
+}
+.banner p{
+  font-size:17px;
+  margin-bottom:20px;
+}
+.shopBtn{
+  background:#ff9f00;
+  color:white;
+  border:0;
+  padding:13px 25px;
+  font-weight:bold;
+  border-radius:3px;
+  cursor:pointer;
+}
+.bannerArt{
+  font-size:100px;
+}
+.section{
+  width:94%;
+  max-width:1400px;
+  margin:14px auto;
+  background:white;
+  padding:20px;
+  border-radius:4px;
+}
+.title{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:18px;
+}
+.title h2{font-size:22px}
+.categories{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+}
+.cat{
+  border:1px solid #ddd;
+  background:white;
+  padding:22px 10px;
+  text-align:center;
+  border-radius:5px;
+  cursor:pointer;
+  font-size:17px;
+  font-weight:bold;
+}
+.cat:hover{
+  box-shadow:0 2px 8px #bbb;
+  color:#2874f0;
+}
+.catIcon{font-size:35px;display:block;margin-bottom:8px}
+.products{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+}
+.card{
+  border:1px solid #e0e0e0;
+  border-radius:4px;
+  overflow:hidden;
+  background:white;
+  position:relative;
+  transition:.2s;
+}
+.card:hover{
+  box-shadow:0 4px 14px #ccc;
+  transform:translateY(-2px);
+}
+.pic{
+  height:230px;
+  background:#f7f7f7;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+.pic img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.info{padding:12px}
+.name{
+  font-size:15px;
+  font-weight:bold;
+  margin-bottom:8px;
+}
+.price{
+  font-size:20px;
+  font-weight:bold;
+}
+.old{
+  color:#878787;
+  text-decoration:line-through;
+  font-size:13px;
+  margin-left:6px;
+}
+.off{
+  color:#388e3c;
+  font-size:13px;
+  margin-left:5px;
+}
+.rating{
+  display:inline-block;
+  background:#388e3c;
+  color:white;
+  padding:3px 7px;
+  border-radius:3px;
+  font-size:12px;
+  margin:7px 0;
+}
+.actions{
+  display:flex;
+  gap:7px;
+  margin-top:8px;
+}
+.add,.buy{
+  flex:1;
+  border:0;
+  padding:10px 4px;
+  cursor:pointer;
+  font-weight:bold;
+  border-radius:3px;
+}
+.add{
+  background:#ff9f00;
+  color:white;
+}
+.buy{
+  background:#fb641b;
+  color:white;
+}
+.heart{
+  position:absolute;
+  right:10px;
+  top:10px;
+  width:35px;
+  height:35px;
+  border-radius:50%;
+  border:0;
+  background:white;
+  box-shadow:0 1px 5px #aaa;
+  cursor:pointer;
+  font-size:18px;
+}
+.offer{
+  background:#fff;
+  width:94%;
+  max-width:1400px;
+  margin:14px auto;
+  padding:25px;
+  text-align:center;
+}
+.offer h2{color:#2874f0;margin-bottom:8px}
+footer{
+  background:#172337;
+  color:white;
+  padding:35px 6%;
+  margin-top:20px;
+}
+.footerGrid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+footer h3{margin-bottom:12px;color:#aaa}
+footer p{margin:7px 0;color:#ddd}
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:#0008;
+  z-index:2000;
+  align-items:center;
+  justify-content:center;
+}
+.modalBox{
+  background:white;
+  width:92%;
+  max-width:550px;
+  max-height:85vh;
+  overflow:auto;
+  border-radius:5px;
+  padding:20px;
+}
+.modalHead{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid #ddd;
+  padding-bottom:15px;
+}
+.close{
+  border:0;
+  background:#eee;
+  width:35px;
+  height:35px;
+  border-radius:50%;
+  cursor:pointer;
+}
+.cartItem{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid #ddd;
+  padding:15px 0;
+}
+.qty button{
+  width:30px;
+  height:30px;
+  border:1px solid #ccc;
+  background:white;
+}
+.checkout{
+  width:100%;
+  background:#fb641b;
+  color:white;
+  border:0;
+  padding:14px;
+  font-weight:bold;
+  margin-top:15px;
+  cursor:pointer;
+}
+.empty{
+  text-align:center;
+  padding:40px 10px;
+  color:#777;
+}
+@media(max-width:800px){
+  .top{
+    flex-wrap:wrap;
+    gap:8px;
+    padding:9px 3%;
+  }
+  .logo{font-size:20px}
+  .search{order:3;width:100%;max-width:none}
+  .topBtn{padding:8px 12px}
+  .banner{
+    padding:28px 6%;
+  }
+  .banner h1{font-size:27px}
+  .bannerArt{font-size:55px}
+  .categories{
+    grid-template-columns:repeat(2,1fr);
+  }
+  .products{
+    grid-template-columns:repeat(2,1fr);
+    gap:8px;
+  }
+  .pic{height:190px}
+  .section{padding:12px}
+  .footerGrid{grid-template-columns:1fr}
+}
+@media(max-width:430px){
+  .products{grid-template-columns:repeat(2,1fr)}
+  .pic{height:165px}
+  .name{font-size:13px}
+  .price{font-size:17px}
+  .bannerArt{display:none}
+}
+</style>
 </head>
+
 <body>
+
 <header class="top">
   <div class="logo">SJT <span>UNIVERS</span></div>
-  <button class="menu" onclick="toggleMenu()">☰</button>
-  <nav id="nav">
-    <a href="#home">Home</a><a href="#shop">Shop</a><a href="#categories">Categories</a><a href="#offers">Offers</a>
-  </nav>
-  <button class="cart" onclick="openCart()">🛒 <b id="cartCount">0</b></button>
+
+  <div class="search">
+    <input id="search" type="text"
+      placeholder="Search for products, brands and more..."
+      oninput="showProducts()">
+    <button>🔍</button>
+  </div>
+
+  <button class="topBtn" onclick="showLogin()">Login</button>
+
+  <button class="cartBtn" onclick="openCart()">
+    🛒 Cart (<span id="cartCount">0</span>)
+  </button>
 </header>
 
-<main>
-<section id="home" class="hero">
+<section class="banner">
   <div>
-    <p class="eyebrow">PREMIUM COLLECTION 2026</p>
-    <h1>Style that<br><span>stands apart.</span></h1>
-    <p class="heroText">Discover premium fashion for every occasion. New looks, special prices and a shopping experience made for you.</p>
-    <a class="goldBtn" href="#shop">SHOP NOW →</a>
+    <small>BIG SHOPPING DAYS</small>
+    <h1>Fashion For Everyone</h1>
+    <p>Best styles • Great prices • Easy shopping</p>
+    <button class="shopBtn"
+      onclick="document.getElementById('shop').scrollIntoView()">
+      SHOP NOW
+    </button>
   </div>
-  <div class="heroCard">
-    <div class="shine">SJT</div>
-    <p>NEW ARRIVALS</p>
-    <h3>Black & Gold Edit</h3>
+  <div class="bannerArt">🛍️</div>
+</section>
+
+<section class="section">
+  <div class="title">
+    <h2>Shop By Category</h2>
+  </div>
+
+  <div class="categories">
+    <button class="cat" onclick="filter('Men')">
+      <span class="catIcon">👔</span>Men
+    </button>
+
+    <button class="cat" onclick="filter('Women')">
+      <span class="catIcon">👗</span>Women
+    </button>
+
+    <button class="cat" onclick="filter('Combo')">
+      <span class="catIcon">👕</span>Combos
+    </button>
+
+    <button class="cat" onclick="filter('All')">
+      <span class="catIcon">🛍️</span>All Products
+    </button>
   </div>
 </section>
 
-<section id="categories" class="section">
-  <div class="sectionHead"><p class="eyebrow">EXPLORE</p><h2>Shop by Category</h2></div>
-  <div class="cats">
-    <button onclick="filterProducts('Men')">👔<span>Men</span></button>
-    <button onclick="filterProducts('Women')">👗<span>Women</span></button>
-    <button onclick="filterProducts('Combo')">🛍️<span>Combos</span></button>
-    <button onclick="filterProducts('All')">✨<span>All Products</span></button>
+<section class="section" id="shop">
+  <div class="title">
+    <h2>Featured Products</h2>
   </div>
-</section>
 
-<section id="shop" class="section">
-  <div class="sectionHead row"><div><p class="eyebrow">OUR STORE</p><h2>Featured Products</h2></div>
-    <input id="search" oninput="renderProducts()" placeholder="Search products...">
-  </div>
   <div id="products" class="products"></div>
 </section>
 
-<section id="offers" class="offer">
-  <div><p class="eyebrow">LIMITED OFFER</p><h2>Look premium.<br>Pay less.</h2><p>Special launch discounts on selected styles.</p></div>
-  <a class="goldBtn" href="#shop">VIEW OFFERS</a>
+<section class="offer">
+  <h2>🔥 Special Offers</h2>
+  <p>Get amazing discounts on selected products.</p>
+  <br>
+  <button class="shopBtn"
+    onclick="document.getElementById('shop').scrollIntoView()">
+    VIEW PRODUCTS
+  </button>
 </section>
-</main>
 
-<footer><div class="logo">SJT <span>UNIVERS</span></div><p>Premium fashion • Simple shopping • Better style</p><small>© 2026 SJT Univers</small></footer>
+<footer>
+  <div class="footerGrid">
+    <div>
+      <h3>ABOUT</h3>
+      <p>About SJT Univers</p>
+      <p>Contact Us</p>
+      <p>Careers</p>
+    </div>
+
+    <div>
+      <h3>HELP</h3>
+      <p>Payments</p>
+      <p>Shipping</p>
+      <p>Returns</p>
+    </div>
+
+    <div>
+      <h3>POLICY</h3>
+      <p>Terms & Conditions</p>
+      <p>Privacy Policy</p>
+      <p>Refund Policy</p>
+    </div>
+  </div>
+
+  <br>
+  <center>© 2026 SJT Univers • Online Shopping</center>
+</footer>
 
 <div id="cartModal" class="modal" onclick="closeCart(event)">
-  <div class="cartBox" onclick="event.stopPropagation()">
-    <button class="close" onclick="closeCart()">×</button>
-    <h2>Your Cart</h2><div id="cartItems"></div>
-    <div class="total">Total: ₹<span id="total">0</span></div>
-    <button class="goldBtn full" onclick="checkout()">PLACE ORDER</button>
+  <div class="modalBox" onclick="event.stopPropagation()">
+    <div class="modalHead">
+      <h2>🛒 Your Cart</h2>
+      <button class="close" onclick="closeCart()">✕</button>
+    </div>
+
+    <div id="cartItems"></div>
+
+    <h3>Total: ₹<span id="total">0</span></h3>
+
+    <button class="checkout" onclick="checkout()">
+      PLACE ORDER
+    </button>
   </div>
 </div>
-<script src="script.js"></script>
+
+<script>
+const products=[
+{
+ name:"Men's Black Shirt & White T-Shirt",
+ cat:"Men",
+ price:699,
+ old:1299,
+ rating:"4.3",
+ img:"https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=600&q=80"
+},
+{
+ name:"Men's Casual Blue Shirt",
+ cat:"Men",
+ price:599,
+ old:999,
+ rating:"4.2",
+ img:"https://images.unsplash.com/photo-1603252110481-7ba873bf42ab?auto=format&fit=crop&w=600&q=80"
+},
+{
+ name:"Women's Stylish Kurti",
+ cat:"Women",
+ price:499,
+ old:899,
+ rating:"4.4",
+ img:"https://images.unsplash.com/photo-1583391733956-6c78276477e2?auto=format&fit=crop&w=600&q=80"
+},
+{
+ name:"Women's Fashion Dress",
+ cat:"Women",
+ price:799,
+ old:1499,
+ rating:"4.5",
+ img:"https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=600&q=80"
+},
+{
+ name:"Men's Shirt & Pant Combo",
+ cat:"Combo",
+ price:999,
+ old:1799,
+ rating:"4.1",
+ img:"https://images.unsplash.com/photo-1617127365659-c47fa864d8bc?auto=format&fit=crop&w=600&q=80"
+},
+{
+ name:"Premium Couple Combo",
+ cat:"Combo",
+ price:1299,
+ old:2199,
+ rating:"4.6",
+ img:"https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=600&q=80"
+},
+{
+ name:"Men's Premium Black Shirt",
+ cat:"Men",
+ price:649,
+ old:1099,
+ rating:"4.4",
+ img:"https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=600&q=80"
+},
+{
+ name:"Women's Printed Top",
+ cat:"Women",
+ price:449,
+ old:799,
+ rating:"4.2",
+ img:"https://images.unsplash.com/photo-1564257577054-6e7f3f5c4e6b?auto=format&fit=crop&w=600&q=80"
+}
+];
+
+let current="All";
+let cart=[];
+
+function showProducts(){
+ const q=document.getElementById("search").value.toLowerCase();
+ const box=document.getElementById("products");
+
+ const list=products.filter(p=>{
+   return (current==="All"||p.cat===current)
+   && p.name.toLowerCase().includes(q);
+ });
+
+ if(!list.length){
+   box.innerHTML='<div class="empty">No products found.</div>';
+   return;
+ }
+
+ box.innerHTML=list.map((p,i)=>`
+ <div class="card">
+   <button class="heart" onclick="wishlist('${p.name}')">♡</button>
+
+   <div class="pic">
+     <img src="${p.img}" alt="${p.name}">
+   </div>
+
+   <div class="info">
+     <div class="name">${p.name}</div>
+     <span class="rating">★ ${p.rating}</span>
+
+     <div>
+       <span class="price">₹${p.price}</span>
+       <span class="old">₹${p.old}</span>
+       <span class="off">
+         ${Math.round((1-p.price/p.old)*100)}% off
+       </span>
+     </div>
+
+     <div class="actions">
+       <button class="add"
+         onclick="addCart(${products.indexOf(p)})">
+         ADD TO CART
+       </button>
+
+       <button class="buy"
+         onclick="buyNow(${products.indexOf(p)})">
+         BUY NOW
+       </button>
+     </div>
+   </div>
+ </div>
+ `).join("");
+}
+
+function filter(cat){
+ current=cat;
+ document.getElementById("shop").scrollIntoView({
+   behavior:"smooth"
+ });
+ showProducts();
+}
+
+function addCart(index){
+ cart.push(products[index]);
+ updateCart();
+ alert("Product added to cart!");
+}
+
+function updateCart(){
+ document.getElementById("cartCount").innerText=cart.length;
+}
+
+function openCart(){
+ const box=document.getElementById("cartItems");
+ const total=document.getElementById("total");
+
+ if(!cart.length){
+   box.innerHTML='<div class="empty">Your cart is empty 🛒</div>';
+   total.innerText="0";
+ }else{
+   box.innerHTML=cart.map((p,i)=>`
+     <div class="cartItem">
+       <div>
+         <b>${p.name}</b><br>
+         ₹${p.price}
+       </div>
+       <button onclick="removeCart(${i})">Remove</button>
+     </div>
+   `).join("");
+
+   total.innerText=cart.reduce((sum,p)=>sum+p.price,0);
+ }
+
+ document.getElementById("cartModal").style.display="flex";
+}
+
+function closeCart(e){
+ if(!e || e.target.id==="cartModal"){
+   document.getElementById("cartModal").style.display="none";
+ }
+}
+
+function removeCart(i){
+ cart.splice(i,1);
+ updateCart();
+ openCart();
+}
+
+function buyNow(index){
+ cart=[products[index]];
+ updateCart();
+ openCart();
+}
+
+function checkout(){
+ if(!cart.length){
+   alert("Please add a product first.");
+   return;
+ }
+
+ alert(
+   "Order ready! 🛍️\n\n" +
+   "Next step: payment/order system can be connected."
+ );
+}
+
+function wishlist(name){
+ alert(name+" ❤️ added to wishlist!");
+}
+
+function showLogin(){
+ alert("Login system will be connected next.");
+}
+
+showProducts();
+</script>
+
 </body>
-</html>
+  </html>
