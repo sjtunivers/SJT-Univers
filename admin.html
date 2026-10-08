@@ -3,751 +3,117 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SJT-Univers Admin Panel</title>
+
+<title>ShopNow Admin Login</title>
 
 <style>
-*{box-sizing:border-box}
-
 body{
- margin:0;
- font-family:Arial,sans-serif;
- background:#f4f4f4;
- color:#222;
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#050505;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
 }
 
-header{
- background:#111;
- color:white;
- padding:16px;
- display:flex;
- justify-content:space-between;
- align-items:center;
+.login-box{
+    width:90%;
+    max-width:380px;
+    background:#111;
+    border:1px solid #f5c542;
+    border-radius:12px;
+    padding:30px;
+    box-sizing:border-box;
 }
 
-header h2{
- margin:0;
- color:#ffc107;
+.login-box h1{
+    text-align:center;
+    color:#f5c542;
 }
 
-.container{
- max-width:1200px;
- margin:auto;
- padding:15px;
+.login-box p{
+    text-align:center;
+    color:#aaa;
 }
 
-.dashboard{
- display:grid;
- grid-template-columns:repeat(5,1fr);
- gap:12px;
- margin-bottom:20px;
+.login-box input{
+    width:100%;
+    padding:13px;
+    margin-top:10px;
+    margin-bottom:15px;
+    box-sizing:border-box;
+    background:#222;
+    border:1px solid #555;
+    color:white;
+    border-radius:5px;
 }
 
-.stat{
- background:white;
- padding:18px;
- border-radius:10px;
- box-shadow:0 2px 8px #ddd;
+.login-box button{
+    width:100%;
+    padding:13px;
+    background:#f5c542;
+    border:0;
+    border-radius:5px;
+    font-weight:bold;
+    cursor:pointer;
 }
 
-.stat b{
- display:block;
- font-size:25px;
- margin-top:8px;
-}
-
-.card{
- background:white;
- padding:18px;
- border-radius:12px;
- margin-bottom:20px;
- box-shadow:0 2px 8px #ddd;
-}
-
-input,select,textarea{
- width:100%;
- padding:12px;
- margin:7px 0 14px;
- border:1px solid #ccc;
- border-radius:7px;
- font-size:15px;
-}
-
-textarea{
- min-height:100px;
-}
-
-button{
- border:0;
- padding:11px 16px;
- border-radius:7px;
- cursor:pointer;
- font-weight:bold;
-}
-
-.add{
- background:#111;
- color:white;
- width:100%;
-}
-
-.edit{
- background:#ffc107;
- color:#111;
-}
-
-.delete{
- background:#e53935;
- color:white;
-}
-
-.status{
- padding:7px;
- border-radius:6px;
- font-weight:bold;
-}
-
-.pending{background:#fff3cd}
-.shipped{background:#cfe2ff}
-.delivered{background:#d1e7dd}
-.cancelled{background:#f8d7da}
-
-.item{
- border:1px solid #ddd;
- border-radius:10px;
- padding:12px;
- margin:10px 0;
-}
-
-.item img{
- width:80px;
- height:80px;
- object-fit:cover;
- border-radius:8px;
-}
-
-.row{
- display:flex;
- gap:12px;
- align-items:center;
- flex-wrap:wrap;
-}
-
-.row > *{
- flex:1;
-}
-
-.search{
- margin-bottom:15px;
-}
-
-@media(max-width:800px){
- .dashboard{
-  grid-template-columns:repeat(2,1fr);
- }
-}
-
-@media(max-width:500px){
- .dashboard{
-  grid-template-columns:1fr 1fr;
- }
-
- header h2{
-  font-size:18px;
- }
+.error{
+    color:#ff5555;
+    text-align:center;
+    margin-top:12px;
 }
 </style>
 </head>
 
 <body>
 
-<header>
-<h2>🛒 SJT-Univers Admin</h2>
-<span>Admin Panel</span>
-</header>
+<div class="login-box">
 
-<div class="container">
+    <h1>🔐 Admin Login</h1>
 
-<!-- DASHBOARD -->
+    <p>ShopNow Admin Panel</p>
 
-<div class="dashboard">
+    <input
+        type="password"
+        id="adminPassword"
+        placeholder="Enter Admin Password"
+    >
 
-<div class="stat">
-📦 Products
-<b id="totalProducts">0</b>
-</div>
+    <button onclick="adminLogin()">
+        Login
+    </button>
 
-<div class="stat">
-🛒 Orders
-<b id="totalOrders">0</b>
-</div>
-
-<div class="stat">
-👤 Customers
-<b id="totalCustomers">0</b>
-</div>
-
-<div class="stat">
-💰 Sales
-<b id="totalSales">₹0</b>
-</div>
-
-<div class="stat">
-⏳ Pending
-<b id="pendingOrders">0</b>
-</div>
-
-</div>
-
-<!-- ADD PRODUCT -->
-
-<div class="card">
-
-<h2>➕ Add Product</h2>
-
-<label>Product Name</label>
-<input id="name" placeholder="Example: Men's Shirt & Pant Combo">
-
-<label>Category</label>
-<select id="category">
-<option value="men">Men</option>
-<option value="women">Women</option>
-<option value="shoes">Shoes</option>
-<option value="electronics">Electronics</option>
-<option value="beauty">Beauty</option>
-<option value="other">Other</option>
-</select>
-
-<label>Price</label>
-<input id="price" type="number" placeholder="799">
-
-<label>Old Price</label>
-<input id="oldPrice" type="number" placeholder="1499">
-
-<label>Discount %</label>
-<input id="discount" type="number" placeholder="45">
-
-<label>Rating</label>
-<input id="rating" type="number" step="0.1" placeholder="4.5">
-
-<label>🖼️ Image URLs</label>
-<textarea id="images" placeholder="Har image ka URL alag line me paste karo."></textarea>
-
-<button class="add" onclick="addProduct()">➕ Add Product</button>
-
-</div>
-
-<!-- PRODUCTS -->
-
-<div class="card">
-
-<h2>📦 Products</h2>
-
-<input class="search" id="productSearch"
-placeholder="🔎 Search product..."
-oninput="showProducts()">
-
-<div id="products"></div>
-
-</div>
-
-<!-- ORDERS -->
-
-<div class="card">
-
-<h2>🛒 Orders</h2>
-
-<input class="search" id="orderSearch"
-placeholder="🔎 Search customer / phone / order..."
-oninput="showOrders()">
-
-<div id="orders"></div>
-
-</div>
-
-<!-- CUSTOMERS -->
-
-<div class="card">
-
-<h2>👤 Customers</h2>
-
-<input class="search" id="customerSearch"
-placeholder="🔎 Search customer / mobile..."
-oninput="showCustomers()">
-
-<div id="customers"></div>
-
-</div>
+    <div class="error" id="error"></div>
 
 </div>
 
 <script>
 
-let products =
-JSON.parse(localStorage.getItem("sjt_products")) || [];
+function adminLogin(){
 
-let orders =
-JSON.parse(localStorage.getItem("sjt_orders")) || [];
+    const password =
+    document.getElementById("adminPassword").value;
 
-let customers =
-JSON.parse(localStorage.getItem("sjt_customers")) || [];
+    if(password === "SJT@12345"){
 
+        sessionStorage.setItem(
+            "shop_admin_login",
+            "true"
+        );
 
-/* SAVE PRODUCTS */
+        window.location.href = "dashboard.html";
 
-function saveProducts(){
- localStorage.setItem(
-  "sjt_products",
-  JSON.stringify(products)
- );
-}
+    }else{
 
+        document.getElementById("error").innerText =
+        "❌ Wrong Password";
 
-/* ADD PRODUCT */
-
-function addProduct(){
-
- const name =
- document.getElementById("name").value.trim();
-
- const category =
- document.getElementById("category").value;
-
- const price =
- document.getElementById("price").value;
-
- const oldPrice =
- document.getElementById("oldPrice").value;
-
- const discount =
- document.getElementById("discount").value;
-
- const rating =
- document.getElementById("rating").value;
-
- const imageText =
- document.getElementById("images").value.trim();
-
- if(!name || !price){
-  alert("Product name aur price bharo.");
-  return;
- }
-
- const images =
- imageText
- .split("\n")
- .map(x=>x.trim())
- .filter(Boolean);
-
- products.push({
-  id:Date.now(),
-  name:name,
-  category:category,
-  price:Number(price),
-  oldPrice:Number(oldPrice || 0),
-  discount:Number(discount || 0),
-  rating:Number(rating || 0),
-  images:images
- });
-
- saveProducts();
-
- document.getElementById("name").value="";
- document.getElementById("price").value="";
- document.getElementById("oldPrice").value="";
- document.getElementById("discount").value="";
- document.getElementById("rating").value="";
- document.getElementById("images").value="";
-
- showProducts();
- updateDashboard();
-
- alert("Product added successfully!");
-}
-
-
-/* PRODUCTS */
-
-function showProducts(){
-
- const box =
- document.getElementById("products");
-
- const search =
- (document.getElementById("productSearch").value || "")
- .toLowerCase();
-
- box.innerHTML="";
-
- const filtered =
- products.filter(p =>
- String(p.name || "")
- .toLowerCase()
- .includes(search)
- );
-
- if(filtered.length===0){
-  box.innerHTML="<p>No products found.</p>";
-  return;
- }
-
- filtered.forEach((p,index)=>{
-
-  const image =
-  p.images && p.images.length
-  ? p.images[0]
-  : "";
-
-  box.innerHTML += `
-
-  <div class="item">
-
-   <div class="row">
-
-    ${
-     image
-     ? `<img src="${image}" onerror="this.style.display='none'">`
-     : ""
     }
 
-    <div>
-     <b>${escapeHTML(p.name)}</b><br>
-     Category: ${escapeHTML(p.category || "")}<br>
-     Price: ₹${p.price || 0}<br>
-     Old Price: ₹${p.oldPrice || 0}<br>
-     Rating: ⭐${p.rating || 0}
-    </div>
-
-   </div>
-
-   <br>
-
-   <button class="edit"
-   onclick="editProduct(${p.id})">
-   ✏️ Edit
-   </button>
-
-   <button class="delete"
-   onclick="deleteProduct(${p.id})">
-   🗑️ Delete
-   </button>
-
-  </div>
-
-  `;
- });
 }
-
-
-/* EDIT PRODUCT */
-
-function editProduct(id){
-
- const p =
- products.find(x=>x.id===id);
-
- if(!p)return;
-
- const name =
- prompt("Product name:",p.name);
-
- if(name===null)return;
-
- const price =
- prompt("Price:",p.price);
-
- if(price===null)return;
-
- p.name=name;
- p.price=Number(price);
-
- saveProducts();
- showProducts();
- updateDashboard();
-}
-
-
-/* DELETE PRODUCT */
-
-function deleteProduct(id){
-
- if(!confirm("Product delete karna hai?"))return;
-
- products =
- products.filter(p=>p.id!==id);
-
- saveProducts();
-
- showProducts();
- updateDashboard();
-}
-
-
-/* ORDERS */
-
-function showOrders(){
-
- const box =
- document.getElementById("orders");
-
- const search =
- (document.getElementById("orderSearch").value || "")
- .toLowerCase();
-
- box.innerHTML="";
-
- if(!orders.length){
-  box.innerHTML="<p>Abhi koi order nahi hai.</p>";
-  return;
- }
-
- const filtered =
- orders.filter(o=>{
-
-  const text =
-  JSON.stringify(o).toLowerCase();
-
-  return text.includes(search);
- });
-
- filtered.forEach((o,index)=>{
-
-  const customer =
-  o.customer ||
-  o.name ||
-  o.customerName ||
-  "Customer";
-
-  const phone =
-  o.phone ||
-  o.mobile ||
-  o.customerPhone ||
-  "";
-
-  const address =
-  o.address ||
-  o.fullAddress ||
-  o.customerAddress ||
-  "Address available nahi hai";
-
-  const total =
-  o.total ||
-  o.amount ||
-  o.price ||
-  0;
-
-  const status =
-  o.status ||
-  "Pending";
-
-  box.innerHTML += `
-
-  <div class="item">
-
-   <h3>🛒 Order #${o.id || index+1}</h3>
-
-   <b>👤 Customer:</b>
-   ${escapeHTML(customer)}<br>
-
-   <b>📞 Mobile:</b>
-   ${escapeHTML(phone)}<br><br>
-
-   <b>📍 Address:</b><br>
-   ${escapeHTML(address)}<br><br>
-
-   <b>💰 Total:</b> ₹${total}<br><br>
-
-   <b>Status:</b>
-
-   <select onchange="changeOrderStatus(${index},this.value)">
-
-    <option ${status==="Pending"?"selected":""}>
-    Pending
-    </option>
-
-    <option ${status==="Shipped"?"selected":""}>
-    Shipped
-    </option>
-
-    <option ${status==="Delivered"?"selected":""}>
-    Delivered
-    </option>
-
-    <option ${status==="Cancelled"?"selected":""}>
-    Cancelled
-    </option>
-
-   </select>
-
-  </div>
-
-  `;
- });
-}
-
-
-/* CHANGE ORDER STATUS */
-
-function changeOrderStatus(index,status){
-
- if(!orders[index])return;
-
- orders[index].status=status;
-
- localStorage.setItem(
-  "sjt_orders",
-  JSON.stringify(orders)
- );
-
- showOrders();
- updateDashboard();
-}
-
-
-/* CUSTOMERS */
-
-function showCustomers(){
-
- const box =
- document.getElementById("customers");
-
- const search =
- (document.getElementById("customerSearch").value || "")
- .toLowerCase();
-
- box.innerHTML="";
-
- if(!customers.length){
-
-  box.innerHTML=`
-  <p>
-  Abhi customer data nahi mila.
-  Customer checkout/order karne ke baad yahan dikhenge.
-  </p>
-  `;
-
-  return;
- }
-
- const filtered =
- customers.filter(c =>
- JSON.stringify(c)
- .toLowerCase()
- .includes(search)
- );
-
- filtered.forEach((c,index)=>{
-
-  const name =
-  c.name ||
-  c.customerName ||
-  "Customer";
-
-  const phone =
-  c.phone ||
-  c.mobile ||
-  c.customerPhone ||
-  "";
-
-  const address =
-  c.address ||
-  c.fullAddress ||
-  c.customerAddress ||
-  "";
-
-  const city =
-  c.city || "";
-
-  const state =
-  c.state || "";
-
-  const pincode =
-  c.pincode ||
-  c.pin ||
-  "";
-
-  box.innerHTML += `
-
-  <div class="item">
-
-   <h3>👤 ${escapeHTML(name)}</h3>
-
-   <b>📞 Mobile:</b>
-   ${escapeHTML(phone)}<br><br>
-
-   <b>📍 Address:</b><br>
-   ${escapeHTML(address)}<br>
-
-   ${escapeHTML(city)}
-   ${city && state ? ", " : ""}
-   ${escapeHTML(state)}
-   ${pincode ? " - "+escapeHTML(pincode) : ""}
-
-  </div>
-
-  `;
- });
-}
-
-
-/* DASHBOARD */
-
-function updateDashboard(){
-
- document.getElementById("totalProducts")
- .innerText=products.length;
-
- document.getElementById("totalOrders")
- .innerText=orders.length;
-
- document.getElementById("totalCustomers")
- .innerText=customers.length;
-
- let sales=0;
-
- orders.forEach(o=>{
-  if(String(o.status || "")
-  .toLowerCase()==="delivered"){
-
-   sales += Number(
-    o.total ||
-    o.amount ||
-    o.price ||
-    0
-   );
-  }
- });
-
- document.getElementById("totalSales")
- .innerText="₹"+sales;
-
- document.getElementById("pendingOrders")
- .innerText=
- orders.filter(o=>
- String(o.status || "Pending")
- .toLowerCase()==="pending"
- ).length;
-}
-
-
-/* SECURITY */
-
-function escapeHTML(value){
-
- return String(value || "")
- .replace(/&/g,"&amp;")
- .replace(/</g,"&lt;")
- .replace(/>/g,"&gt;")
- .replace(/"/g,"&quot;")
- .replace(/'/g,"&#039;");
-}
-
-
-/* START */
-
-showProducts();
-showOrders();
-showCustomers();
-updateDashboard();
 
 </script>
 
