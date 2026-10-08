@@ -536,7 +536,7 @@ const products=[
 ];
 
 let current="All";
-let cart=[];
+let cart=JSON.parse(localStorage.getItem("sjCart")) || [];
 
 function showProducts(){
  const q=document.getElementById("search").value.toLowerCase();
@@ -603,7 +603,11 @@ function addCart(index){
 }
 
 function updateCart(){
- document.getElementById("cartCount").innerText=cart.length;
+  document.getElementById("cartCount").innerText=cart.length;
+  localStorage.setItem("sjCart",JSON.stringify(cart));
+}
+  document.getElementById("cartCount").innerText=cart.length;
+  localStorage.setItem("sjCart",JSON.stringify(cart));
 }
 
 function openCart(){
@@ -622,8 +626,7 @@ function openCart(){
        </div>
        <button onclick="removeCart(${i})">Remove</button>
      </div>
-   `).join("");
-
+   `).join("")
    total.innerText=cart.reduce((sum,p)=>sum+p.price,0);
  }
 
@@ -668,7 +671,7 @@ function showLogin(){
  alert("Login system will be connected next.");
 }
 
-showProducts();
+updateCart();
 </script>
 
 </body>
