@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>ShopNow - Online Shopping</title>
+<title>SJT-Univer - Online Shopping</title>
 
 <style>
+
 *{
     margin:0;
     padding:0;
@@ -20,6 +22,7 @@ body{
 }
 
 /* TOP BAR */
+
 .topbar{
     background:#0b0b0b;
     border-bottom:1px solid #3d300d;
@@ -35,6 +38,7 @@ body{
 }
 
 /* HEADER */
+
 header{
     background:#050505;
     border-bottom:1px solid #49390e;
@@ -108,15 +112,8 @@ header{
     margin-bottom:3px;
 }
 
-.cart-count{
-    background:#f5c542;
-    color:#000;
-    padding:2px 6px;
-    border-radius:20px;
-    font-size:10px;
-}
-
 /* CATEGORIES */
+
 .categories{
     display:flex;
     justify-content:center;
@@ -162,6 +159,7 @@ header{
 }
 
 /* HERO */
+
 .hero{
     width:96%;
     max-width:1450px;
@@ -175,7 +173,12 @@ header{
     justify-content:space-between;
     padding:50px 7%;
     background:
-        radial-gradient(circle at 80% 50%,#4d3a12 0,#151208 25%,#050505 65%);
+    radial-gradient(
+        circle at 80% 50%,
+        #4d3a12 0,
+        #151208 25%,
+        #050505 65%
+    );
 }
 
 .hero-content{
@@ -216,11 +219,16 @@ header{
     cursor:pointer;
 }
 
+.hero-btn:hover{
+    background:#fff;
+}
+
 .hero-bags{
     font-size:150px;
 }
 
 /* SECTION */
+
 .section{
     width:96%;
     max-width:1450px;
@@ -248,6 +256,7 @@ header{
 }
 
 /* PRODUCTS */
+
 .products{
     display:grid;
     grid-template-columns:repeat(5,1fr);
@@ -266,6 +275,7 @@ header{
 .product:hover{
     transform:translateY(-5px);
     border-color:#f5c542;
+    box-shadow:0 5px 25px rgba(245,197,66,.15);
 }
 
 .product-image{
@@ -287,20 +297,19 @@ header{
     position:absolute;
     top:10px;
     left:10px;
-    z-index:2;
     background:#f5c542;
     color:#000;
     padding:5px 8px;
     border-radius:4px;
     font-weight:bold;
     font-size:12px;
+    z-index:2;
 }
 
 .wishlist{
     position:absolute;
     top:9px;
     right:9px;
-    z-index:3;
     background:#111;
     border:1px solid #f5c542;
     color:#fff;
@@ -309,6 +318,7 @@ header{
     border-radius:50%;
     cursor:pointer;
     font-size:18px;
+    z-index:2;
 }
 
 .product-info{
@@ -351,46 +361,27 @@ header{
     margin-left:5px;
 }
 
-.add-cart,
+/* BUY NOW ONLY */
+
 .buy-now{
     width:100%;
-    padding:10px;
-    margin-top:10px;
+    padding:12px;
+    margin-top:12px;
     border-radius:5px;
     cursor:pointer;
     font-weight:bold;
-}
-
-.add-cart{
+    font-size:15px;
     background:#f5c542;
     border:1px solid #f5c542;
     color:#000;
 }
 
-.buy-now{
-    background:#111;
-    border:1px solid #f5c542;
-    color:#f5c542;
-}
-
-/* PRODUCT GALLERY */
-.gallery{
-    position:relative;
-}
-
-.image-count{
-    position:absolute;
-    bottom:8px;
-    right:8px;
-    z-index:3;
-    background:#000c;
-    color:#fff;
-    padding:4px 8px;
-    border-radius:5px;
-    font-size:11px;
+.buy-now:hover{
+    background:#fff;
 }
 
 /* FEATURES */
+
 .features{
     display:grid;
     grid-template-columns:repeat(3,1fr);
@@ -423,7 +414,184 @@ header{
     font-size:13px;
 }
 
+/* CHECKOUT POPUP */
+
+.checkout-overlay{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.85);
+    z-index:5000;
+    overflow:auto;
+    padding:20px;
+}
+
+.checkout-box{
+    max-width:600px;
+    margin:30px auto;
+    background:#111;
+    border:1px solid #f5c542;
+    border-radius:12px;
+    padding:25px;
+    position:relative;
+}
+
+.checkout-box h2{
+    color:#f5c542;
+    margin-bottom:8px;
+}
+
+.checkout-subtitle{
+    color:#aaa;
+    margin-bottom:20px;
+    font-size:13px;
+}
+
+.close-checkout{
+    position:absolute;
+    right:18px;
+    top:15px;
+    font-size:25px;
+    color:#f5c542;
+    cursor:pointer;
+}
+
+.order-product{
+    display:flex;
+    gap:15px;
+    background:#191919;
+    padding:12px;
+    border-radius:8px;
+    margin-bottom:20px;
+}
+
+.order-product img{
+    width:80px;
+    height:80px;
+    object-fit:cover;
+    border-radius:6px;
+}
+
+.order-product-info{
+    flex:1;
+}
+
+.order-product-info h3{
+    font-size:16px;
+    margin-bottom:8px;
+}
+
+.order-product-info p{
+    color:#ccc;
+    font-size:13px;
+    margin:4px 0;
+}
+
+.form-group{
+    margin-bottom:14px;
+}
+
+.form-group label{
+    display:block;
+    color:#ddd;
+    font-size:13px;
+    margin-bottom:6px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select{
+    width:100%;
+    background:#fff;
+    color:#111;
+    border:0;
+    border-radius:6px;
+    padding:12px;
+    outline:none;
+    font-size:14px;
+}
+
+.form-group textarea{
+    min-height:80px;
+    resize:vertical;
+}
+
+.form-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+}
+
+.payment-box{
+    background:#191919;
+    border:1px solid #444;
+    border-radius:7px;
+    padding:14px;
+    margin:15px 0;
+}
+
+.payment-box label{
+    display:block;
+    margin:9px 0;
+    cursor:pointer;
+}
+
+.payment-box input{
+    margin-right:8px;
+}
+
+.place-order{
+    width:100%;
+    padding:14px;
+    border:0;
+    border-radius:6px;
+    background:#f5c542;
+    color:#000;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.place-order:hover{
+    background:#fff;
+}
+
+/* SUCCESS */
+
+.success-box{
+    display:none;
+    text-align:center;
+    padding:30px 10px;
+}
+
+.success-icon{
+    font-size:60px;
+    margin-bottom:15px;
+}
+
+.success-box h2{
+    color:#55c878;
+    margin-bottom:10px;
+}
+
+.success-box p{
+    color:#ccc;
+    margin:8px 0;
+}
+
+.continue-btn{
+    margin-top:20px;
+    padding:12px 25px;
+    background:#f5c542;
+    color:#000;
+    border:0;
+    border-radius:6px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
 /* FOOTER */
+
 footer{
     background:#080808;
     border-top:1px solid #5c4812;
@@ -454,6 +622,10 @@ footer a{
     text-decoration:none;
 }
 
+footer a:hover{
+    color:#f5c542;
+}
+
 .newsletter{
     display:flex;
     margin-top:12px;
@@ -471,194 +643,22 @@ footer a{
     width:50px;
     background:#f5c542;
     border:0;
-}
-
-/* CART */
-.cart{
-    position:fixed;
-    right:-420px;
-    top:0;
-    width:400px;
-    max-width:100%;
-    height:100vh;
-    background:#101010;
-    z-index:3000;
-    border-left:1px solid #f5c542;
-    transition:.3s;
-    display:flex;
-    flex-direction:column;
-}
-
-.cart.open{
-    right:0;
-}
-
-.cart-head{
-    padding:20px;
-    background:#080808;
-    border-bottom:1px solid #5c4812;
-    display:flex;
-    justify-content:space-between;
-}
-
-.close{
-    cursor:pointer;
-    color:#f5c542;
-    font-size:22px;
-}
-
-.cart-items{
-    flex:1;
-    overflow:auto;
-    padding:15px;
-}
-
-.cart-item{
-    display:flex;
-    gap:10px;
-    padding:12px 0;
-    border-bottom:1px solid #333;
-}
-
-.cart-item-image{
-    width:65px;
-    height:65px;
-    background:#222;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    overflow:hidden;
-}
-
-.cart-item-image img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-}
-
-.cart-item-info{
-    flex:1;
-}
-
-.cart-item-info p{
-    color:#aaa;
-    margin-top:6px;
-}
-
-.remove{
-    background:none;
-    border:0;
-    color:#f55;
-    margin-top:7px;
     cursor:pointer;
 }
 
-.qty-btn{
-    background:#222;
-    color:#fff;
-    border:1px solid #555;
-    padding:4px 8px;
-    margin:4px;
-}
-
-.cart-bottom{
-    padding:20px;
-    border-top:1px solid #5c4812;
-}
-
-.checkout{
-    width:100%;
-    margin-top:15px;
-    padding:13px;
-    background:#f5c542;
-    border:0;
-    border-radius:5px;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-/* MODAL */
-.modal{
-    position:fixed;
-    inset:0;
-    background:#000b;
-    z-index:5000;
-    display:none;
-    align-items:center;
-    justify-content:center;
-    padding:15px;
-}
-
-.modal.show{
-    display:flex;
-}
-
-.modal-box{
-    width:100%;
-    max-width:550px;
-    max-height:90vh;
-    overflow:auto;
-    background:#111;
-    border:1px solid #f5c542;
-    border-radius:12px;
-    padding:22px;
-}
-
-.modal-box h2{
-    margin-bottom:15px;
-}
-
-.form-group{
-    margin-bottom:12px;
-}
-
-.form-group label{
-    display:block;
-    margin-bottom:5px;
-    color:#ddd;
-    font-size:13px;
-}
-
-.form-group input,
-.form-group textarea,
-.form-group select{
-    width:100%;
-    padding:12px;
-    background:#fff;
-    color:#111;
-    border:1px solid #777;
-    border-radius:6px;
-}
-
-.form-group textarea{
-    min-height:90px;
-    resize:vertical;
-}
-
-.place-order{
-    width:100%;
-    padding:14px;
-    background:#f5c542;
-    color:#000;
-    border:0;
-    border-radius:7px;
-    font-weight:bold;
-    font-size:16px;
-    margin-top:10px;
-}
-
-.cancel{
-    width:100%;
-    padding:12px;
-    background:#222;
-    color:#fff;
-    border:1px solid #555;
-    border-radius:7px;
-    margin-top:8px;
+.copyright{
+    text-align:center;
+    border-top:1px solid #333;
+    margin-top:30px;
+    padding-top:20px;
+    color:#888;
+    font-size:12px;
 }
 
 /* MOBILE */
+
 @media(max-width:1000px){
+
     .products{
         grid-template-columns:repeat(3,1fr);
     }
@@ -666,6 +666,11 @@ footer a{
     .footer-grid{
         grid-template-columns:repeat(3,1fr);
     }
+
+    .header-links{
+        gap:10px;
+    }
+
 }
 
 @media(max-width:650px){
@@ -686,12 +691,20 @@ footer a{
 
     .header-links{
         margin-left:auto;
-        gap:10px;
     }
 
     .search{
         order:3;
         flex-basis:100%;
+    }
+
+    .header-item:nth-child(1),
+    .header-item:nth-child(2){
+        display:none;
+    }
+
+    .categories{
+        justify-content:flex-start;
     }
 
     .hero{
@@ -740,9 +753,18 @@ footer a{
     .footer-grid{
         grid-template-columns:1fr 1fr;
     }
+
+    .form-row{
+        grid-template-columns:1fr;
+    }
+
 }
 
 @media(max-width:400px){
+
+    .products{
+        grid-template-columns:1fr 1fr;
+    }
 
     .hero-bags{
         display:none;
@@ -755,51 +777,97 @@ footer a{
     .footer-grid{
         grid-template-columns:1fr;
     }
+
 }
+
 </style>
+
 </head>
 
 <body>
 
+
+<!-- TOP BAR -->
+
 <div class="topbar">
+
     <div>🚚 Free Shipping All Over India</div>
+
     <div>🛡️ Safe & Secure Payments</div>
+
     <div>↻ Easy 7 Days Return</div>
+
 </div>
+
+
+<!-- HEADER -->
 
 <header>
 
     <div>
-        <div class="logo">Shop<span>Now</span></div>
-        <div class="tagline">Better Style • Better Life</div>
+
+        <div class="logo">
+            SJT<span>Univer</span>
+        </div>
+
+        <div class="tagline">
+            Better Style • Better Life
+        </div>
+
     </div>
 
+
     <div class="search">
+
         <input
             id="search"
             type="text"
-            placeholder="Search products..."
+            placeholder="Search for products, brands and more..."
             onkeyup="searchProducts()"
         >
-        <button onclick="searchProducts()">⌕</button>
+
+        <button onclick="searchProducts()">
+            ⌕
+        </button>
+
     </div>
+
 
     <div class="header-links">
 
-        <div class="header-item" onclick="login()">
-            <span class="header-icon">♙</span>
-            Login
+        <div class="header-item"
+             onclick="alert('Login & Sign Up coming soon')">
+
+            <span class="header-icon">
+                ♙
+            </span>
+
+            Login<br>Sign Up
+
         </div>
 
-        <div class="header-item">
-            <span class="header-icon">♡</span>
+
+        <div class="header-item"
+             onclick="alert('Wishlist coming soon')">
+
+            <span class="header-icon">
+                ♡
+            </span>
+
             Wishlist
+
         </div>
 
-        <div class="header-item" onclick="openCart()">
-            <span class="header-icon">🛒</span>
-            Cart
-            <span class="cart-count" id="cartCount">0</span>
+
+        <div class="header-item"
+             onclick="scrollProducts()">
+
+            <span class="header-icon">
+                🛍️
+            </span>
+
+            Shop
+
         </div>
 
     </div>
@@ -807,77 +875,174 @@ footer a{
 </header>
 
 
+<!-- CATEGORIES -->
+
 <div class="categories">
 
-    <div class="category" onclick="filterCategory('all')">
-        <div class="category-icon">▦</div>
-        <div class="category-name">All</div>
+    <div class="category"
+         onclick="filterCategory('all')">
+
+        <div class="category-icon">
+            ▦
+        </div>
+
+        <div class="category-name">
+            All
+        </div>
+
     </div>
 
-    <div class="category" onclick="filterCategory('men')">
-        <div class="category-icon">👕</div>
-        <div class="category-name">Men</div>
+
+    <div class="category"
+         onclick="filterCategory('men')">
+
+        <div class="category-icon">
+            👕
+        </div>
+
+        <div class="category-name">
+            Men
+        </div>
+
     </div>
 
-    <div class="category" onclick="filterCategory('women')">
-        <div class="category-icon">👗</div>
-        <div class="category-name">Women</div>
+
+    <div class="category"
+         onclick="filterCategory('women')">
+
+        <div class="category-icon">
+            👗
+        </div>
+
+        <div class="category-name">
+            Women
+        </div>
+
     </div>
 
-    <div class="category" onclick="filterCategory('kids')">
-        <div class="category-icon">🧸</div>
-        <div class="category-name">Kids</div>
+
+    <div class="category"
+         onclick="filterCategory('kids')">
+
+        <div class="category-icon">
+            🧸
+        </div>
+
+        <div class="category-name">
+            Kids
+        </div>
+
     </div>
 
-    <div class="category" onclick="filterCategory('shoes')">
-        <div class="category-icon">👟</div>
-        <div class="category-name">Shoes</div>
+
+    <div class="category"
+         onclick="filterCategory('shoes')">
+
+        <div class="category-icon">
+            👟
+        </div>
+
+        <div class="category-name">
+            Shoes
+        </div>
+
     </div>
 
-    <div class="category" onclick="filterCategory('bags')">
-        <div class="category-icon">👜</div>
-        <div class="category-name">Bags</div>
+
+    <div class="category"
+         onclick="filterCategory('bags')">
+
+        <div class="category-icon">
+            👜
+        </div>
+
+        <div class="category-name">
+            Bags
+        </div>
+
     </div>
 
-    <div class="category" onclick="filterCategory('beauty')">
-        <div class="category-icon">💄</div>
-        <div class="category-name">Beauty</div>
+
+    <div class="category"
+         onclick="filterCategory('beauty')">
+
+        <div class="category-icon">
+            💄
+        </div>
+
+        <div class="category-name">
+            Beauty
+        </div>
+
     </div>
 
-    <div class="category" onclick="filterCategory('electronics')">
-        <div class="category-icon">📱</div>
-        <div class="category-name">Electronics</div>
+
+    <div class="category"
+         onclick="filterCategory('electronics')">
+
+        <div class="category-icon">
+            📱
+        </div>
+
+        <div class="category-name">
+            Electronics
+        </div>
+
     </div>
 
-    <div class="category" onclick="filterCategory('home')">
-        <div class="category-icon">⌂</div>
-        <div class="category-name">Home</div>
+
+    <div class="category"
+         onclick="filterCategory('home')">
+
+        <div class="category-icon">
+            🏠
+        </div>
+
+        <div class="category-name">
+            Home
+        </div>
+
     </div>
 
 </div>
 
 
+<!-- HERO -->
+
 <section class="hero">
 
     <div class="hero-content">
 
-        <div class="hero-small">NEW SEASON</div>
+        <div class="hero-small">
+            NEW SEASON
+        </div>
 
         <h1>
+
             Stylish Clothes
+
             <br>
-            <span>For Every You</span>
+
+            <span>
+                For Every You
+            </span>
+
         </h1>
 
         <p>
             Trendy • Comfortable • Affordable
         </p>
 
-        <button class="hero-btn" onclick="scrollProducts()">
+        <button
+            class="hero-btn"
+            onclick="scrollProducts()">
+
             Shop Now →
+
         </button>
 
     </div>
+
 
     <div class="hero-bags">
         🛍️
@@ -886,41 +1051,90 @@ footer a{
 </section>
 
 
-<section class="section">
+<!-- PRODUCTS -->
+
+<section
+    class="section"
+    id="productSection">
 
     <div class="section-head">
 
         <div class="section-title">
+
             🔥 <span>Best</span> Deals
+
         </div>
 
-        <div class="view-all" onclick="filterCategory('all')">
+        <div
+            class="view-all"
+            onclick="filterCategory('all')">
+
             View All →
+
         </div>
 
     </div>
 
-    <div class="products" id="products"></div>
 
+    <div
+        class="products"
+        id="products">
+
+    </div>
+
+
+    <!-- FEATURES -->
 
     <div class="features">
 
         <div class="feature">
-            <div class="feature-icon">🚚</div>
-            <h3>Free Shipping</h3>
-            <p>On All Orders</p>
+
+            <div class="feature-icon">
+                🚚
+            </div>
+
+            <h3>
+                Free Shipping
+            </h3>
+
+            <p>
+                On All Orders
+            </p>
+
         </div>
 
-        <div class="feature">
-            <div class="feature-icon">🛡️</div>
-            <h3>Secure Payments</h3>
-            <p>100% Safe & Secure</p>
-        </div>
 
         <div class="feature">
-            <div class="feature-icon">↻</div>
-            <h3>Easy Returns</h3>
-            <p>7 Days Return Policy</p>
+
+            <div class="feature-icon">
+                🛡️
+            </div>
+
+            <h3>
+                Secure Payments
+            </h3>
+
+            <p>
+                100% Safe & Secure
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                ↻
+            </div>
+
+            <h3>
+                Easy Returns
+            </h3>
+
+            <p>
+                7 Days Return Policy
+            </p>
+
         </div>
 
     </div>
@@ -928,250 +1142,166 @@ footer a{
 </section>
 
 
-<!-- CART -->
+<!-- CHECKOUT -->
 
-<div class="cart" id="cart">
-
-    <div class="cart-head">
-        <h2>🛒 My Cart</h2>
-        <div class="close" onclick="closeCart()">✕</div>
-    </div>
-
-    <div class="cart-items" id="cartItems"></div>
-
-    <div class="cart-bottom">
-
-        <h3>
-            Total: ₹<span id="total">0</span>
-        </h3>
-
-        <button class="checkout" onclick="checkout()">
-            Proceed to Checkout
-        </button>
-
-    </div>
-
-</div>
+<div
+    class="checkout-overlay"
+    id="checkoutOverlay">
 
 
-<!-- CHECKOUT MODAL -->
+    <div class="checkout-box">
 
-<div class="modal" id="checkoutModal">
-
-    <div class="modal-box">
-
-        <h2>📦 Delivery Details</h2>
-
-        <div class="form-group">
-            <label>Full Name *</label>
-            <input
-                id="customerName"
-                type="text"
-                placeholder="Enter your full name"
-            >
-        </div>
-
-        <div class="form-group">
-            <label>Mobile Number *</label>
-            <input
-                id="customerPhone"
-                type="tel"
-                maxlength="10"
-                placeholder="10 digit mobile number"
-            >
-        </div>
-
-        <div class="form-group">
-            <label>House / Flat / Building *</label>
-            <input
-                id="house"
-                type="text"
-                placeholder="House / Flat / Building"
-            >
-        </div>
-
-        <div class="form-group">
-            <label>Street / Area *</label>
-            <input
-                id="street"
-                type="text"
-                placeholder="Street / Area / Locality"
-            >
-        </div>
-
-        <div class="form-group">
-            <label>City *</label>
-            <input
-                id="city"
-                type="text"
-                placeholder="City"
-            >
-        </div>
-
-        <div class="form-group">
-            <label>State *</label>
-            <input
-                id="state"
-                type="text"
-                placeholder="State"
-            >
-        </div>
-
-        <div class="form-group">
-            <label>Pincode *</label>
-            <input
-                id="pincode"
-                type="text"
-                maxlength="6"
-                placeholder="6 digit pincode"
-            >
-        </div>
-
-        <div class="form-group">
-            <label>Landmark</label>
-            <input
-                id="landmark"
-                type="text"
-                placeholder="Nearby landmark (optional)"
-            >
-        </div>
-
-        <div class="form-group">
-            <label>Payment Method</label>
-
-            <select id="paymentMethod">
-                <option value="Cash on Delivery">
-                    Cash on Delivery
-                </option>
-
-                <option value="Online Payment">
-                    Online Payment
-                </option>
-            </select>
-        </div>
-
-        <button
-            class="place-order"
-            onclick="placeOrder()">
-            ✅ Place Order
-        </button>
-
-        <button
-            class="cancel"
+        <div
+            class="close-checkout"
             onclick="closeCheckout()">
-            Cancel
-        </button>
 
-    </div>
+            ✕
 
-</div>
-
-
-<footer>
-
-    <div class="footer-grid">
-
-        <div>
-            <h3>Shop<span>Now</span></h3>
-
-            <p>
-                Your one-stop destination for fashion,
-                electronics, beauty and more.
-            </p>
         </div>
 
-        <div>
-            <h3>Quick Links</h3>
-            <a href="#">Home</a>
-            <a href="#">About Us</a>
-            <a href="#">Contact Us</a>
-        </div>
 
-        <div>
-            <h3>Customer Service</h3>
-            <a href="#">Help Center</a>
-            <a href="#">Track Order</a>
-            <a href="#">Returns & Refunds</a>
-        </div>
+        <div id="checkoutFormArea">
 
-        <div>
-            <h3>Policy</h3>
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms & Conditions</a>
-        </div>
+            <h2>
+                🛒 Complete Your Order
+            </h2>
 
-        <div>
-            <h3>Newsletter</h3>
+            <div class="checkout-subtitle">
 
-            <p>
-                Get latest updates & offers
-            </p>
-
-            <div class="newsletter">
-
-                <input
-                    type="email"
-                    placeholder="Enter your email"
-                >
-
-                <button onclick="subscribe()">
-                    →
-                </button>
+                Enter your correct delivery details.
 
             </div>
 
-        </div>
 
-    </div>
+            <div
+                class="order-product"
+                id="orderProduct">
 
-    <div class="copyright">
-        © 2026 ShopNow. All Rights Reserved.
-    </div>
-
-</footer>
+            </div>
 
 
-<script>
+            <form
+                id="orderForm"
+                onsubmit="placeOrder(event)">
 
-/* =========================
-   DEFAULT PRODUCTS
-========================= */
 
-const defaultProducts = [
+                <div class="form-group">
 
-{
-    id:1,
-    name:"Men's Shirt & Pant Combo",
-    category:"men",
-    price:799,
-    old:1499,
-    rating:4.3,
-    discount:45,
-    images:[
-        "https://res.cloudinary.com/en1qletq/image/upload/f_auto,q_auto/2450"
-    ]
-},
+                    <label>
+                        Full Name *
+                    </label>
 
-{
-    id:2,
-    name:"Women's Printed Rayon Kurti",
-    category:"women",
-    price:499,
-    old:999,
-    rating:4.4,
-    discount:50,
-    images:[
-        "https://i.ibb.co/fYt05RnQ/file-0000000046508208a26195a7bab608f9.png"
-    ]
-},
+                    <input
+                        id="customerName"
+                        type="text"
+                        placeholder="Enter your full name"
+                        required>
 
-{
-    id:3,
-    name:"Stylish Men's Casual Shirt",
-    category:"men",
-    price:399,
-    old:799,
-    rating:4.2,
-    discount:50,
-    images:[
-        "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?au
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Mobile Number *
+                    </label>
+
+                    <input
+                        id="customerPhone"
+                        type="tel"
+                        maxlength="10"
+                        placeholder="10 digit mobile number"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Full Address *
+                    </label>
+
+                    <textarea
+                        id="customerAddress"
+                        placeholder="House no., Street, Area, Landmark"
+                        required></textarea>
+
+                </div>
+
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label>
+                            City *
+                        </label>
+
+                        <input
+                            id="customerCity"
+                            type="text"
+                            placeholder="City"
+                            required>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            State *
+                        </label>
+
+                        <input
+                            id="customerState"
+                            type="text"
+                            placeholder="State"
+                            required>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label>
+                            Pincode *
+                        </label>
+
+                        <input
+                            id="customerPincode"
+                            type="tel"
+                            maxlength="6"
+                            placeholder="6 digit pincode"
+                            required>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Quantity *
+                        </label>
+
+                        <select id="customerQuantity">
+
+                            <option value="1">
+                                1
+                            </option>
+
+                            <option value="2">
+                                2
+                            </option>
+
+                            <option value="3">
+                                3
+                            </option>
+
+                            <option value="4">
+                                4
+                  
