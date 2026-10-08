@@ -968,7 +968,7 @@ const products = [
  old:1499,
  rating:4.3,
  discount:45,
- icon:"👔"
+ image:"https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=600&q=80"
 },
 
 {
@@ -979,7 +979,7 @@ const products = [
  old:999,
  rating:4.4,
  discount:50,
- icon:"👗"
+ image:"https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=600&q=80"
 },
 
 {
@@ -990,7 +990,7 @@ const products = [
  old:799,
  rating:4.2,
  discount:50,
- icon:"👕"
+ image:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=600&q=80"
 },
 
 {
@@ -1001,7 +1001,7 @@ const products = [
  old:1299,
  rating:4.5,
  discount:46,
- icon:"👗"
+ image:"https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=600&q=80"
 },
 
 {
@@ -1012,7 +1012,7 @@ const products = [
  old:1799,
  rating:4.3,
  discount:50,
- icon:"👟"
+ image:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=80"
 },
 
 {
@@ -1023,7 +1023,7 @@ const products = [
  old:599,
  rating:4.1,
  discount:50,
- icon:"👕"
+ image:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=600&q=80"
 },
 
 {
@@ -1034,7 +1034,7 @@ const products = [
  old:899,
  rating:4.4,
  discount:50,
- icon:"👚"
+ image:"https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=600&q=80"
 },
 
 {
@@ -1045,7 +1045,7 @@ const products = [
  old:1999,
  rating:4.2,
  discount:50,
- icon:"🎧"
+ image:"https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=80"
 },
 
 {
@@ -1056,7 +1056,7 @@ const products = [
  old:10999,
  rating:4.5,
  discount:18,
- icon:"📱"
+ image:"https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=600&q=80"
 },
 
 {
@@ -1067,7 +1067,7 @@ const products = [
  old:999,
  rating:4.3,
  discount:40,
- icon:"💄"
+ image:"https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=600&q=80"
 }
 
 ];
@@ -1110,9 +1110,7 @@ function showProducts(list){
 
             <div class="product-image">
 
-                <div class="product-placeholder">
-                    ${product.icon}
-                </div>
+                <img src="${product.image}" alt="${product.name}">
 
             </div>
 
