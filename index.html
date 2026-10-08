@@ -754,7 +754,15 @@ View All →
 <input type="radio" name="payment" value="QR Scan">
 📷 QR Scan
 </label>
+<div id="upiDetails" style="display:none; margin-top:10px;">
+<label>UPI ID</label>
+<input type="text" id="upiId" placeholder="Enter your UPI ID">
+</div>
 
+<div id="qrDetails" style="display:none; margin-top:10px;">
+<p>📷 Scan QR Code to Pay</p>
+<img src="YOUR_QR_IMAGE_URL" alt="UPI QR Code" style="width:200px;max-width:100%;">
+</div>
 <div class="order-summary">
 
 <div class="summary-row">
@@ -1241,7 +1249,17 @@ function saveAdminOrder(order){
         "shopnow_orders",
         JSON.stringify(adminOrders)
     );
-}
+} document.querySelectorAll('input[name="payment"]').forEach(function(payment) {
+    payment.addEventListener("change", function() {
+
+        document.getElementById("upiDetails").style.display =
+            this.value === "UPI" ? "block" : "none";
+
+        document.getElementById("qrDetails").style.display =
+            this.value === "QR Scan" ? "block" : "none";
+
+    });
+});
 </script>
 
 </body>
