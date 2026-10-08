@@ -1304,4 +1304,291 @@ footer a:hover{
 
                             <option value="4">
                                 4
-                  
+                  </option>
+
+<option value="5">
+    5
+</option>
+
+</select>
+
+</div>
+
+</div>
+
+
+<div class="payment-box">
+
+<strong>
+    Payment Method
+</strong>
+
+<label>
+
+<input
+    type="radio"
+    name="payment"
+    value="Cash on Delivery"
+    checked
+>
+
+Cash on Delivery
+
+</label>
+
+<label>
+
+<input
+    type="radio"
+    name="payment"
+    value="Online Payment"
+>
+
+Online Payment
+
+</label>
+
+</div>
+
+
+<div class="order-summary">
+
+<h3>Order Summary</h3>
+
+<div>
+    Product Price:
+    ₹<span id="checkoutProductPrice">0</span>
+</div>
+
+<div>
+    Quantity:
+    <span id="checkoutQuantity">1</span>
+</div>
+
+<div>
+    Delivery:
+    <span>FREE</span>
+</div>
+
+<hr>
+
+<h2>
+    Total:
+    ₹<span id="checkoutTotal">0</span>
+</h2>
+
+</div>
+
+
+<button
+    class="place-order"
+    onclick="placeOrder()"
+>
+    🛍️ Place Order
+</button>
+
+
+<div
+    id="orderSuccess"
+    class="order-success"
+    style="display:none;"
+>
+
+    <h2>🎉 Order Placed Successfully!</h2>
+
+    <p>
+        Thank you for shopping with us.
+    </p>
+
+    <p>
+        Your order has been received.
+    </p>
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<script>
+
+/* CHECKOUT QUANTITY */
+
+const quantitySelect =
+document.getElementById("customerQuantity");
+
+if(quantitySelect){
+
+    quantitySelect.addEventListener("change", function(){
+
+        const quantity =
+        Number(this.value);
+
+        const priceElement =
+        document.getElementById("checkoutProductPrice");
+
+        const totalElement =
+        document.getElementById("checkoutTotal");
+
+        const quantityElement =
+        document.getElementById("checkoutQuantity");
+
+        if(quantityElement){
+            quantityElement.innerText = quantity;
+        }
+
+        if(priceElement && totalElement){
+
+            const price =
+            Number(priceElement.innerText) || 0;
+
+            totalElement.innerText =
+            price * quantity;
+
+        }
+
+    });
+
+}
+
+
+/* PLACE ORDER */
+
+function placeOrder(){
+
+    const name =
+    document.getElementById("customerName")?.value.trim();
+
+    const phone =
+    document.getElementById("customerPhone")?.value.trim();
+
+    const address =
+    document.getElementById("customerAddress")?.value.trim();
+
+    const city =
+    document.getElementById("customerCity")?.value.trim();
+
+    const pincode =
+    document.getElementById("customerPincode")?.value.trim();
+
+    const quantity =
+    document.getElementById("customerQuantity")?.value || 1;
+
+
+    if(!name){
+
+        alert("Please enter your name.");
+
+        return;
+    }
+
+
+    if(!phone){
+
+        alert("Please enter your mobile number.");
+
+        return;
+    }
+
+
+    if(!address){
+
+        alert("Please enter your complete address.");
+
+        return;
+    }
+
+
+    if(!city){
+
+        alert("Please enter your city.");
+
+        return;
+    }
+
+
+    if(!pincode){
+
+        alert("Please enter your PIN code.");
+
+        return;
+    }
+
+
+    const payment =
+    document.querySelector(
+        'input[name="payment"]:checked'
+    )?.value || "Cash on Delivery";
+
+
+    const order = {
+
+        id:
+        "ORD" +
+        Date.now(),
+
+        customerName:name,
+
+        phone:phone,
+
+        address:address,
+
+        city:city,
+
+        pincode:pincode,
+
+        quantity:Number(quantity),
+
+        payment:payment,
+
+        date:
+        new Date().toLocaleString(),
+
+        status:"Pending"
+
+    };
+
+
+    let orders =
+    JSON.parse(
+        localStorage.getItem("sjt_orders")
+    ) || [];
+
+
+    orders.push(order);
+
+
+    localStorage.setItem(
+        "sjt_orders",
+        JSON.stringify(orders)
+    );
+
+
+    const success =
+    document.getElementById("orderSuccess");
+
+
+    if(success){
+
+        success.style.display = "block";
+
+        success.scrollIntoView({
+            behavior:"smooth"
+        });
+
+    }
+
+
+    alert(
+        "Order placed successfully! Order ID: " +
+        order.id
+    );
+
+}
+
+</script>
+
+</body>
+</html>
