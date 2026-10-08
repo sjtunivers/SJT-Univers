@@ -3,96 +3,140 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ShopNow Admin</title>
+<title>SJT-Univers Admin</title>
 
 <style>
-*{box-sizing:border-box}
+*{
+  box-sizing:border-box;
+}
 
 body{
-    margin:0;
-    font-family:Arial,sans-serif;
-    background:#f5f5f5;
-    color:#222;
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#f5f5f5;
+  color:#222;
 }
 
 header{
-    background:#111;
-    color:#fff;
-    padding:18px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+  background:#111;
+  color:white;
+  padding:18px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 }
 
-header h2{margin:0;color:#ffc107}
+header h2{
+  margin:0;
+  color:#ffc107;
+}
 
 .container{
-    max-width:1000px;
-    margin:25px auto;
-    padding:15px;
+  max-width:1000px;
+  margin:20px auto;
+  padding:15px;
 }
 
 .card{
-    background:#fff;
-    padding:20px;
-    border-radius:10px;
-    margin-bottom:20px;
-    box-shadow:0 2px 8px #ddd;
+  background:white;
+  padding:20px;
+  border-radius:12px;
+  margin-bottom:20px;
+  box-shadow:0 2px 10px #ddd;
 }
 
-input,select{
-    width:100%;
-    padding:12px;
-    margin:7px 0 12px;
-    border:1px solid #ccc;
-    border-radius:6px;
+input,select,textarea{
+  width:100%;
+  padding:12px;
+  margin:7px 0 14px;
+  border:1px solid #ccc;
+  border-radius:7px;
+  font-size:15px;
+}
+
+textarea{
+  min-height:130px;
+  resize:vertical;
 }
 
 button{
-    border:0;
-    padding:11px 18px;
-    border-radius:6px;
-    cursor:pointer;
-    font-weight:bold;
+  border:0;
+  padding:12px 18px;
+  border-radius:7px;
+  cursor:pointer;
+  font-weight:bold;
 }
 
 .add{
-    background:#ffc107;
+  background:#111;
+  color:white;
+  width:100%;
 }
 
 .delete{
-    background:#e53935;
-    color:white;
+  background:#e53935;
+  color:white;
+  margin-top:10px;
+}
+
+.edit{
+  background:#ffc107;
+  color:#111;
+  margin-top:10px;
+  margin-right:5px;
 }
 
 .product{
-    display:flex;
-    gap:15px;
-    align-items:center;
-    border-bottom:1px solid #ddd;
-    padding:15px 0;
+  border:1px solid #ddd;
+  border-radius:10px;
+  padding:12px;
+  margin-bottom:15px;
+  display:flex;
+  gap:15px;
+  align-items:center;
 }
 
 .product img{
-    width:80px;
-    height:80px;
-    object-fit:cover;
-    border-radius:8px;
+  width:90px;
+  height:90px;
+  object-fit:cover;
+  border-radius:8px;
 }
 
 .product-info{
-    flex:1;
+  flex:1;
+}
+
+.product-info h3{
+  margin:0 0 5px;
 }
 
 .price{
-    color:#008000;
-    font-weight:bold;
+  font-weight:bold;
+  font-size:18px;
+}
+
+.old{
+  text-decoration:line-through;
+  color:#888;
+  margin-left:8px;
+}
+
+.images-count{
+  color:#555;
+  font-size:13px;
+  margin-top:5px;
 }
 
 @media(max-width:600px){
-    .product{
-        align-items:flex-start;
-    }
+  .product{
+    align-items:flex-start;
+  }
+
+  .product img{
+    width:75px;
+    height:75px;
+  }
 }
 </style>
 </head>
@@ -100,135 +144,332 @@ button{
 <body>
 
 <header>
-    <h2>ShopNow Admin</h2>
-    <span>Admin Panel</span>
+  <h2>🛒 SJT-Univer Admin</h2>
+  <span>Admin Panel</span>
 </header>
 
 <div class="container">
 
 <div class="card">
-<h3>➕ Add Product</h3>
 
-<input id="name" placeholder="Product Name">
+<h2>➕ Add Product</h2>
 
+<label>Product Name</label>
+<input id="name" placeholder="Example: Men's Shirt & Pant Combo">
+
+<label>Category</label>
 <select id="category">
-<option value="men">Men</option>
-<option value="women">Women</option>
-<option value="kids">Kids</option>
-<option value="shoes">Shoes</option>
-<option value="bags">Bags</option>
-<option value="beauty">Beauty</option>
-<option value="electronics">Electronics</option>
-<option value="home">Home</option>
+  <option value="men">Men</option>
+  <option value="women">Women</option>
+  <option value="shoes">Shoes</option>
+  <option value="electronics">Electronics</option>
+  <option value="beauty">Beauty</option>
+  <option value="other">Other</option>
 </select>
 
-<input id="price" type="number" placeholder="Price">
-<input id="oldPrice" type="number" placeholder="Old Price">
-<input id="discount" type="number" placeholder="Discount %">
-<input id="rating" type="number" step="0.1" placeholder="Rating">
-<input id="image" placeholder="Image URL">
+<label>Price</label>
+<input id="price" type="number" placeholder="799">
 
-<button class="add" onclick="addProduct()">Add Product</button>
+<label>Old Price</label>
+<input id="oldPrice" type="number" placeholder="1499">
+
+<label>Discount %</label>
+<input id="discount" type="number" placeholder="45">
+
+<label>Rating</label>
+<input id="rating" type="number" step="0.1" placeholder="4.5">
+
+<label>🖼️ Image URLs</label>
+<textarea id="images"
+placeholder="Har image ka URL alag line me paste karo.
+
+Example:
+https://example.com/front.jpg
+https://example.com/back.jpg
+https://example.com/side.jpg
+https://example.com/close.jpg"></textarea>
+
+<button class="add" onclick="addProduct()">
+  ➕ Add Product
+</button>
+
 </div>
 
-
 <div class="card">
-<h3>📦 Products</h3>
+
+<h2>📦 Products</h2>
+
 <div id="products"></div>
+
 </div>
 
 </div>
 
 <script>
 
-let products = JSON.parse(localStorage.getItem("shopProducts")) || [];
+let products = JSON.parse(localStorage.getItem("sjt_products")) || [];
+
+
+/* SAVE */
 
 function save(){
-    localStorage.setItem("shopProducts",JSON.stringify(products));
+  localStorage.setItem(
+    "sjt_products",
+    JSON.stringify(products)
+  );
 }
 
-function showProducts(){
 
-    const box=document.getElementById("products");
-    box.innerHTML="";
-
-    if(products.length===0){
-        box.innerHTML="<p>No products added.</p>";
-        return;
-    }
-
-    products.forEach((p,index)=>{
-
-        box.innerHTML += `
-        <div class="product">
-
-            <img src="${p.image}" onerror="this.src='https://via.placeholder.com/80'">
-
-            <div class="product-info">
-                <b>${p.name}</b><br>
-                Category: ${p.category}<br>
-                <span class="price">₹${p.price}</span>
-                &nbsp;
-                <del>₹${p.oldPrice}</del><br>
-                ⭐ ${p.rating} | ${p.discount}% OFF
-            </div>
-
-            <button class="delete" onclick="deleteProduct(${index})">
-                Delete
-            </button>
-
-        </div>
-        `;
-    });
-}
+/* ADD PRODUCT */
 
 function addProduct(){
 
-    const name=document.getElementById("name").value.trim();
-    const category=document.getElementById("category").value;
-    const price=document.getElementById("price").value;
-    const oldPrice=document.getElementById("oldPrice").value;
-    const discount=document.getElementById("discount").value;
-    const rating=document.getElementById("rating").value;
-    const image=document.getElementById("image").value.trim();
+  const name =
+    document.getElementById("name").value.trim();
 
-    if(!name || !price || !image){
-        alert("Product Name, Price aur Image URL bharna zaroori hai.");
-        return;
-    }
+  const category =
+    document.getElementById("category").value;
 
-    products.push({
-        id:Date.now(),
-        name:name,
-        category:category,
-        price:Number(price),
-        oldPrice:Number(oldPrice || price),
-        discount:Number(discount || 0),
-        rating:Number(rating || 0),
-        image:image
-    });
+  const price =
+    document.getElementById("price").value;
 
-    save();
-    showProducts();
+  const oldPrice =
+    document.getElementById("oldPrice").value;
 
-    document.getElementById("name").value="";
-    document.getElementById("price").value="";
-    document.getElementById("oldPrice").value="";
-    document.getElementById("discount").value="";
-    document.getElementById("rating").value="";
-    document.getElementById("image").value="";
+  const discount =
+    document.getElementById("discount").value;
 
-    alert("Product Added ✅");
+  const rating =
+    document.getElementById("rating").value;
+
+  const imageText =
+    document.getElementById("images").value.trim();
+
+
+  if(!name || !price || !imageText){
+
+    alert("Product Name, Price aur Image URL zaroor bharo.");
+
+    return;
+  }
+
+
+  /* Multiple image URLs */
+
+  const imageList = imageText
+    .split("\n")
+    .map(url => url.trim())
+    .filter(url => url !== "");
+
+
+  if(imageList.length === 0){
+
+    alert("Kam se kam 1 image URL add karo.");
+
+    return;
+  }
+
+
+  const product = {
+
+    id: Date.now(),
+
+    name: name,
+
+    category: category,
+
+    price: Number(price),
+
+    oldPrice: Number(oldPrice || price),
+
+    /* old code compatibility */
+
+    old: Number(oldPrice || price),
+
+    discount: Number(discount || 0),
+
+    rating: Number(rating || 0),
+
+    /* First image */
+
+    image: imageList[0],
+
+    /* All images */
+
+    images: imageList
+
+  };
+
+
+  products.push(product);
+
+  save();
+
+  showProducts();
+
+  clearForm();
+
+  alert("Product Added ✅");
 }
+
+
+/* SHOW PRODUCTS */
+
+function showProducts(){
+
+  const box =
+    document.getElementById("products");
+
+  box.innerHTML = "";
+
+
+  if(products.length === 0){
+
+    box.innerHTML =
+      "<p>No products added.</p>";
+
+    return;
+  }
+
+
+  products.forEach((product,index)=>{
+
+    box.innerHTML += `
+
+      <div class="product">
+
+        <img
+          src="${product.image}"
+          onerror="this.src='https://via.placeholder.com/90'"
+        >
+
+        <div class="product-info">
+
+          <h3>${product.name}</h3>
+
+          <div>
+            Category: ${product.category}
+          </div>
+
+          <div class="price">
+            ₹${product.price}
+
+            <span class="old">
+              ₹${product.oldPrice || product.old}
+            </span>
+          </div>
+
+          <div>
+            ⭐ ${product.rating}
+            &nbsp; | &nbsp;
+            ${product.discount}% OFF
+          </div>
+
+          <div class="images-count">
+            🖼️ ${product.images?.length || 1} Images
+          </div>
+
+          <button
+            class="edit"
+            onclick="editProduct(${index})">
+            ✏️ Edit
+          </button>
+
+          <button
+            class="delete"
+            onclick="deleteProduct(${index})">
+            🗑️ Delete
+          </button>
+
+        </div>
+
+      </div>
+
+    `;
+
+  });
+}
+
+
+/* DELETE */
 
 function deleteProduct(index){
 
-    if(confirm("Kya aap ye product delete karna chahte hain?")){
-        products.splice(index,1);
-        save();
-        showProducts();
-    }
+  if(confirm("Kya aap ye product delete karna chahte hain?")){
+
+    products.splice(index,1);
+
+    save();
+
+    showProducts();
+
+  }
 }
+
+
+/* EDIT */
+
+function editProduct(index){
+
+  const product = products[index];
+
+
+  document.getElementById("name").value =
+    product.name;
+
+  document.getElementById("category").value =
+    product.category;
+
+  document.getElementById("price").value =
+    product.price;
+
+  document.getElementById("oldPrice").value =
+    product.oldPrice || product.old;
+
+  document.getElementById("discount").value =
+    product.discount;
+
+  document.getElementById("rating").value =
+    product.rating;
+
+  document.getElementById("images").value =
+    (product.images || [product.image]).join("\n");
+
+
+  products.splice(index,1);
+
+  save();
+
+  showProducts();
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+}
+
+
+/* CLEAR */
+
+function clearForm(){
+
+  document.getElementById("name").value = "";
+
+  document.getElementById("price").value = "";
+
+  document.getElementById("oldPrice").value = "";
+
+  document.getElementById("discount").value = "";
+
+  document.getElementById("rating").value = "";
+
+  document.getElementById("images").value = "";
+
+}
+
+
+/* START */
 
 showProducts();
 
