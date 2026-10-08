@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>SJT-Univer - Online Shopping</title>
+<title>ShopNow - Online Shopping</title>
 
 <style>
 
@@ -361,19 +360,19 @@ header{
     margin-left:5px;
 }
 
-/* BUY NOW ONLY */
+/* ONLY BUY NOW */
 
 .buy-now{
     width:100%;
-    padding:12px;
-    margin-top:12px;
+    padding:11px;
+    margin-top:10px;
     border-radius:5px;
     cursor:pointer;
     font-weight:bold;
-    font-size:15px;
     background:#f5c542;
     border:1px solid #f5c542;
     color:#000;
+    font-size:14px;
 }
 
 .buy-now:hover{
@@ -414,45 +413,46 @@ header{
     font-size:13px;
 }
 
-/* CHECKOUT POPUP */
+/* CHECKOUT */
 
-.checkout-overlay{
+.checkout-page{
     display:none;
     position:fixed;
     inset:0;
-    background:rgba(0,0,0,.85);
+    background:#000;
     z-index:5000;
-    overflow:auto;
+    overflow-y:auto;
     padding:20px;
 }
 
 .checkout-box{
-    max-width:600px;
-    margin:30px auto;
+    width:100%;
+    max-width:700px;
+    margin:20px auto;
     background:#111;
     border:1px solid #f5c542;
-    border-radius:12px;
-    padding:25px;
-    position:relative;
+    border-radius:10px;
+    padding:22px;
 }
 
-.checkout-box h2{
-    color:#f5c542;
-    margin-bottom:8px;
-}
-
-.checkout-subtitle{
-    color:#aaa;
+.checkout-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:1px solid #444;
+    padding-bottom:15px;
     margin-bottom:20px;
-    font-size:13px;
+}
+
+.checkout-header h2{
+    color:#f5c542;
 }
 
 .close-checkout{
-    position:absolute;
-    right:18px;
-    top:15px;
-    font-size:25px;
+    background:none;
+    border:0;
     color:#f5c542;
+    font-size:28px;
     cursor:pointer;
 }
 
@@ -461,7 +461,7 @@ header{
     gap:15px;
     background:#191919;
     padding:12px;
-    border-radius:8px;
+    border-radius:7px;
     margin-bottom:20px;
 }
 
@@ -469,7 +469,7 @@ header{
     width:80px;
     height:80px;
     object-fit:cover;
-    border-radius:6px;
+    border-radius:5px;
 }
 
 .order-product-info{
@@ -477,77 +477,85 @@ header{
 }
 
 .order-product-info h3{
-    font-size:16px;
     margin-bottom:8px;
 }
 
-.order-product-info p{
-    color:#ccc;
-    font-size:13px;
-    margin:4px 0;
+.order-price{
+    color:#f5c542;
+    font-weight:bold;
+    font-size:20px;
 }
 
+/* FORM */
+
 .form-group{
-    margin-bottom:14px;
+    margin-bottom:15px;
 }
 
 .form-group label{
     display:block;
+    margin-bottom:7px;
     color:#ddd;
-    font-size:13px;
-    margin-bottom:6px;
+    font-weight:bold;
 }
 
 .form-group input,
 .form-group textarea,
 .form-group select{
     width:100%;
-    background:#fff;
-    color:#111;
-    border:0;
-    border-radius:6px;
-    padding:12px;
+    padding:13px;
+    background:#080808;
+    border:1px solid #555;
+    border-radius:5px;
+    color:#fff;
     outline:none;
-    font-size:14px;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus{
+    border-color:#f5c542;
 }
 
 .form-group textarea{
-    min-height:80px;
+    min-height:90px;
     resize:vertical;
 }
 
-.form-row{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:12px;
-}
-
 .payment-box{
-    background:#191919;
-    border:1px solid #444;
+    border:1px solid #555;
+    padding:15px;
     border-radius:7px;
-    padding:14px;
-    margin:15px 0;
+    margin-top:10px;
 }
 
-.payment-box label{
+.payment-box strong{
     display:block;
-    margin:9px 0;
+    margin-bottom:12px;
+    color:#f5c542;
+}
+
+.payment-option{
+    display:block;
+    background:#181818;
+    padding:12px;
+    margin-bottom:8px;
+    border-radius:5px;
     cursor:pointer;
 }
 
-.payment-box input{
+.payment-option input{
     margin-right:8px;
 }
 
 .place-order{
     width:100%;
-    padding:14px;
+    padding:15px;
+    background:#f5c542;
     border:0;
     border-radius:6px;
-    background:#f5c542;
-    color:#000;
-    font-size:16px;
+    margin-top:20px;
+    font-size:17px;
     font-weight:bold;
     cursor:pointer;
 }
@@ -556,16 +564,24 @@ header{
     background:#fff;
 }
 
-/* SUCCESS */
+.order-total{
+    margin-top:18px;
+    padding:15px;
+    background:#191919;
+    border:1px solid #5c4812;
+    border-radius:7px;
+    font-size:20px;
+    text-align:right;
+}
 
 .success-box{
     display:none;
     text-align:center;
-    padding:30px 10px;
+    padding:40px 20px;
 }
 
 .success-icon{
-    font-size:60px;
+    font-size:70px;
     margin-bottom:15px;
 }
 
@@ -576,16 +592,14 @@ header{
 
 .success-box p{
     color:#ccc;
-    margin:8px 0;
+    margin-bottom:20px;
 }
 
-.continue-btn{
-    margin-top:20px;
+.success-button{
     padding:12px 25px;
     background:#f5c542;
-    color:#000;
     border:0;
-    border-radius:6px;
+    border-radius:5px;
     font-weight:bold;
     cursor:pointer;
 }
@@ -667,10 +681,6 @@ footer a:hover{
         grid-template-columns:repeat(3,1fr);
     }
 
-    .header-links{
-        gap:10px;
-    }
-
 }
 
 @media(max-width:650px){
@@ -689,17 +699,17 @@ footer a:hover{
         font-size:23px;
     }
 
-    .header-links{
-        margin-left:auto;
-    }
-
     .search{
         order:3;
         flex-basis:100%;
     }
 
-    .header-item:nth-child(1),
-    .header-item:nth-child(2){
+    .header-links{
+        margin-left:auto;
+        gap:10px;
+    }
+
+    .header-item:nth-child(1){
         display:none;
     }
 
@@ -754,10 +764,6 @@ footer a:hover{
         grid-template-columns:1fr 1fr;
     }
 
-    .form-row{
-        grid-template-columns:1fr;
-    }
-
 }
 
 @media(max-width:400px){
@@ -781,11 +787,9 @@ footer a:hover{
 }
 
 </style>
-
 </head>
 
 <body>
-
 
 <!-- TOP BAR -->
 
@@ -807,7 +811,7 @@ footer a:hover{
     <div>
 
         <div class="logo">
-            SJT<span>Univer</span>
+            Shop<span>Now</span>
         </div>
 
         <div class="tagline">
@@ -835,20 +839,22 @@ footer a:hover{
 
     <div class="header-links">
 
-        <div class="header-item"
-             onclick="alert('Login & Sign Up coming soon')">
+        <div class="header-item" onclick="login()">
 
             <span class="header-icon">
                 ♙
             </span>
 
-            Login<br>Sign Up
+            Login<br>
+            Sign Up
 
         </div>
 
 
-        <div class="header-item"
-             onclick="alert('Wishlist coming soon')">
+        <div
+            class="header-item"
+            onclick="alert('Wishlist feature ready!')"
+        >
 
             <span class="header-icon">
                 ♡
@@ -859,14 +865,16 @@ footer a:hover{
         </div>
 
 
-        <div class="header-item"
-             onclick="scrollProducts()">
+        <div
+            class="header-item"
+            onclick="alert('Cart is disabled. Please use Buy Now.')"
+        >
 
             <span class="header-icon">
-                🛍️
+                🛒
             </span>
 
-            Shop
+            Cart
 
         </div>
 
@@ -879,129 +887,49 @@ footer a:hover{
 
 <div class="categories">
 
-    <div class="category"
-         onclick="filterCategory('all')">
-
-        <div class="category-icon">
-            ▦
-        </div>
-
-        <div class="category-name">
-            All
-        </div>
-
+    <div class="category" onclick="filterCategory('all')">
+        <div class="category-icon">▦</div>
+        <div class="category-name">All</div>
     </div>
 
-
-    <div class="category"
-         onclick="filterCategory('men')">
-
-        <div class="category-icon">
-            👕
-        </div>
-
-        <div class="category-name">
-            Men
-        </div>
-
+    <div class="category" onclick="filterCategory('men')">
+        <div class="category-icon">👕</div>
+        <div class="category-name">Men</div>
     </div>
 
-
-    <div class="category"
-         onclick="filterCategory('women')">
-
-        <div class="category-icon">
-            👗
-        </div>
-
-        <div class="category-name">
-            Women
-        </div>
-
+    <div class="category" onclick="filterCategory('women')">
+        <div class="category-icon">👗</div>
+        <div class="category-name">Women</div>
     </div>
 
-
-    <div class="category"
-         onclick="filterCategory('kids')">
-
-        <div class="category-icon">
-            🧸
-        </div>
-
-        <div class="category-name">
-            Kids
-        </div>
-
+    <div class="category" onclick="filterCategory('kids')">
+        <div class="category-icon">🧸</div>
+        <div class="category-name">Kids</div>
     </div>
 
-
-    <div class="category"
-         onclick="filterCategory('shoes')">
-
-        <div class="category-icon">
-            👟
-        </div>
-
-        <div class="category-name">
-            Shoes
-        </div>
-
+    <div class="category" onclick="filterCategory('shoes')">
+        <div class="category-icon">👟</div>
+        <div class="category-name">Shoes</div>
     </div>
 
-
-    <div class="category"
-         onclick="filterCategory('bags')">
-
-        <div class="category-icon">
-            👜
-        </div>
-
-        <div class="category-name">
-            Bags
-        </div>
-
+    <div class="category" onclick="filterCategory('bags')">
+        <div class="category-icon">👜</div>
+        <div class="category-name">Bags</div>
     </div>
 
-
-    <div class="category"
-         onclick="filterCategory('beauty')">
-
-        <div class="category-icon">
-            💄
-        </div>
-
-        <div class="category-name">
-            Beauty
-        </div>
-
+    <div class="category" onclick="filterCategory('beauty')">
+        <div class="category-icon">💄</div>
+        <div class="category-name">Beauty</div>
     </div>
 
-
-    <div class="category"
-         onclick="filterCategory('electronics')">
-
-        <div class="category-icon">
-            📱
-        </div>
-
-        <div class="category-name">
-            Electronics
-        </div>
-
+    <div class="category" onclick="filterCategory('electronics')">
+        <div class="category-icon">📱</div>
+        <div class="category-name">Electronics</div>
     </div>
 
-
-    <div class="category"
-         onclick="filterCategory('home')">
-
-        <div class="category-icon">
-            🏠
-        </div>
-
-        <div class="category-name">
-            Home
-        </div>
-
+    <div class="category" onclick="filterCategory('home')">
+        <div class="category-icon">⌂</div>
+        <div class="category-name">Home</div>
     </div>
 
 </div>
@@ -1018,15 +946,9 @@ footer a:hover{
         </div>
 
         <h1>
-
             Stylish Clothes
-
             <br>
-
-            <span>
-                For Every You
-            </span>
-
+            <span>For Every You</span>
         </h1>
 
         <p>
@@ -1035,14 +957,12 @@ footer a:hover{
 
         <button
             class="hero-btn"
-            onclick="scrollProducts()">
-
+            onclick="scrollProducts()"
+        >
             Shop Now →
-
         </button>
 
     </div>
-
 
     <div class="hero-bags">
         🛍️
@@ -1053,24 +973,19 @@ footer a:hover{
 
 <!-- PRODUCTS -->
 
-<section
-    class="section"
-    id="productSection">
+<section class="section">
 
     <div class="section-head">
 
         <div class="section-title">
-
             🔥 <span>Best</span> Deals
-
         </div>
 
         <div
             class="view-all"
-            onclick="filterCategory('all')">
-
+            onclick="filterCategory('all')"
+        >
             View All →
-
         </div>
 
     </div>
@@ -1078,9 +993,8 @@ footer a:hover{
 
     <div
         class="products"
-        id="products">
-
-    </div>
+        id="products"
+    ></div>
 
 
     <!-- FEATURES -->
@@ -1142,453 +1056,375 @@ footer a:hover{
 </section>
 
 
-<!-- CHECKOUT -->
+<!-- CHECKOUT PAGE -->
 
 <div
-    class="checkout-overlay"
-    id="checkoutOverlay">
-
+    class="checkout-page"
+    id="checkoutPage"
+>
 
     <div class="checkout-box">
 
-        <div
-            class="close-checkout"
-            onclick="closeCheckout()">
+        <div class="checkout-header">
 
-            ✕
+            <h2>
+                🛍️ Complete Your Order
+            </h2>
+
+            <button
+                class="close-checkout"
+                onclick="closeCheckout()"
+            >
+                ✕
+            </button>
 
         </div>
 
 
-        <div id="checkoutFormArea">
+        <!-- ORDER FORM -->
 
-            <h2>
-                🛒 Complete Your Order
-            </h2>
-
-            <div class="checkout-subtitle">
-
-                Enter your correct delivery details.
-
-            </div>
-
+        <div id="orderForm">
 
             <div
                 class="order-product"
-                id="orderProduct">
+                id="selectedProduct"
+            ></div>
+
+
+            <!-- CUSTOMER NAME -->
+
+            <div class="form-group">
+
+                <label>
+                    Full Name *
+                </label>
+
+                <input
+                    type="text"
+                    id="customerName"
+                    placeholder="Enter your full name"
+                    required
+                >
 
             </div>
 
 
-            <form
-                id="orderForm"
-                onsubmit="placeOrder(event)">
+            <!-- MOBILE -->
+
+            <div class="form-group">
+
+                <label>
+                    Mobile Number *
+                </label>
+
+                <input
+                    type="tel"
+                    id="customerPhone"
+                    maxlength="10"
+                    placeholder="Enter 10 digit mobile number"
+                    required
+                >
+
+            </div>
 
 
-                <div class="form-group">
+            <!-- EMAIL -->
 
-                    <label>
-                        Full Name *
-                    </label>
+            <div class="form-group">
 
-                    <input
-                        id="customerName"
-                        type="text"
-                        placeholder="Enter your full name"
-                        required>
+                <label>
+                    Email
+                </label>
 
-                </div>
+                <input
+                    type="email"
+                    id="customerEmail"
+                    placeholder="Enter email address"
+                >
 
-
-                <div class="form-group">
-
-                    <label>
-                        Mobile Number *
-                    </label>
-
-                    <input
-                        id="customerPhone"
-                        type="tel"
-                        maxlength="10"
-                        placeholder="10 digit mobile number"
-                        required>
-
-                </div>
+            </div>
 
 
-                <div class="form-group">
+            <!-- ADDRESS -->
 
-                    <label>
-                        Full Address *
-                    </label>
+            <div class="form-group">
 
-                    <textarea
-                        id="customerAddress"
-                        placeholder="House no., Street, Area, Landmark"
-                        required></textarea>
+                <label>
+                    Full Address *
+                </label>
 
-                </div>
+                <textarea
+                    id="customerAddress"
+                    placeholder="House No, Street, Area, Landmark"
+                    required
+                ></textarea>
 
-
-                <div class="form-row">
-
-                    <div class="form-group">
-
-                        <label>
-                            City *
-                        </label>
-
-                        <input
-                            id="customerCity"
-                            type="text"
-                            placeholder="City"
-                            required>
-
-                    </div>
+            </div>
 
 
-                    <div class="form-group">
+            <!-- CITY -->
 
-                        <label>
-                            State *
-                        </label>
+            <div class="form-group">
 
-                        <input
-                            id="customerState"
-                            type="text"
-                            placeholder="State"
-                            required>
+                <label>
+                    City *
+                </label>
 
-                    </div>
+                <input
+                    type="text"
+                    id="customerCity"
+                    placeholder="Enter city"
+                    required
+                >
 
-                </div>
-
-
-                <div class="form-row">
-
-                    <div class="form-group">
-
-                        <label>
-                            Pincode *
-                        </label>
-
-                        <input
-                            id="customerPincode"
-                            type="tel"
-                            maxlength="6"
-                            placeholder="6 digit pincode"
-                            required>
-
-                    </div>
+            </div>
 
 
-                    <div class="form-group">
+            <!-- STATE -->
 
-                        <label>
-                            Quantity *
-                        </label>
+            <div class="form-group">
 
-                        <select id="customerQuantity">
+                <label>
+                    State *
+                </label>
 
-                            <option value="1">
-                                1
-                            </option>
+                <input
+                    type="text"
+                    id="customerState"
+                    placeholder="Enter state"
+                    required
+                >
 
-                            <option value="2">
-                                2
-                            </option>
-
-                            <option value="3">
-                                3
-                            </option>
-
-                            <option value="4">
-                                4
-                  </option>
-
-<option value="5">
-    5
-</option>
-
-</select>
-
-</div>
-
-</div>
+            </div>
 
 
-<div class="payment-box">
+            <!-- PINCODE -->
 
-<strong>
-    Payment Method
-</strong>
+            <div class="form-group">
 
-<label>
+                <label>
+                    Pincode *
+                </label>
 
-<input
-    type="radio"
-    name="payment"
-    value="Cash on Delivery"
-    checked
->
+                <input
+                    type="text"
+                    id="customerPincode"
+                    maxlength="6"
+                    placeholder="Enter 6 digit pincode"
+                    required
+                >
 
-Cash on Delivery
+            </div>
 
+
+            <!-- QUANTITY -->
+
+            <div class="form-group">
+
+                <label>
+                    Quantity *
+                </label>
+
+                <select id="customerQuantity">
+
+                    <option value="1">
+                        1
+                    </option>
+
+                    <option value="2">
+                        2
+                    </option>
+
+                    <option value="3">
+                        3
+                    </option>
+
+                    <option value="4">
+                        4
+                    </option>
+
+                    <option value="5">
+                        5
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- PAYMENT -->
+
+            <div class="payment-box">
+
+                <strong>
+                    Payment Method
+                </strong>
+
+
+                <label class="payment-option''>
+                    <label class="payment-option">
+                      <label class="payment-option">
+    <input
+        type="radio"
+        name="payment"
+        value="Cash on Delivery"
+        checked
+    >
+    <span>💵 Cash on Delivery</span>
 </label>
 
-<label>
+<label class="payment-option">
+    <input
+        type="radio"
+        name="payment"
+        value="UPI"
+    >
+    <span>📱 UPI</span>
+</label>
 
-<input
-    type="radio"
-    name="payment"
-    value="Online Payment"
->
+<label class="payment-option">
+    <input
+        type="radio"
+        name="payment"
+        value="Card"
+    >
+    <span>💳 Credit / Debit Card</span>
+</label>
 
-Online Payment
-
+<label class="payment-option">
+    <input
+        type="radio"
+        name="payment"
+        value="Net Banking"
+    >
+    <span>🏦 Net Banking</span>
 </label>
 
 </div>
 
-
+<!-- ORDER SUMMARY -->
 <div class="order-summary">
 
-<h3>Order Summary</h3>
+    <h3>Order Summary</h3>
 
-<div>
-    Product Price:
-    ₹<span id="checkoutProductPrice">0</span>
-</div>
+    <div class="summary-row">
+        <span>Product Price</span>
+        <span>₹<span id="checkoutProductPrice">0</span></span>
+    </div>
 
-<div>
-    Quantity:
-    <span id="checkoutQuantity">1</span>
-</div>
+    <div class="summary-row">
+        <span>Quantity</span>
+        <span id="checkoutQuantity">1</span>
+    </div>
 
-<div>
-    Delivery:
-    <span>FREE</span>
-</div>
+    <div class="summary-row">
+        <span>Delivery</span>
+        <span class="free">FREE</span>
+    </div>
 
-<hr>
-
-<h2>
-    Total:
-    ₹<span id="checkoutTotal">0</span>
-</h2>
+    <div class="summary-total">
+        <span>Total Amount</span>
+        <span>₹<span id="checkoutTotal">0</span></span>
+    </div>
 
 </div>
 
-
+<!-- PLACE ORDER -->
 <button
+    type="button"
     class="place-order"
     onclick="placeOrder()"
 >
     🛍️ Place Order
 </button>
 
-
-<div
-    id="orderSuccess"
-    class="order-success"
-    style="display:none;"
->
-
-    <h2>🎉 Order Placed Successfully!</h2>
-
-    <p>
-        Thank you for shopping with us.
-    </p>
-
-    <p>
-        Your order has been received.
-    </p>
-
 </div>
 
 </div>
-
-
-</div>
-
 
 <script>
-
-/* CHECKOUT QUANTITY */
-
-const quantitySelect =
-document.getElementById("customerQuantity");
-
-if(quantitySelect){
-
-    quantitySelect.addEventListener("change", function(){
-
-        const quantity =
-        Number(this.value);
-
-        const priceElement =
-        document.getElementById("checkoutProductPrice");
-
-        const totalElement =
-        document.getElementById("checkoutTotal");
-
-        const quantityElement =
-        document.getElementById("checkoutQuantity");
-
-        if(quantityElement){
-            quantityElement.innerText = quantity;
-        }
-
-        if(priceElement && totalElement){
-
-            const price =
-            Number(priceElement.innerText) || 0;
-
-            totalElement.innerText =
-            price * quantity;
-
-        }
-
-    });
-
-}
-
-
-/* PLACE ORDER */
 
 function placeOrder(){
 
     const name =
-    document.getElementById("customerName")?.value.trim();
+        document.getElementById("customerName").value.trim();
 
     const phone =
-    document.getElementById("customerPhone")?.value.trim();
+        document.getElementById("customerPhone").value.trim();
 
     const address =
-    document.getElementById("customerAddress")?.value.trim();
+        document.getElementById("customerAddress").value.trim();
 
     const city =
-    document.getElementById("customerCity")?.value.trim();
+        document.getElementById("customerCity").value.trim();
 
     const pincode =
-    document.getElementById("customerPincode")?.value.trim();
+        document.getElementById("customerPincode").value.trim();
 
     const quantity =
-    document.getElementById("customerQuantity")?.value || 1;
-
-
-    if(!name){
-
-        alert("Please enter your name.");
-
-        return;
-    }
-
-
-    if(!phone){
-
-        alert("Please enter your mobile number.");
-
-        return;
-    }
-
-
-    if(!address){
-
-        alert("Please enter your complete address.");
-
-        return;
-    }
-
-
-    if(!city){
-
-        alert("Please enter your city.");
-
-        return;
-    }
-
-
-    if(!pincode){
-
-        alert("Please enter your PIN code.");
-
-        return;
-    }
-
+        document.getElementById("customerQuantity").value;
 
     const payment =
-    document.querySelector(
-        'input[name="payment"]:checked'
-    )?.value || "Cash on Delivery";
+        document.querySelector(
+            'input[name="payment"]:checked'
+        ).value;
 
+    if(!name){
+        alert("Please enter your name");
+        return;
+    }
+
+    if(!phone){
+        alert("Please enter your mobile number");
+        return;
+    }
+
+    if(!address){
+        alert("Please enter your address");
+        return;
+    }
+
+    if(!city){
+        alert("Please enter your city");
+        return;
+    }
+
+    if(!pincode){
+        alert("Please enter your pincode");
+        return;
+    }
 
     const order = {
-
-        id:
-        "ORD" +
-        Date.now(),
-
-        customerName:name,
-
-        phone:phone,
-
-        address:address,
-
-        city:city,
-
-        pincode:pincode,
-
-        quantity:Number(quantity),
-
-        payment:payment,
-
-        date:
-        new Date().toLocaleString(),
-
-        status:"Pending"
-
+        id: "ORD" + Date.now(),
+        customerName: name,
+        phone: phone,
+        address: address,
+        city: city,
+        pincode: pincode,
+        quantity: quantity,
+        payment: payment,
+        date: new Date().toLocaleString(),
+        status: "Pending"
     };
 
-
     let orders =
-    JSON.parse(
-        localStorage.getItem("sjt_orders")
-    ) || [];
-
+        JSON.parse(
+            localStorage.getItem("sjt_orders")
+        ) || [];
 
     orders.push(order);
-
 
     localStorage.setItem(
         "sjt_orders",
         JSON.stringify(orders)
     );
 
-
-    const success =
-    document.getElementById("orderSuccess");
-
-
-    if(success){
-
-        success.style.display = "block";
-
-        success.scrollIntoView({
-            behavior:"smooth"
-        });
-
-    }
-
-
     alert(
-        "Order placed successfully! Order ID: " +
-        order.id
+        "Order placed successfully!\\n\\n" +
+        "Order ID: " + order.id
     );
 
+    window.location.href = "index.html";
 }
 
 </script>
-
-</body>
-</html>
