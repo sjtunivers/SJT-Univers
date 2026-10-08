@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ShopNow Admin</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#f5f5f5;
+    color:#222;
+}
+
+header{
+    background:#111;
+    color:#fff;
+    padding:18px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+header h2{margin:0;color:#ffc107}
+
+.container{
+    max-width:1000px;
+    margin:25px auto;
+    padding:15px;
+}
+
+.card{
+    background:#fff;
+    padding:20px;
+    border-radius:10px;
+    margin-bottom:20px;
+    box-shadow:0 2px 8px #ddd;
+}
+
+input,select{
+    width:100%;
+    padding:12px;
+    margin:7px 0 12px;
+    border:1px solid #ccc;
+    border-radius:6px;
+}
+
+button{
+    border:0;
+    padding:11px 18px;
+    border-radius:6px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.add{
+    background:#ffc107;
+}
+
+.delete{
+    background:#e53935;
+    color:white;
+}
+
+.product{
+    display:flex;
+    gap:15px;
+    align-items:center;
+    border-bottom:1px solid #ddd;
+    padding:15px 0;
+}
+
+.product img{
+    width:80px;
+    height:80px;
+    object-fit:cover;
+    border-radius:8px;
+}
+
+.product-info{
+    flex:1;
+}
+
+.price{
+    color:#008000;
+    font-weight:bold;
+}
+
+@media(max-width:600px){
+    .product{
+        align-items:flex-start;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h2>ShopNow Admin</h2>
+    <span>Admin Panel</span>
+</header>
+
+<div class="container">
+
+<div class="card">
+<h3>➕ Add Product</h3>
+
+<input id="name" placeholder="Product Name">
+
+<select id="category">
+<option value="men">Men</option>
+<option value="women">Women</option>
+<option value="kids">Kids</option>
+<option value="shoes">Shoes</option>
+<option value="bags">Bags</option>
+<option value="beauty">Beauty</option>
+<option value="electronics">Electronics</option>
+<option value="home">Home</option>
+</select>
+
+<input id="price" type="number" placeholder="Price">
+<input id="oldPrice" type="number" placeholder="Old Price">
+<input id="discount" type="number" placeholder="Discount %">
+<input id="rating" type="number" step="0.1" placeholder="Rating">
+<input id="image" placeholder="Image URL">
+
+<button class="add" onclick="addProduct()">Add Product</button>
+</div>
+
+
+<div class="card">
+<h3>📦 Products</h3>
+<div id="products"></div>
+</div>
+
+</div>
+
+<script>
+
+let products = JSON.parse(localStorage.getItem("shopProducts")) || [];
+
+function save(){
+    localStorage.setItem("shopProducts",JSON.stringify(products));
+}
+
+function showProducts(){
+
+    const box=document.getElementById("products");
+    box.innerHTML="";
+
+    if(products.length===0){
+        box.innerHTML="<p>No products added.</p>";
+        return;
+    }
+
+    products.forEach((p,index)=>{
+
+        box.innerHTML += `
+        <div class="product">
+
+            <img src="${p.image}" onerror="this.src='https://via.placeholder.com/80'">
+
+            <div class="product-info">
+                <b>${p.name}</b><br>
+                Category: ${p.category}<br>
+                <span class="price">₹${p.price}</span>
+                &nbsp;
+                <del>₹${p.oldPrice}</del><br>
+                ⭐ ${p.rating} | ${p.discount}% OFF
+            </div>
+
+            <button class="delete" onclick="deleteProduct(${index})">
+                Delete
+            </button>
+
+        </div>
+        `;
+    });
+}
+
+function addProduct(){
+
+    const name=document.getElementById("name").value.trim();
+    const category=document.getElementById("category").value;
+    const price=document.getElementById("price").value;
+    const oldPrice=document.getElementById("oldPrice").value;
+    const discount=document.getElementById("discount").value;
+    const rating=document.getElementById("rating").value;
+    const image=document.getElementById("image").value.trim();
+
+    if(!name || !price || !image){
+        alert("Product Name, Price aur Image URL bharna zaroori hai.");
+        return;
+    }
+
+    products.push({
+        id:Date.now(),
+        name:name,
+        category:category,
+        price:Number(price),
+        oldPrice:Number(oldPrice || price),
+        discount:Number(discount || 0),
+        rating:Number(rating || 0),
+        image:image
+    });
+
+    save();
+    showProducts();
+
+    document.getElementById("name").value="";
+    document.getElementById("price").value="";
+    document.getElementById("oldPrice").value="";
+    document.getElementById("discount").value="";
+    document.getElementById("rating").value="";
+    document.getElementById("image").value="";
+
+    alert("Product Added ✅");
+}
+
+function deleteProduct(index){
+
+    if(confirm("Kya aap ye product delete karna chahte hain?")){
+        products.splice(index,1);
+        save();
+        showProducts();
+    }
+}
+
+showProducts();
+
+</script>
+
+</body>
+</html>
