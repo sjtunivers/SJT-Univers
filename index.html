@@ -216,10 +216,6 @@ header{
     cursor:pointer;
 }
 
-.hero-btn:hover{
-    background:#fff;
-}
-
 .hero-bags{
     font-size:150px;
 }
@@ -270,7 +266,6 @@ header{
 .product:hover{
     transform:translateY(-5px);
     border-color:#f5c542;
-    box-shadow:0 5px 25px rgba(245,197,66,.15);
 }
 
 .product-image{
@@ -288,14 +283,11 @@ header{
     object-fit:cover;
 }
 
-.product-placeholder{
-    font-size:90px;
-}
-
 .discount{
     position:absolute;
     top:10px;
     left:10px;
+    z-index:2;
     background:#f5c542;
     color:#000;
     padding:5px 8px;
@@ -308,6 +300,7 @@ header{
     position:absolute;
     top:9px;
     right:9px;
+    z-index:3;
     background:#111;
     border:1px solid #f5c542;
     color:#fff;
@@ -380,8 +373,21 @@ header{
     color:#f5c542;
 }
 
-.add-cart:hover{
-    background:#fff;
+/* PRODUCT GALLERY */
+.gallery{
+    position:relative;
+}
+
+.image-count{
+    position:absolute;
+    bottom:8px;
+    right:8px;
+    z-index:3;
+    background:#000c;
+    color:#fff;
+    padding:4px 8px;
+    border-radius:5px;
+    font-size:11px;
 }
 
 /* FEATURES */
@@ -448,10 +454,6 @@ footer a{
     text-decoration:none;
 }
 
-footer a:hover{
-    color:#f5c542;
-}
-
 .newsletter{
     display:flex;
     margin-top:12px;
@@ -469,16 +471,6 @@ footer a:hover{
     width:50px;
     background:#f5c542;
     border:0;
-    cursor:pointer;
-}
-
-.copyright{
-    text-align:center;
-    border-top:1px solid #333;
-    margin-top:30px;
-    padding-top:20px;
-    color:#888;
-    font-size:12px;
 }
 
 /* CART */
@@ -512,6 +504,7 @@ footer a:hover{
 .close{
     cursor:pointer;
     color:#f5c542;
+    font-size:22px;
 }
 
 .cart-items{
@@ -534,7 +527,13 @@ footer a:hover{
     display:flex;
     align-items:center;
     justify-content:center;
-    font-size:30px;
+    overflow:hidden;
+}
+
+.cart-item-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
 }
 
 .cart-item-info{
@@ -554,6 +553,14 @@ footer a:hover{
     cursor:pointer;
 }
 
+.qty-btn{
+    background:#222;
+    color:#fff;
+    border:1px solid #555;
+    padding:4px 8px;
+    margin:4px;
+}
+
 .cart-bottom{
     padding:20px;
     border-top:1px solid #5c4812;
@@ -570,6 +577,86 @@ footer a:hover{
     cursor:pointer;
 }
 
+/* MODAL */
+.modal{
+    position:fixed;
+    inset:0;
+    background:#000b;
+    z-index:5000;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:15px;
+}
+
+.modal.show{
+    display:flex;
+}
+
+.modal-box{
+    width:100%;
+    max-width:550px;
+    max-height:90vh;
+    overflow:auto;
+    background:#111;
+    border:1px solid #f5c542;
+    border-radius:12px;
+    padding:22px;
+}
+
+.modal-box h2{
+    margin-bottom:15px;
+}
+
+.form-group{
+    margin-bottom:12px;
+}
+
+.form-group label{
+    display:block;
+    margin-bottom:5px;
+    color:#ddd;
+    font-size:13px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select{
+    width:100%;
+    padding:12px;
+    background:#fff;
+    color:#111;
+    border:1px solid #777;
+    border-radius:6px;
+}
+
+.form-group textarea{
+    min-height:90px;
+    resize:vertical;
+}
+
+.place-order{
+    width:100%;
+    padding:14px;
+    background:#f5c542;
+    color:#000;
+    border:0;
+    border-radius:7px;
+    font-weight:bold;
+    font-size:16px;
+    margin-top:10px;
+}
+
+.cancel{
+    width:100%;
+    padding:12px;
+    background:#222;
+    color:#fff;
+    border:1px solid #555;
+    border-radius:7px;
+    margin-top:8px;
+}
+
 /* MOBILE */
 @media(max-width:1000px){
     .products{
@@ -578,10 +665,6 @@ footer a:hover{
 
     .footer-grid{
         grid-template-columns:repeat(3,1fr);
-    }
-
-    .header-links{
-        gap:10px;
     }
 }
 
@@ -603,19 +686,12 @@ footer a:hover{
 
     .header-links{
         margin-left:auto;
+        gap:10px;
     }
 
     .search{
         order:3;
         flex-basis:100%;
-    }
-
-    .header-item:nth-child(1){
-        display:none;
-    }
-
-    .categories{
-        justify-content:flex-start;
     }
 
     .hero{
@@ -664,14 +740,9 @@ footer a:hover{
     .footer-grid{
         grid-template-columns:1fr 1fr;
     }
-
 }
 
 @media(max-width:400px){
-
-    .products{
-        grid-template-columns:1fr 1fr;
-    }
 
     .hero-bags{
         display:none;
@@ -690,15 +761,12 @@ footer a:hover{
 
 <body>
 
-<!-- TOP BAR -->
 <div class="topbar">
     <div>🚚 Free Shipping All Over India</div>
     <div>🛡️ Safe & Secure Payments</div>
     <div>↻ Easy 7 Days Return</div>
 </div>
 
-
-<!-- HEADER -->
 <header>
 
     <div>
@@ -710,7 +778,7 @@ footer a:hover{
         <input
             id="search"
             type="text"
-            placeholder="Search for products, brands and more..."
+            placeholder="Search products..."
             onkeyup="searchProducts()"
         >
         <button onclick="searchProducts()">⌕</button>
@@ -720,17 +788,18 @@ footer a:hover{
 
         <div class="header-item" onclick="login()">
             <span class="header-icon">♙</span>
-            Login<br>Sign Up
+            Login
         </div>
 
-        <div class="header-item" onclick="alert('Wishlist feature ready!')">
+        <div class="header-item">
             <span class="header-icon">♡</span>
             Wishlist
         </div>
 
         <div class="header-item" onclick="openCart()">
             <span class="header-icon">🛒</span>
-            Cart <span class="cart-count" id="cartCount">0</span>
+            Cart
+            <span class="cart-count" id="cartCount">0</span>
         </div>
 
     </div>
@@ -738,7 +807,6 @@ footer a:hover{
 </header>
 
 
-<!-- CATEGORIES -->
 <div class="categories">
 
     <div class="category" onclick="filterCategory('all')">
@@ -789,7 +857,6 @@ footer a:hover{
 </div>
 
 
-<!-- HERO -->
 <section class="hero">
 
     <div class="hero-content">
@@ -819,7 +886,6 @@ footer a:hover{
 </section>
 
 
-<!-- PRODUCTS -->
 <section class="section">
 
     <div class="section-head">
@@ -837,7 +903,6 @@ footer a:hover{
     <div class="products" id="products"></div>
 
 
-    <!-- FEATURES -->
     <div class="features">
 
         <div class="feature">
@@ -864,6 +929,7 @@ footer a:hover{
 
 
 <!-- CART -->
+
 <div class="cart" id="cart">
 
     <div class="cart-head">
@@ -874,6 +940,7 @@ footer a:hover{
     <div class="cart-items" id="cartItems"></div>
 
     <div class="cart-bottom">
+
         <h3>
             Total: ₹<span id="total">0</span>
         </h3>
@@ -881,12 +948,125 @@ footer a:hover{
         <button class="checkout" onclick="checkout()">
             Proceed to Checkout
         </button>
+
     </div>
 
 </div>
 
 
-<!-- FOOTER -->
+<!-- CHECKOUT MODAL -->
+
+<div class="modal" id="checkoutModal">
+
+    <div class="modal-box">
+
+        <h2>📦 Delivery Details</h2>
+
+        <div class="form-group">
+            <label>Full Name *</label>
+            <input
+                id="customerName"
+                type="text"
+                placeholder="Enter your full name"
+            >
+        </div>
+
+        <div class="form-group">
+            <label>Mobile Number *</label>
+            <input
+                id="customerPhone"
+                type="tel"
+                maxlength="10"
+                placeholder="10 digit mobile number"
+            >
+        </div>
+
+        <div class="form-group">
+            <label>House / Flat / Building *</label>
+            <input
+                id="house"
+                type="text"
+                placeholder="House / Flat / Building"
+            >
+        </div>
+
+        <div class="form-group">
+            <label>Street / Area *</label>
+            <input
+                id="street"
+                type="text"
+                placeholder="Street / Area / Locality"
+            >
+        </div>
+
+        <div class="form-group">
+            <label>City *</label>
+            <input
+                id="city"
+                type="text"
+                placeholder="City"
+            >
+        </div>
+
+        <div class="form-group">
+            <label>State *</label>
+            <input
+                id="state"
+                type="text"
+                placeholder="State"
+            >
+        </div>
+
+        <div class="form-group">
+            <label>Pincode *</label>
+            <input
+                id="pincode"
+                type="text"
+                maxlength="6"
+                placeholder="6 digit pincode"
+            >
+        </div>
+
+        <div class="form-group">
+            <label>Landmark</label>
+            <input
+                id="landmark"
+                type="text"
+                placeholder="Nearby landmark (optional)"
+            >
+        </div>
+
+        <div class="form-group">
+            <label>Payment Method</label>
+
+            <select id="paymentMethod">
+                <option value="Cash on Delivery">
+                    Cash on Delivery
+                </option>
+
+                <option value="Online Payment">
+                    Online Payment
+                </option>
+            </select>
+        </div>
+
+        <button
+            class="place-order"
+            onclick="placeOrder()">
+            ✅ Place Order
+        </button>
+
+        <button
+            class="cancel"
+            onclick="closeCheckout()">
+            Cancel
+        </button>
+
+    </div>
+
+</div>
+
+
 <footer>
 
     <div class="footer-grid">
@@ -895,52 +1075,49 @@ footer a:hover{
             <h3>Shop<span>Now</span></h3>
 
             <p>
-                Your one-stop destination for the latest fashion,
+                Your one-stop destination for fashion,
                 electronics, beauty and more.
-            </p>
-
-            <p>
-                Shop smarter, live better!
             </p>
         </div>
 
         <div>
             <h3>Quick Links</h3>
-
             <a href="#">Home</a>
             <a href="#">About Us</a>
             <a href="#">Contact Us</a>
-            <a href="#">Careers</a>
-            <a href="#">Blog</a>
         </div>
 
         <div>
             <h3>Customer Service</h3>
-
             <a href="#">Help Center</a>
             <a href="#">Track Order</a>
             <a href="#">Returns & Refunds</a>
-            <a href="#">Shipping Info</a>
-            <a href="#">FAQs</a>
         </div>
 
         <div>
             <h3>Policy</h3>
-
             <a href="#">Privacy Policy</a>
             <a href="#">Terms & Conditions</a>
-            <a href="#">Security</a>
-            <a href="#">Sitemap</a>
         </div>
 
         <div>
             <h3>Newsletter</h3>
 
-            <p>Get latest updates & offers</p>
+            <p>
+                Get latest updates & offers
+            </p>
 
             <div class="newsletter">
-                <input type="email" placeholder="Enter your email">
-                <button onclick="subscribe()">→</button>
+
+                <input
+                    type="email"
+                    placeholder="Enter your email"
+                >
+
+                <button onclick="subscribe()">
+                    →
+                </button>
+
             </div>
 
         </div>
@@ -956,290 +1133,45 @@ footer a:hover{
 
 <script>
 
-/* PRODUCTS */
+/* =========================
+   DEFAULT PRODUCTS
+========================= */
 
-const products = [
+const defaultProducts = [
 
 {
- id:1,
- name:"Men's Shirt & Pant Combo",
- category:"men",
- price:799,
- old:1499,
- rating:4.3,
- discount:45,
- image:"https://res.cloudinary.com/en1qletq/image/upload/f_auto,q_auto/2450",
+    id:1,
+    name:"Men's Shirt & Pant Combo",
+    category:"men",
+    price:799,
+    old:1499,
+    rating:4.3,
+    discount:45,
+    images:[
+        "https://res.cloudinary.com/en1qletq/image/upload/f_auto,q_auto/2450"
+    ]
 },
 
 {
- id:2,
- name:"Women's Printed Rayon Kurti",
- category:"women",
- price:499,
- old:999,
- rating:4.4,
- discount:50,
- <a href="https://ibb.co/Z6KTPsYN"><img src="https://i.ibb.co/fYt05RnQ/file-0000000046508208a26195a7bab608f9.png" alt="file-0000000046508208a26195a7bab608f9" border="0"></a>
+    id:2,
+    name:"Women's Printed Rayon Kurti",
+    category:"women",
+    price:499,
+    old:999,
+    rating:4.4,
+    discount:50,
+    images:[
+        "https://i.ibb.co/fYt05RnQ/file-0000000046508208a26195a7bab608f9.png"
+    ]
 },
 
 {
- id:3,
- name:"Stylish Men's Casual Shirt",
- category:"men",
- price:399,
- old:799,
- rating:4.2,
- discount:50,
- image:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=600&q=80"
-},
-
-{
- id:4,
- name:"Women's Fashion Dress",
- category:"women",
- price:699,
- old:1299,
- rating:4.5,
- discount:46,
- image:"https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=600&q=80"
-},
-
-{
- id:5,
- name:"Running Sports Shoes",
- category:"shoes",
- price:899,
- old:1799,
- rating:4.3,
- discount:50,
- image:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=80"
-},
-
-{
- id:6,
- name:"Men's Premium T-Shirt",
- category:"men",
- price:299,
- old:599,
- rating:4.1,
- discount:50,
- image:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=600&q=80"
-},
-
-{
- id:7,
- name:"Women's Stylish Top",
- category:"women",
- price:449,
- old:899,
- rating:4.4,
- discount:50,
- image:"https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=600&q=80"
-},
-
-{
- id:8,
- name:"Wireless Bluetooth Earbuds",
- category:"electronics",
- price:999,
- old:1999,
- rating:4.2,
- discount:50,
- image:"https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=80"
-},
-
-{
- id:9,
- name:"Smart Mobile Phone",
- category:"electronics",
- price:8999,
- old:10999,
- rating:4.5,
- discount:18,
- image:"https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=600&q=80"
-},
-
-{
- id:10,
- name:"Beauty Makeup Kit",
- category:"beauty",
- price:599,
- old:999,
- rating:4.3,
- discount:40,
- image:"https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=600&q=80"
-}
-
-];
-
-
-let cart = [];
-
-
-/* SHOW PRODUCTS */
-
-function showProducts(list){
-
-    const box = document.getElementById("products");
-
-    box.innerHTML = "";
-
-    if(list.length === 0){
-
-        box.innerHTML =
-        "<h2>No products found</h2>";
-
-        return;
-    }
-
-    list.forEach(product => {
-
-        box.innerHTML += `
-
-        <div class="product">
-
-            <div class="discount">
-                -${product.discount}%
-            </div>
-
-            <button
-                class="wishlist"
-                onclick="wishlist()">
-                ♡
-            </button>
-
-            <div class="product-image">
-
-                <img src="${product.image}" alt="${product.name}">
-
-            </div>
-
-            <div class="product-info">
-
-                <div class="rating">
-                    ★ ${product.rating}
-                </div>
-
-                <div class="product-name">
-                    ${product.name}
-                </div>
-
-                <div class="price">
-                    ₹${product.price}
-
-                    <span class="old-price">
-                        ₹${product.old}
-                    </span>
-
-                    <span class="off">
-                        ${product.discount}% off
-                    </span>
-                </div>
-
-                <button
-                    class="add-cart"
-                    onclick="addCart(${product.id})">
-                    🛒 Add to Cart
-                </button>
-
-                <button
-                    class="buy-now"
-                    onclick="buyNow(${product.id})">
-                    ⚡ Buy Now
-                </button>
-
-            </div>
-
-        </div>
-
-        `;
-
-    });
-
-}
-
-
-/* SEARCH */
-
-function searchProducts(){
-
-    const value =
-    document
-    .getElementById("search")
-    .value
-    .toLowerCase();
-
-    const result =
-    products.filter(product =>
-        product.name.toLowerCase().includes(value)
-    );
-
-    showProducts(result);
-}
-
-
-/* CATEGORY */
-
-function filterCategory(category){
-
-    if(category === "all"){
-
-        showProducts(products);
-
-        return;
-    }
-
-    const result =
-    products.filter(product =>
-        product.category === category
-    );
-
-    showProducts(result);
-}
-
-
-/* CART */
-
-function addCart(id){
-
-    const product =
-    products.find(p => p.id === id);
-
-    const existing =
-    cart.find(p => p.id === id);
-
-    if(existing){
-
-        existing.qty++;
-
-    }else{
-
-        cart.push({
-            ...product,
-            qty:1
-        });
-
-    }
-
-    updateCart();
-
-    openCart();
-}
-
-
-function updateCart(){
-
-    document.getElementById("cartCount").innerText =
-    cart.reduce((sum,item)=>sum+item.qty,0);
-
-    const box =
-    document.getElementById("cartItems");
-
-    box.innerHTML = "";
-
-    let total = 0;
-
-    if(cart.length === 0){
-
-        box.innerHTML =
-        "
+    id:3,
+    name:"Stylish Men's Casual Shirt",
+    category:"men",
+    price:399,
+    old:799,
+    rating:4.2,
+    discount:50,
+    images:[
+        "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?au
