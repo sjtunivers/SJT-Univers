@@ -1,0 +1,22 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShopNow - All Products</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <a href="index.html" class="logo">ShopNow</a>
+    <input id="search" type="search" placeholder="Search products..." oninput="searchProducts()">
+    <a href="index.html">Home</a>
+    <a href="cart.html">Cart</a>
+  </header>  <main>
+    <h1>All Products</h1>
+    <div id="products" class="products"></div>
+  </main>  <script src="script.js"></script>  <script>
+    if (typeof showProducts === "function") {
+      showProducts();
+    }
+  </script></body>
+</html>
