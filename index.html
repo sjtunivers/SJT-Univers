@@ -4,1263 +4,241 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ShopNow - Online Shopping</title>
-
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
-}
-
-body{
-background:#050505;
-color:white;
-}
-
-.topbar{
-background:#0b0b0b;
-border-bottom:1px solid #49390e;
-display:flex;
-justify-content:space-around;
-padding:9px;
-font-size:12px;
-}
-
-header{
-background:#050505;
-border-bottom:1px solid #49390e;
-padding:15px 4%;
-display:flex;
-align-items:center;
-gap:20px;
-position:sticky;
-top:0;
-z-index:1000;
-}
-
-.logo{
-font-size:27px;
-font-weight:bold;
-white-space:nowrap;
-}
-
-.logo span{
-color:#f5c542;
-}
-
-.tagline{
-font-size:10px;
-color:#aaa;
-}
-
-.search{
-flex:1;
-height:44px;
-background:white;
-display:flex;
-border:2px solid #f5c542;
-border-radius:6px;
-overflow:hidden;
-}
-
-.search input{
-flex:1;
-border:0;
-outline:0;
-padding:10px;
-font-size:14px;
-}
-
-.search button{
-width:55px;
-border:0;
-background:#f5c542;
-font-size:20px;
-}
-
-.header-links{
-display:flex;
-gap:18px;
-}
-
-.header-item{
-text-align:center;
-font-size:12px;
-cursor:pointer;
-}
-
-.header-icon{
-display:block;
-font-size:21px;
-}
-
-.categories{
-display:flex;
-justify-content:center;
-gap:20px;
-padding:14px 8px;
-background:#080808;
-border-bottom:1px solid #49390e;
-overflow-x:auto;
-}
-
-.category{
-min-width:65px;
-text-align:center;
-cursor:pointer;
-}
-
-.category-icon{
-width:42px;
-height:42px;
-margin:auto;
-display:flex;
-align-items:center;
-justify-content:center;
-background:#191919;
-border:1px solid #584611;
-border-radius:50%;
-font-size:21px;
-}
-
-.category-name{
-font-size:12px;
-margin-top:6px;
-}
-
-.hero{
-width:96%;
-max-width:1450px;
-margin:20px auto;
-min-height:300px;
-border:1px solid #c79d2c;
-border-radius:10px;
-padding:45px 7%;
-display:flex;
-align-items:center;
-justify-content:space-between;
-background:radial-gradient(circle at 80%,#4d3a12,#151208 30%,#050505 70%);
-}
-
-.hero-small{
-color:#f5c542;
-letter-spacing:3px;
-margin-bottom:10px;
-}
-
-.hero h1{
-font-size:48px;
-line-height:1.1;
-margin-bottom:15px;
-}
-
-.hero h1 span{
-color:#f5c542;
-}
-
-.hero p{
-color:#ddd;
-margin-bottom:20px;
-}
-
-.hero-btn{
-background:#f5c542;
-border:0;
-padding:13px 25px;
-border-radius:25px;
-font-weight:bold;
-}
-
-.hero-bags{
-font-size:120px;
-}
-
-.section{
-width:96%;
-max-width:1450px;
-margin:30px auto;
-}
-
-.section-head{
-display:flex;
-justify-content:space-between;
-margin-bottom:18px;
-}
-
-.section-title{
-font-size:26px;
-}
-
-.section-title span{
-color:#f5c542;
-}
-
-.view-all{
-color:#f5c542;
-cursor:pointer;
-}
-
-.products{
-display:grid;
-grid-template-columns:repeat(5,1fr);
-gap:15px;
-}
-
-.product{
-background:#111;
-border:1px solid #5c4812;
-border-radius:8px;
-overflow:hidden;
-position:relative;
-}
-
-.product-image{
-height:230px;
-background:#181818;
-}
-
-.product-image img{
-width:100%;
-height:100%;
-object-fit:cover;
-}
-
-.discount{
-position:absolute;
-top:9px;
-left:9px;
-background:#f5c542;
-color:#000;
-padding:5px 7px;
-border-radius:4px;
-font-size:11px;
-font-weight:bold;
-}
-
-.product-info{
-padding:12px;
-}
-
-.rating{
-display:inline-block;
-background:#f5c542;
-color:#000;
-padding:4px 7px;
-border-radius:4px;
-font-size:11px;
-font-weight:bold;
-}
-
-.product-name{
-font-size:14px;
-font-weight:bold;
-margin-top:8px;
-min-height:36px;
-}
-
-.price{
-font-size:20px;
-font-weight:bold;
-margin-top:8px;
-}
-
-.old-price{
-font-size:12px;
-color:#777;
-text-decoration:line-through;
-margin-left:5px;
-}
-
-.off{
-font-size:12px;
-color:#55c878;
-margin-left:5px;
-}
-
-.buy-now{
-width:100%;
-padding:11px;
-margin-top:10px;
-background:#f5c542;
-border:0;
-border-radius:5px;
-font-weight:bold;
-cursor:pointer;
-}
-
-.buy-now:hover{
-background:white;
-}
-
-.features{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-border:1px solid #5c4812;
-margin-top:35px;
-}
-
-.feature{
-padding:20px;
-text-align:center;
-border-right:1px solid #5c4812;
-}
-
-.feature:last-child{
-border:0;
-}
-
-.feature-icon{
-font-size:28px;
-color:#f5c542;
-}
-
-.feature p{
-color:#aaa;
-font-size:13px;
-margin-top:5px;
-}
-
-footer{
-background:#080808;
-border-top:1px solid #5c4812;
-margin-top:40px;
-padding:40px 5% 20px;
-}
-
-.footer-grid{
-display:grid;
-grid-template-columns:2fr 1fr 1fr 1fr;
-gap:30px;
-}
-
-footer h3{
-margin-bottom:12px;
-}
-
-footer h3 span{
-color:#f5c542;
-}
-
-footer p,
-footer a{
-display:block;
-color:#aaa;
-font-size:13px;
-margin:8px 0;
-text-decoration:none;
-}
-
-.copyright{
-text-align:center;
-border-top:1px solid #333;
-margin-top:25px;
-padding-top:18px;
-color:#888;
-font-size:12px;
-}
-
-
-/* CHECKOUT */
-
-.checkout-page{
-display:none;
-width:94%;
-max-width:900px;
-margin:25px auto;
-}
-
-.checkout-box{
-background:#111;
-border:1px solid #5c4812;
-border-radius:10px;
-padding:20px;
-margin-bottom:18px;
-}
-
-.checkout-box h2{
-color:#f5c542;
-margin-bottom:18px;
-}
-
-.form-group{
-margin-bottom:14px;
-}
-
-.form-group label{
-display:block;
-margin-bottom:6px;
-font-size:14px;
-}
-
-.form-group input,
-.form-group textarea,
-.form-group select{
-width:100%;
-padding:12px;
-background:#181818;
-color:white;
-border:1px solid #555;
-border-radius:5px;
-outline:none;
-}
-
-.form-group textarea{
-height:90px;
-resize:none;
-}
-
-.payment-option{
-display:block;
-padding:12px;
-margin-top:10px;
-background:#181818;
-border:1px solid #444;
-border-radius:6px;
-cursor:pointer;
-}
-
-.payment-option input{
-margin-right:8px;
-}
-
-.order-summary{
-margin-top:20px;
-border-top:1px solid #444;
-padding-top:15px;
-}
-
-.summary-row{
-display:flex;
-justify-content:space-between;
-padding:8px 0;
-color:#ccc;
-}
-
-.summary-total{
-display:flex;
-justify-content:space-between;
-font-size:20px;
-font-weight:bold;
-color:#f5c542;
-border-top:1px solid #444;
-padding-top:12px;
-margin-top:8px;
-}
-
-.place-order{
-width:100%;
-padding:14px;
-margin-top:20px;
-background:#f5c542;
-color:#000;
-border:0;
-border-radius:6px;
-font-size:16px;
-font-weight:bold;
-cursor:pointer;
-}
-
-.back-btn{
-background:#222;
-color:#f5c542;
-border:1px solid #f5c542;
-padding:10px 18px;
-border-radius:5px;
-margin-bottom:15px;
-cursor:pointer;
-}
-
-@media(max-width:1000px){
-.products{
-grid-template-columns:repeat(3,1fr);
-}
-}
-
-@media(max-width:650px){
-header{
-flex-wrap:wrap;
-padding:12px;
-}
-
-.search{
-order:3;
-flex-basis:100%;
-}
-
-.hero{
-padding:30px 20px;
-}
-
-.hero h1{
-font-size:32px;
-}
-
-.hero-bags{
-font-size:60px;
-}
-
-.products{
-grid-template-columns:repeat(2,1fr);
-gap:9px;
-}
-
-.product-image{
-height:180px;
-}
-
-.features{
-grid-template-columns:1fr;
-}
-
-.feature{
-border-right:0;
-border-bottom:1px solid #5c4812;
-}
-
-.footer-grid{
-grid-template-columns:1fr 1fr;
-}
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#050505;color:white}
+.topbar{background:#0b0b0b;border-bottom:1px solid #49390e;display:flex;justify-content:space-around;padding:9px;font-size:12px;gap:8px}
+header{background:#050505;border-bottom:1px solid #49390e;padding:15px 4%;display:flex;align-items:center;gap:20px;position:sticky;top:0;z-index:1000}
+.logo{font-size:27px;font-weight:bold;white-space:nowrap}.logo span,footer h3 span{color:#f5c542}
+.tagline{font-size:10px;color:#aaa}
+.search{flex:1;height:44px;background:white;display:flex;border:2px solid #f5c542;border-radius:6px;overflow:hidden}
+.search input{flex:1;min-width:0;border:0;outline:0;padding:10px;font-size:14px}.search button{width:55px;border:0;background:#f5c542;font-size:20px;cursor:pointer}
+.header-links{display:flex;gap:18px}.header-item{text-align:center;font-size:12px;cursor:pointer;white-space:nowrap}.header-icon{display:block;font-size:21px}
+.categories{display:flex;justify-content:center;gap:20px;padding:14px 8px;background:#080808;border-bottom:1px solid #49390e;overflow-x:auto}
+.category{min-width:65px;text-align:center;cursor:pointer}.category-icon{width:42px;height:42px;margin:auto;display:flex;align-items:center;justify-content:center;background:#191919;border:1px solid #584611;border-radius:50%;font-size:21px}.category-name{font-size:12px;margin-top:6px}
+.hero{width:96%;max-width:1450px;margin:20px auto;min-height:300px;border:1px solid #c79d2c;border-radius:10px;padding:45px 7%;display:flex;align-items:center;justify-content:space-between;background:radial-gradient(circle at 80%,#4d3a12,#151208 30%,#050505 70%)}
+.hero-small{color:#f5c542;letter-spacing:3px;margin-bottom:10px}.hero h1{font-size:48px;line-height:1.1;margin-bottom:15px}.hero h1 span{color:#f5c542}.hero p{color:#ddd;margin-bottom:20px}.hero-btn{background:#f5c542;border:0;padding:13px 25px;border-radius:25px;font-weight:bold;cursor:pointer}.hero-bags{font-size:120px}
+.section{width:96%;max-width:1450px;margin:30px auto}.section-head{display:flex;justify-content:space-between;margin-bottom:18px}.section-title{font-size:26px}.section-title span,.view-all{color:#f5c542}.view-all{cursor:pointer}
+.products{display:grid;grid-template-columns:repeat(5,1fr);gap:15px}.product{background:#111;border:1px solid #5c4812;border-radius:8px;overflow:hidden;position:relative}.product-image{height:230px;background:#181818}.product-image img{width:100%;height:100%;object-fit:cover}.discount{position:absolute;top:9px;left:9px;background:#f5c542;color:#000;padding:5px 7px;border-radius:4px;font-size:11px;font-weight:bold}.product-info{padding:12px}.rating{display:inline-block;background:#f5c542;color:#000;padding:4px 7px;border-radius:4px;font-size:11px;font-weight:bold}.product-name{font-size:14px;font-weight:bold;margin-top:8px;min-height:36px}.price{font-size:20px;font-weight:bold;margin-top:8px}.old-price{font-size:12px;color:#777;text-decoration:line-through;margin-left:5px}.off{font-size:12px;color:#55c878;margin-left:5px}.buy-now{width:100%;padding:11px;margin-top:10px;background:#f5c542;border:0;border-radius:5px;font-weight:bold;cursor:pointer}.buy-now:hover{background:white}
+.features{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid #5c4812;margin-top:35px}.feature{padding:20px;text-align:center;border-right:1px solid #5c4812}.feature:last-child{border:0}.feature-icon{font-size:28px;color:#f5c542}.feature p{color:#aaa;font-size:13px;margin-top:5px}
+footer{background:#080808;border-top:1px solid #5c4812;margin-top:40px;padding:40px 5% 20px}.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:30px}footer h3{margin-bottom:12px}footer p,footer a{display:block;color:#aaa;font-size:13px;margin:8px 0;text-decoration:none}.copyright{text-align:center;border-top:1px solid #333;margin-top:25px;padding-top:18px;color:#888;font-size:12px}
+.checkout-page{display:none;width:94%;max-width:900px;margin:25px auto}.checkout-box{background:#111;border:1px solid #5c4812;border-radius:10px;padding:20px;margin-bottom:18px}.checkout-box h2{color:#f5c542;margin-bottom:18px}.form-group{margin-bottom:14px}.form-group label{display:block;margin-bottom:6px;font-size:14px}.form-group input,.form-group textarea,.form-group select{width:100%;padding:12px;background:#181818;color:white;border:1px solid #555;border-radius:5px;outline:none}.form-group textarea{height:90px;resize:none}.payment-option{display:block;padding:12px;margin-top:10px;background:#181818;border:1px solid #444;border-radius:6px;cursor:pointer}.payment-option input{margin-right:8px}.order-summary{margin-top:20px;border-top:1px solid #444;padding-top:15px}.summary-row{display:flex;justify-content:space-between;padding:8px 0;color:#ccc}.summary-total{display:flex;justify-content:space-between;font-size:20px;font-weight:bold;color:#f5c542;border-top:1px solid #444;padding-top:12px;margin-top:8px}.place-order{width:100%;padding:14px;margin-top:20px;background:#f5c542;color:#000;border:0;border-radius:6px;font-size:16px;font-weight:bold;cursor:pointer}.back-btn{background:#222;color:#f5c542;border:1px solid #f5c542;padding:10px 18px;border-radius:5px;margin-bottom:15px;cursor:pointer}
+#loginPopup{display:none;position:fixed;inset:0;background:#000b;z-index:9999;align-items:center;justify-content:center;padding:16px}
+.login-card{background:#fff;color:#222;padding:24px;border-radius:12px;width:100%;max-width:380px;max-height:90vh;overflow:auto}
+.login-card h2{margin-bottom:8px}.login-card p{font-size:13px;color:#555;margin-bottom:12px}.login-card input{width:100%;padding:12px;margin:7px 0;border:1px solid #bbb;border-radius:5px;box-sizing:border-box}.login-actions{display:grid;gap:8px;margin-top:10px}.login-actions button{padding:11px;border:0;border-radius:5px;background:#f5c542;color:#111;font-weight:bold;cursor:pointer}.login-actions .secondary{background:#222;color:#fff}.login-message{font-size:13px;min-height:18px;margin-top:10px;color:#a11}.user-label{max-width:110px;overflow:hidden;text-overflow:ellipsis}
+@media(max-width:1000px){.products{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:650px){.topbar{font-size:10px;flex-wrap:wrap}header{flex-wrap:wrap;padding:12px}.search{order:3;flex-basis:100%}.header-links{margin-left:auto;gap:12px}.hero{padding:30px 20px}.hero h1{font-size:32px}.hero-bags{font-size:60px}.products{grid-template-columns:repeat(2,1fr);gap:9px}.product-image{height:180px}.features{grid-template-columns:1fr}.feature{border-right:0;border-bottom:1px solid #5c4812}.footer-grid{grid-template-columns:1fr 1fr}}
 </style>
 </head>
-
 <body>
-
-<div class="topbar">
-<div>🚚 Free Shipping All Over India</div>
-<div>🛡️ Safe & Secure Payments</div>
-<div>↻ Easy 7 Days Return</div>
-</div>
-
+<div class="topbar"><div>🚚 Free Shipping All Over India</div><div>🛡️ Safe & Secure Payments</div><div>↻ Easy 7 Days Return</div></div>
 <header>
-
-<div>
-<div class="logo">Shop<span>Now</span></div>
-<div class="tagline">Better Style • Better Life</div>
-</div>
-
-<div class="search">
-<input id="search" placeholder="Search products..." onkeyup="searchProducts()">
-<button onclick="searchProducts()">⌕</button>
-</div>
-
-<div class="header-links">
-<div class="header-item">
-<span class="header-icon">♙</span>
-Login
-</div>
-
-<div class="header-item">
-<span class="header-icon">♡</span>
-Wishlist
-</div>
-</div>
-
+  <div><div class="logo">Shop<span>Now</span></div><div class="tagline">Better Style • Better Life</div></div>
+  <div class="search"><input id="search" placeholder="Search products..." onkeyup="searchProducts()"><button onclick="searchProducts()">⌕</button></div>
+  <div class="header-links">
+    <div class="header-item" id="accountHeader" onclick="handleAccountClick()" role="button" tabindex="0"><span class="header-icon">♙</span><span id="accountLabel">Login</span></div>
+    <div class="header-item" onclick="alert('Wishlist feature is coming soon!')" role="button" tabindex="0"><span class="header-icon">♡</span>Wishlist</div>
+  </div>
 </header>
-
-
 <div class="categories">
-
-<div class="category" onclick="filterCategory('all')">
-<div class="category-icon">▦</div>
-<div class="category-name">All</div>
+  <div class="category" onclick="filterCategory('all')"><div class="category-icon">▦</div><div class="category-name">All</div></div>
+  <div class="category" onclick="filterCategory('men')"><div class="category-icon">👕</div><div class="category-name">Men</div></div>
+  <div class="category" onclick="filterCategory('women')"><div class="category-icon">👗</div><div class="category-name">Women</div></div>
+  <div class="category" onclick="filterCategory('kids')"><div class="category-icon">🧸</div><div class="category-name">Kids</div></div>
+  <div class="category" onclick="filterCategory('shoes')"><div class="category-icon">👟</div><div class="category-name">Shoes</div></div>
+  <div class="category" onclick="filterCategory('electronics')"><div class="category-icon">📱</div><div class="category-name">Electronics</div></div>
+  <div class="category" onclick="filterCategory('beauty')"><div class="category-icon">💄</div><div class="category-name">Beauty</div></div>
 </div>
-
-<div class="category" onclick="filterCategory('men')">
-<div class="category-icon">👕</div>
-<div class="category-name">Men</div>
-</div>
-
-<div class="category" onclick="filterCategory('women')">
-<div class="category-icon">👗</div>
-<div class="category-name">Women</div>
-</div>
-
-<div class="category" onclick="filterCategory('kids')">
-<div class="category-icon">🧸</div>
-<div class="category-name">Kids</div>
-</div>
-
-<div class="category" onclick="filterCategory('shoes')">
-<div class="category-icon">👟</div>
-<div class="category-name">Shoes</div>
-</div>
-
-<div class="category" onclick="filterCategory('electronics')">
-<div class="category-icon">📱</div>
-<div class="category-name">Electronics</div>
-</div>
-
-<div class="category" onclick="filterCategory('beauty')">
-<div class="category-icon">💄</div>
-<div class="category-name">Beauty</div>
-</div>
-
-</div>
-
-
 <div id="homePage">
-
-<section class="hero">
-
-<div>
-<div class="hero-small">NEW SEASON</div>
-
-<h1>
-Stylish Clothes<br>
-<span>For Every You</span>
-</h1>
-
-<p>Trendy • Comfortable • Affordable</p>
-
-<button class="hero-btn" onclick="scrollProducts()">
-Shop Now →
-</button>
+<section class="hero"><div><div class="hero-small">NEW SEASON</div><h1>Stylish Clothes<br><span>For Every You</span></h1><p>Trendy • Comfortable • Affordable</p><button class="hero-btn" onclick="scrollProducts()">Shop Now →</button></div><div class="hero-bags">🛍️</div></section>
+<section class="section" id="productSection"><div class="section-head"><div class="section-title">🔥 <span>Best</span> Deals</div><div class="view-all" onclick="filterCategory('all')">View All →</div></div><div class="products" id="products"></div>
+<div class="features"><div class="feature"><div class="feature-icon">🚚</div><h3>Free Shipping</h3><p>On All Orders</p></div><div class="feature"><div class="feature-icon">🛡️</div><h3>Secure Payments</h3><p>100% Safe & Secure</p></div><div class="feature"><div class="feature-icon">↻</div><h3>Easy Returns</h3><p>7 Days Return Policy</p></div></div></section>
 </div>
-
-<div class="hero-bags">🛍️</div>
-
-</section>
-
-
-<section class="section" id="productSection">
-
-<div class="section-head">
-<div class="section-title">
-🔥 <span>Best</span> Deals
-</div>
-
-<div class="view-all" onclick="filterCategory('all')">
-View All →
-</div>
-</div>
-
-<div class="products" id="products"></div>
-
-
-<div class="features">
-
-<div class="feature">
-<div class="feature-icon">🚚</div>
-<h3>Free Shipping</h3>
-<p>On All Orders</p>
-</div>
-
-<div class="feature">
-<div class="feature-icon">🛡️</div>
-<h3>Secure Payments</h3>
-<p>100% Safe & Secure</p>
-</div>
-
-<div class="feature">
-<div class="feature-icon">↻</div>
-<h3>Easy Returns</h3>
-<p>7 Days Return Policy</p>
-</div>
-
-</div>
-
-</section>
-
-</div>
-
-
-<!-- CHECKOUT -->
-
 <section class="checkout-page" id="checkoutPage">
+<button class="back-btn" onclick="goHome()">← Back to Shopping</button>
+<div class="checkout-box"><h2>📦 Delivery Address</h2>
+<div class="form-group"><label>Full Name *</label><input id="customerName" type="text" placeholder="Enter your full name" autocomplete="name"></div>
+<div class="form-group"><label>Mobile Number *</label><input id="customerPhone" type="tel" placeholder="Enter mobile number" autocomplete="tel"></div>
+<div class="form-group"><label>Complete Address *</label><textarea id="customerAddress" placeholder="House No, Street, Area" autocomplete="street-address"></textarea></div>
+<div class="form-group"><label>City *</label><input id="customerCity" type="text" placeholder="Enter city" autocomplete="address-level2"></div>
+<div class="form-group"><label>State *</label><input id="customerState" type="text" placeholder="Enter state" autocomplete="address-level1"></div>
+<div class="form-group"><label>Pincode *</label><input id="customerPincode" type="text" inputmode="numeric" placeholder="Enter pincode" autocomplete="postal-code"></div></div>
+<div class="checkout-box"><h2>📦 Order Details</h2><div class="form-group"><label>Product</label><input id="checkoutProduct" readonly></div><div class="form-group"><label>Quantity *</label><select id="customerQuantity" onchange="updateCheckoutTotal()"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></div></div>
+<div class="checkout-box"><h2>💳 Payment Method</h2>
+<label class="payment-option"><input type="radio" name="payment" value="Cash on Delivery" checked>💵 Cash on Delivery</label>
+<label class="payment-option"><input type="radio" name="payment" value="UPI">📱 UPI</label>
+<label class="payment-option"><input type="radio" name="payment" value="QR Scan">📷 QR Scan</label>
+<div id="upiDetails" style="display:none;margin-top:10px"><label>UPI ID</label><input type="text" id="upiId" value="sujitka@ptyes" readonly></div>
+<div id="qrDetails" style="display:none;margin-top:10px"><p>📷 Scan QR Code to Pay</p><img src="qr.png" alt="UPI QR Code" style="width:200px;max-width:100%"></div>
+<div class="order-summary"><div class="summary-row"><span>Product Price</span><span>₹<span id="checkoutProductPrice">0</span></span></div><div class="summary-row"><span>Quantity</span><span id="checkoutQuantity">1</span></div><div class="summary-row"><span>Delivery</span><span>FREE</span></div><div class="summary-total"><span>Total</span><span>₹<span id="checkoutTotal">0</span></span></div></div>
+<button class="place-order" onclick="placeOrder()">🛍️ Place Order</button></div></section>
+<footer><div class="footer-grid"><div><h3>Shop<span>Now</span></h3><p>Your one-stop destination for fashion, electronics, beauty and more.</p><p>Shop smarter, live better!</p></div><div><h3>Quick Links</h3><a href="#" onclick="goHome();return false">Home</a><a href="#">About Us</a><a href="#">Contact Us</a></div><div><h3>Customer Service</h3><a href="#">Help Center</a><a href="#">Track Order</a><a href="#">Returns & Refunds</a></div><div><h3>Policy</h3><a href="#">Privacy Policy</a><a href="#">Terms & Conditions</a><a href="#">Security</a></div></div><div class="copyright">© 2026 ShopNow. All Rights Reserved.</div></footer>
 
-<button class="back-btn" onclick="goHome()">
-← Back to Shopping
-</button>
-
-<div class="checkout-box">
-
-<h2>📦 Delivery Address</h2>
-
-<div class="form-group">
-<label>Full Name *</label>
-<input id="customerName" type="text" placeholder="Enter your full name">
+<div id="loginPopup" aria-hidden="true">
+  <div class="login-card" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
+    <h2 id="loginTitle">Login / Sign Up</h2><p>Use your email address and a password of at least 6 characters.</p>
+    <input id="loginEmail" type="email" placeholder="Email address" autocomplete="email">
+    <input id="loginPassword" type="password" placeholder="Password (minimum 6 characters)" autocomplete="current-password">
+    <div class="login-actions">
+      <button id="loginButton" onclick="submitEmailLogin()">Login</button>
+      <button id="createAccountButton" onclick="submitCreateAccount()">Create Account</button>
+      <button class="secondary" onclick="closeLoginPopup()">Close</button>
+    </div>
+    <div id="loginMessage" class="login-message" role="status" aria-live="polite"></div>
+  </div>
 </div>
-
-<div class="form-group">
-<label>Mobile Number *</label>
-<input id="customerPhone" type="tel" placeholder="Enter mobile number">
-</div>
-
-<div class="form-group">
-<label>Complete Address *</label>
-<textarea id="customerAddress" placeholder="House No, Street, Area"></textarea>
-</div>
-
-<div class="form-group">
-<label>City *</label>
-<input id="customerCity" type="text" placeholder="Enter city">
-</div>
-
-<div class="form-group">
-<label>State *</label>
-<input id="customerState" type="text" placeholder="Enter state">
-</div>
-
-<div class="form-group">
-<label>Pincode *</label>
-<input id="customerPincode" type="number" placeholder="Enter pincode">
-</div>
-
-</div>
-
-
-<div class="checkout-box">
-
-<h2>📦 Order Details</h2>
-
-<div class="form-group">
-<label>Product</label>
-<input id="checkoutProduct" readonly>
-</div>
-
-<div class="form-group">
-<label>Quantity *</label>
-
-<select id="customerQuantity" onchange="updateCheckoutTotal()">
-<option value="1">1</option>
-<option value="2">2</option>
-<option value="3">3</option>
-<option value="4">4</option>
-<option value="5">5</option>
-</select>
-
-</div>
-
-</div>
-
-
-<div class="checkout-box">
-
-<h2>💳 Payment Method</h2>
-
-<label class="payment-option">
-<input type="radio" name="payment" value="Cash on Delivery" checked>
-💵 Cash on Delivery
-</label>
-
-<label class="payment-option">
-<input type="radio" name="payment" value="UPI">
-📱 UPI
-</label>
-
-<label class="payment-option">
-<input type="radio" name="payment" value="QR Scan">
-📷 QR Scan
-</label>
-<div id="upiDetails" style="display:none; margin-top:10px;">
-<label>UPI ID</label>
-<input type="text" id="upiId" value="sujitka@ptyes" readonly>
-</div>
-
-<div id="qrDetails" style="display:none; margin-top:10px;">
-<p>📷 Scan QR Code to Pay</p>
-<img src="qr.png" alt="UPI QR Code" style="width:200px;max-width:100%;">
-</div>
-<div class="order-summary">
-
-<div class="summary-row">
-<span>Product Price</span>
-<span>₹<span id="checkoutProductPrice">0</span></span>
-</div>
-
-<div class="summary-row">
-<span>Quantity</span>
-<span id="checkoutQuantity">1</span>
-</div>
-
-<div class="summary-row">
-<span>Delivery</span>
-<span>FREE</span>
-</div>
-
-<div class="summary-total">
-<span>Total</span>
-<span>₹<span id="checkoutTotal">0</span></span>
-</div>
-
-</div>
-
-<button class="place-order" onclick="placeOrder()">
-🛍️ Place Order
-</button>
-
-</div>
-
-</section>
-
-
-<footer>
-
-<div class="footer-grid">
-
-<div>
-<h3>Shop<span>Now</span></h3>
-<p>Your one-stop destination for fashion, electronics, beauty and more.</p>
-<p>Shop smarter, live better!</p>
-</div>
-
-<div>
-<h3>Quick Links</h3>
-<a href="#">Home</a>
-<a href="#">About Us</a>
-<a href="#">Contact Us</a>
-</div>
-
-<div>
-<h3>Customer Service</h3>
-<a href="#">Help Center</a>
-<a href="#">Track Order</a>
-<a href="#">Returns & Refunds</a>
-</div>
-
-<div>
-<h3>Policy</h3>
-<a href="#">Privacy Policy</a>
-<a href="#">Terms & Conditions</a>
-<a href="#">Security</a>
-</div>
-
-</div>
-
-<div class="copyright">
-© 2026 ShopNow. All Rights Reserved.
-</div>
-
-</footer>
-
 
 <script>
-
 const products = [
-
-{
-id:1,
-name:"Men's Shirt & Pant Combo",
-category:"men",
-price:799,
-old:1499,
-rating:4.3,
-discount:45,
-image:"https://res.cloudinary.com/en1qletq/image/upload/f_auto,q_auto/2450"
-},
-
-{
-id:2,
-name:"Women's Printed Rayon Kurti",
-category:"women",
-price:499,
-old:999,
-rating:4.4,
-discount:50,
-image:"https://i.ibb.co/fYt05RnQ/file-0000000046508208a26195a7bab608f9.png"
-},
-
-{
-id:3,
-name:"Stylish Men's Casual Shirt",
-category:"men",
-price:399,
-old:799,
-rating:4.2,
-discount:50,
-image:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=600&q=80"
-},
-
-{
-id:4,
-name:"Women's Fashion Dress",
-category:"women",
-price:699,
-old:1299,
-rating:4.5,
-discount:46,
-image:"https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=600&q=80"
-},
-
-{
-id:5,
-name:"Running Sports Shoes",
-category:"shoes",
-price:899,
-old:1799,
-rating:4.3,
-discount:50,
-image:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=80"
-},
-
-{
-id:6,
-name:"Men's Premium T-Shirt",
-category:"men",
-price:299,
-old:599,
-rating:4.1,
-discount:50,
-image:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=600&q=80"
-},
-
-{
-id:7,
-name:"Women's Stylish Top",
-category:"women",
-price:449,
-old:899,
-rating:4.4,
-discount:50,
-image:"https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=600&q=80"
-},
-
-{
-id:8,
-name:"Wireless Bluetooth Earbuds",
-category:"electronics",
-price:999,
-old:1999,
-rating:4.2,
-discount:50,
-image:"https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=80"
-},
-
-{
-id:9,
-name:"Smart Mobile Phone",
-category:"electronics",
-price:8999,
-old:10999,
-rating:4.5,
-discount:18,
-image:"https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=600&q=80"
-},
-
-{
-id:10,
-name:"Beauty Makeup Kit",
-category:"beauty",
-price:599,
-old:999,
-rating:4.3,
-discount:40,
-image:"https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=600&q=80"
-}
-
+{id:1,name:"Men's Shirt & Pant Combo",category:"men",price:799,old:1499,rating:4.3,discount:45,image:"https://res.cloudinary.com/en1qletq/image/upload/f_auto,q_auto/2450"},
+{id:2,name:"Women's Printed Rayon Kurti",category:"women",price:499,old:999,rating:4.4,discount:50,image:"https://i.ibb.co/fYt05RnQ/file-0000000046508208a26195a7bab608f9.png"},
+{id:3,name:"Stylish Men's Casual Shirt",category:"men",price:399,old:799,rating:4.2,discount:50,image:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=600&q=80"},
+{id:4,name:"Women's Fashion Dress",category:"women",price:699,old:1299,rating:4.5,discount:46,image:"https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=600&q=80"},
+{id:5,name:"Running Sports Shoes",category:"shoes",price:899,old:1799,rating:4.3,discount:50,image:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=80"},
+{id:6,name:"Men's Premium T-Shirt",category:"men",price:299,old:599,rating:4.1,discount:50,image:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=600&q=80"},
+{id:7,name:"Women's Stylish Top",category:"women",price:449,old:899,rating:4.4,discount:50,image:"https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=600&q=80"},
+{id:8,name:"Wireless Bluetooth Earbuds",category:"electronics",price:999,old:1999,rating:4.2,discount:50,image:"https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=80"},
+{id:9,name:"Smart Mobile Phone",category:"electronics",price:8999,old:10999,rating:4.5,discount:18,image:"https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=600&q=80"},
+{id:10,name:"Beauty Makeup Kit",category:"beauty",price:599,old:999,rating:4.3,discount:40,image:"https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=600&q=80"}
 ];
-
-
 let selectedProduct = null;
-
+let currentCategory = "all";
 
 function showProducts(list){
-
-const box=document.getElementById("products");
-
-box.innerHTML="";
-
-list.forEach(product=>{
-
-box.innerHTML+=`
-
-<div class="product">
-
-<div class="discount">
--${product.discount}%
-</div>
-
-<div class="product-image">
-<img src="${product.image}" alt="${product.name}">
-</div>
-
-<div class="product-info">
-
-<div class="rating">
-★ ${product.rating}
-</div>
-
-<div class="product-name">
-${product.name}
-</div>
-
-<div class="price">
-₹${product.price}
-
-<span class="old-price">
-₹${product.old}
-</span>
-
-<span class="off">
-${product.discount}% off
-</span>
-
-</div>
-
-<button
-class="buy-now"
-onclick="buyNow(${product.id})">
-⚡ Buy Now
-</button>
-
-</div>
-
-</div>
-
-`;
-
-});
-
+ const box=document.getElementById("products"); box.innerHTML="";
+ list.forEach(product=>{
+  box.innerHTML+=`<div class="product"><div class="discount">-${product.discount}%</div><div class="product-image"><img src="${product.image}" alt="${product.name}" loading="lazy"></div><div class="product-info"><div class="rating">★ ${product.rating}</div><div class="product-name">${product.name}</div><div class="price">₹${product.price}<span class="old-price">₹${product.old}</span><span class="off">${product.discount}% off</span></div><button class="buy-now" onclick="buyNow(${product.id})">⚡ Buy Now</button></div></div>`;
+ });
 }
-
-
 function searchProducts(){
-
-const value=document
-.getElementById("search")
-.value
-.toLowerCase();
-
-const result=products.filter(product=>
-product.name.toLowerCase().includes(value)
-);
-
-showProducts(result);
-
+ const value=document.getElementById("search").value.toLowerCase();
+ const filtered=products.filter(p=>(currentCategory==="all"||p.category===currentCategory)&&p.name.toLowerCase().includes(value));
+ showProducts(filtered);
 }
-
-
-function filterCategory(category){
-
-if(category==="all"){
-showProducts(products);
-return;
-}
-
-showProducts(
-products.filter(product=>
-product.category===category
-)
-);
-
-}
-
-
-function scrollProducts(){
-
-document.getElementById("productSection")
-.scrollIntoView({
-behavior:"smooth"
-});
-
-}
-
-
+function filterCategory(category){currentCategory=category;searchProducts();}
+function scrollProducts(){document.getElementById("productSection").scrollIntoView({behavior:"smooth"});}
 function buyNow(id){
-
-selectedProduct=
-products.find(product=>product.id===id);
-
-document.getElementById("homePage")
-.style.display="none";
-
-document.getElementById("checkoutPage")
-.style.display="block";
-
-document.getElementById("checkoutProduct")
-.value=selectedProduct.name;
-
-document.getElementById("checkoutProductPrice")
-.innerText=selectedProduct.price;
-
-document.getElementById("checkoutQuantity")
-.innerText="1";
-
-document.getElementById("checkoutTotal")
-.innerText=selectedProduct.price;
-
-window.scrollTo(0,0);
-
+ selectedProduct=products.find(product=>product.id===id);
+ if(!selectedProduct)return;
+ document.getElementById("homePage").style.display="none";
+ document.getElementById("checkoutPage").style.display="block";
+ document.getElementById("checkoutProduct").value=selectedProduct.name;
+ document.getElementById("checkoutProductPrice").innerText=selectedProduct.price;
+ document.getElementById("customerQuantity").value="1";
+ updateCheckoutTotal(); window.scrollTo(0,0);
 }
-
-
 function updateCheckoutTotal(){
-
-if(!selectedProduct){
-return;
+ if(!selectedProduct)return;
+ const quantity=Number(document.getElementById("customerQuantity").value);
+ document.getElementById("checkoutQuantity").innerText=quantity;
+ document.getElementById("checkoutTotal").innerText=selectedProduct.price*quantity;
 }
-
-const quantity=
-Number(
-document.getElementById("customerQuantity").value
-);
-
-document.getElementById("checkoutQuantity")
-.innerText=quantity;
-
-document.getElementById("checkoutTotal")
-.innerText=
-selectedProduct.price*quantity;
-
-}
-
-
 function placeOrder(){
-
-if(!selectedProduct){
-alert("Please select a product.");
-return;
+ if(!selectedProduct){alert("Please select a product.");return;}
+ const name=document.getElementById("customerName").value.trim();
+ const phone=document.getElementById("customerPhone").value.trim();
+ const address=document.getElementById("customerAddress").value.trim();
+ const city=document.getElementById("customerCity").value.trim();
+ const state=document.getElementById("customerState").value.trim();
+ const pincode=document.getElementById("customerPincode").value.trim();
+ const quantity=Number(document.getElementById("customerQuantity").value);
+ const payment=document.querySelector('input[name="payment"]:checked').value;
+ if(!name||!phone||!address||!city||!state||!pincode){alert("Please fill all customer details.");return;}
+ if(!/^[0-9+\-\s()]{8,16}$/.test(phone)){alert("Please enter a valid mobile number.");return;}
+ if(!/^[0-9]{6}$/.test(pincode)){alert("Please enter a valid 6-digit pincode.");return;}
+ const order={orderId:"SJT"+Date.now(),product:selectedProduct.name,productId:selectedProduct.id,price:selectedProduct.price,quantity,total:selectedProduct.price*quantity,customerName:name,phone,address,city,state,pincode,paymentMethod:payment,date:new Date().toLocaleString("en-IN"),status:"Pending"};
+ try{
+  let orders=JSON.parse(localStorage.getItem("sjt_orders")||"[]");orders.push(order);
+  localStorage.setItem("sjt_orders",JSON.stringify(orders));saveAdminOrder(order);
+ }catch(e){alert("Could not save order on this device. Please check browser storage and try again.");return;}
+ alert("Order placed successfully! 🎉\n\nOrder ID: "+order.orderId+"\nTotal: ₹"+order.total+"\n\nNote: This demo saves orders in this browser only.");
+ goHome();
 }
-
-const name=
-document.getElementById("customerName")
-.value.trim();
-
-const phone=
-document.getElementById("customerPhone")
-.value.trim();
-
-const address=
-document.getElementById("customerAddress")
-.value.trim();
-
-const city=
-document.getElementById("customerCity")
-.value.trim();
-
-const state=
-document.getElementById("customerState")
-.value.trim();
-
-const pincode=
-document.getElementById("customerPincode")
-.value.trim();
-
-const quantity=
-Number(
-document.getElementById("customerQuantity")
-.value
-);
-
-const payment=
-document.querySelector(
-'input[name="payment"]:checked'
-).value;
-
-
-if(!name||!phone||!address||!city||!state||!pincode){
-
-alert("Please fill all customer details.");
-return;
-
-}
-
-
-const order={
-
-orderId:"SJT"+Date.now(),
-
-product:selectedProduct.name,
-
-productId:selectedProduct.id,
-
-price:selectedProduct.price,
-
-quantity:quantity,
-
-total:selectedProduct.price*quantity,
-
-customerName:name,
-
-phone:phone,
-
-address:address,
-
-city:city,
-
-state:state,
-
-pincode:pincode,
-
-paymentMethod:payment,
-
-date:new Date().toLocaleString("en-IN"),
-
-status:"Pending"
-
-};
-
-
-let orders=
-JSON.parse(
-localStorage.getItem("sjt_orders")
-)||[];
-
-
-orders.push(order);
-
-
-localStorage.setItem(
-"sjt_orders",
-JSON.stringify(orders)
-);
-saveAdminOrder(order);
-
-alert(
-"Order placed successfully! 🎉\n\n"+
-"Order ID: "+order.orderId+
-"\nTotal: ₹"+order.total
-);
-
-
-goHome();
-
-}
-
-
-function goHome(){
-
-document.getElementById("checkoutPage")
-.style.display="none";
-
-document.getElementById("homePage")
-.style.display="block";
-
-window.scrollTo(0,0);
-
-}
-
-
-showProducts(products);
-/* ADMIN ORDER SYNC */
-
 function saveAdminOrder(order){
-
-    let adminOrders =
-        JSON.parse(
-            localStorage.getItem("shopnow_orders") || "[]"
-        );
-
-    adminOrders.push(order);
-
-    localStorage.setItem(
-        "shopnow_orders",
-        JSON.stringify(adminOrders)
-    );
-} document.querySelectorAll('input[name="payment"]').forEach(function(payment) {
-    payment.addEventListener("change", function() {
-
-        document.getElementById("upiDetails").style.display =
-            this.value === "UPI" ? "block" : "none";
-
-        document.getElementById("qrDetails").style.display =
-            this.value === "QR Scan" ? "block" : "none";
-
-    });
-});
+ let adminOrders=JSON.parse(localStorage.getItem("shopnow_orders")||"[]");
+ adminOrders.push(order);localStorage.setItem("shopnow_orders",JSON.stringify(adminOrders));
+}
+function goHome(){document.getElementById("checkoutPage").style.display="none";document.getElementById("homePage").style.display="block";window.scrollTo(0,0);}
+document.querySelectorAll('input[name="payment"]').forEach(payment=>payment.addEventListener("change",function(){
+ document.getElementById("upiDetails").style.display=this.value==="UPI"?"block":"none";
+ document.getElementById("qrDetails").style.display=this.value==="QR Scan"?"block":"none";
+}));
+function openLoginPopup(){
+ const popup=document.getElementById("loginPopup");popup.style.display="flex";popup.setAttribute("aria-hidden","false");
+ document.getElementById("loginMessage").textContent="";
+ setTimeout(()=>document.getElementById("loginEmail").focus(),50);
+}
+function closeLoginPopup(){const popup=document.getElementById("loginPopup");popup.style.display="none";popup.setAttribute("aria-hidden","true");}
+function setLoginMessage(message,isError=true){const el=document.getElementById("loginMessage");el.textContent=message;el.style.color=isError?"#a11":"#176b2c";}
+function getLoginValues(){
+ const email=document.getElementById("loginEmail").value.trim();
+ const password=document.getElementById("loginPassword").value;
+ if(!email||!password){setLoginMessage("Please enter your email and password.");return null;}
+ if(password.length<6){setLoginMessage("Password must be at least 6 characters.");return null;}
+ return {email,password};
+}
+async function submitEmailLogin(){
+ const values=getLoginValues();if(!values)return;
+ const btn=document.getElementById("loginButton");btn.disabled=true;btn.textContent="Please wait...";
+ try{if(typeof window.shopNowLogin!=="function")throw new Error("Firebase is not ready. Refresh the page and try again.");await window.shopNowLogin(values.email,values.password);setLoginMessage("Login successful!",false);setTimeout(closeLoginPopup,700);}
+ catch(e){setLoginMessage(friendlyAuthError(e));}
+ finally{btn.disabled=false;btn.textContent="Login";}
+}
+async function submitCreateAccount(){
+ const values=getLoginValues();if(!values)return;
+ const btn=document.getElementById("createAccountButton");btn.disabled=true;btn.textContent="Creating...";
+ try{if(typeof window.shopNowCreateAccount!=="function")throw new Error("Firebase is not ready. Refresh the page and try again.");await window.shopNowCreateAccount(values.email,values.password);setLoginMessage("Account created successfully!",false);setTimeout(closeLoginPopup,700);}
+ catch(e){setLoginMessage(friendlyAuthError(e));}
+ finally{btn.disabled=false;btn.textContent="Create Account";}
+}
+function friendlyAuthError(e){
+ const code=e&&e.code;
+ if(code==="auth/invalid-email")return "Please enter a valid email address.";
+ if(code==="auth/email-already-in-use")return "This email already has an account. Please Login.";
+ if(code==="auth/weak-password")return "Choose a stronger password with at least 6 characters.";
+ if(code==="auth/invalid-credential"||code==="auth/wrong-password"||code==="auth/user-not-found")return "Email or password is incorrect.";
+ if(code==="auth/too-many-requests")return "Too many attempts. Please try again later.";
+ if(code==="auth/network-request-failed")return "Network error. Check your internet and try again.";
+ return (e&&e.message)||"Authentication failed. Please try again.";
+}
+function handleAccountClick(){
+ if(window.shopNowCurrentUser){if(confirm("You are logged in. Do you want to Logout?"))window.shopNowLogout().catch(e=>alert(friendlyAuthError(e)));}
+ else openLoginPopup();
+}
+document.getElementById("loginPopup").addEventListener("click",e=>{if(e.target.id==="loginPopup")closeLoginPopup();});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeLoginPopup();});
+showProducts(products);
 </script>
 
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyC-FcooK6qpHx3BaQqxW8WVCJewTWgt4U4",
+  authDomain: "shop-now-ab653.firebaseapp.com",
+  projectId: "shop-now-ab653",
+  storageBucket: "shop-now-ab653.firebasestorage.app",
+  messagingSenderId: "66986409864",
+  appId: "1:66986409864:web:70344f0139d0b41f23843d",
+  measurementId: "G-THL8RC2D04"
+};
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+window.shopNowCreateAccount = (email,password)=>createUserWithEmailAndPassword(auth,email,password);
+window.shopNowLogin = (email,password)=>signInWithEmailAndPassword(auth,email,password);
+window.shopNowLogout = ()=>signOut(auth);
+onAuthStateChanged(auth,user=>{
+ window.shopNowCurrentUser=user||null;
+ const label=document.getElementById("accountLabel");
+ if(user){
+   label.textContent="Logout";
+   document.getElementById("accountHeader").title=user.email||"Logged in";
+ }else{
+   label.textContent="Login";
+   document.getElementById("accountHeader").title="Login";
+ }
+});
+</script>
 </body>
-    </html>
+</html>
